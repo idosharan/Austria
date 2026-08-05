@@ -308,6 +308,26 @@
             margin-bottom: 16px;
         }
 
+        /* ===== SalzburgerLand Card Status ===== */
+        .event .slc {
+            border-radius: 10px;
+            padding: 9px 14px;
+            font-size: 0.92rem;
+            margin-bottom: 16px;
+        }
+
+        .slc-yes {
+            background: rgba(45, 106, 79, 0.1);
+            border-right: 3px solid var(--navy-light);
+            color: var(--navy);
+        }
+
+        .slc-no {
+            background: rgba(178, 59, 59, 0.08);
+            border-right: 3px solid #b23b3b;
+            color: #7c2d2d;
+        }
+
         /* ===== Map Button ===== */
         .map-btn {
             display: inline-flex;
@@ -644,7 +664,7 @@
         <span class="badge">Family Travel Itinerary</span>
         <h1>Austria Alps 2026 🇦🇹</h1>
         <p class="dates">18.9.2026 — 27.9.2026</p>
-        <p class="subtitle">2 מבוגרים + 2 ילדים (9, 16) ✦ לינה: וורפנוונג, חבל פונגאו</p>
+        <p class="subtitle">2 מבוגרים + 2 ילדים (9, 16) ✦ לינה: ואגריין (Wagrain), חבל פונגאו</p>
         <div class="gold-line"></div>
         <nav class="date-nav" aria-label="ניווט לפי תאריך">
             <a href="#day-1"><span class="dn-day">שישי</span><span class="dn-date">18.9</span></a>
@@ -700,14 +720,14 @@
                 </article>
                 <article class="event">
                     <span class="time">18:00</span>
-                    <h3>🏨 צ'ק-אין במלון aja וורפנוונג</h3>
-                    <p>הגעה למלון בכפר וורפנוונג היושב על מרפסת הרים בגובה 1,000 מטר. התארגנות בחדרים, היכרות עם המתקנים (בריכה, ספא) וארוחת ערב רגועה במסעדת המלון או בכפר.</p>
-                    <div class="tip">💡 בצ'ק-אין בקשו את כרטיס האורח של וורפנוונג (Werfenweng Card) — מקנה הנחות ברכבלים ואטרקציות באזור.</div>
-                    <a class="map-btn" href="https://maps.google.com/?q=aja+Werfenweng+resort" target="_blank" rel="noopener">
+                    <h3>🏨 צ'ק-אין ב-Hofgut Wagrain — Apartment & Lifestyle Resort</h3>
+                    <p>הגעה לריזורט הדירות בכפר האלפיני ואגריין (Wagrain) שבלב חבל פונגאו. דירות מרווחות עם מטבחון — מושלם למשפחה, ובמתחם: בריכה, אזור ספא, מסעדה, מאפייה-קפה וחנות חווה (Hofladen). התארגנות וארוחת ערב רגועה במסעדת הריזורט או בכפר.</p>
+                    <div class="tip">💡 בצ'ק-אין בקשו את כרטיס האורח של ואגריין-קליינארל (Gästekarte) — מקנה הנחות באטרקציות באזור, בנוסף ל-SalzburgerLand Card.</div>
+                    <a class="map-btn" href="https://maps.google.com/?q=Hofgut+Wagrain+Apartment+Lifestyle+Resort" target="_blank" rel="noopener">
                         <svg viewBox="0 0 24 24"><use href="#icon-pin"/></svg>
                         פתח ב-Google Maps
                     </a>
-                    <a class="map-btn web-btn" href="https://www.aja.de/werfenweng" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><use href="#icon-globe"/></svg>אתר רשמי</a>
+                    <a class="map-btn web-btn" href="https://www.hofgut.at" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><use href="#icon-globe"/></svg>אתר רשמי</a>
                 </article>
             </div>
         </section>
@@ -716,44 +736,63 @@
         <section class="day" id="day-2">
             <div class="day-header">
                 <div class="day-num">2</div>
-                <h2>יום שבת, 19 בספטמבר — מים גועשים ואדרנלין 💦</h2>
+                <h2>יום שבת, 19 בספטמבר — האלשטאט ו-5 האצבעות 📸</h2>
             </div>
             <div class="timeline">
                 <article class="event">
-                    <span class="time">09:30</span>
-                    <h3>🏞️ נקיק ליכטנשטיין (Liechtensteinklamm)</h3>
-                    <p>אחד הנקיקים העמוקים והיפים באלפים — מסלול הליכה על גשרי עץ תלויים ממש מעל נהר שוצף בתוך קניון בעומק 300 מטר. המסלול שופץ וכולל מדרגות לולייניות דרמטיות ("הליקס") ומסתיים במפל עצום. כ-15 דק' נסיעה מהמלון (סנט יוהאן אים פונגאו). משך: כ-1.5–2 שעות הלוך ושוב.</p>
-                    <div class="tip">💡 מצטלם נהדר לאינסטגרם של בן ה-16! מכוסה ע"י SalzburgerLand Card. הביאו נעליים סגורות — הגשרים רטובים מהתזות המים.</div>
-                    <a class="map-btn" href="https://maps.google.com/?q=Liechtensteinklamm,+Sankt+Johann+im+Pongau" target="_blank" rel="noopener">
+                    <span class="time">08:30</span>
+                    <h3>🚗 יציאה מוקדמת להאלשטאט</h3>
+                    <p>כ-1:15 שעה נסיעה בנוף אגמים ויערות של חבל הזלצקאמרגוט. כדאי לצאת מוקדם — בשבת האלשטאט מתמלאת בתיירים כבר מ-10:00.</p>
+                    <div class="tip">💡 חנייה: חניון P1 בכניסה הדרומית לעיירה. אם מלא — P2. אל תנסו להיכנס עם רכב לעיירה עצמה.</div>
+                    <div class="slc slc-no">🎫 SalzburgerLand Card: היום כולו ללא הכרטיס — האלשטאט והדאכשטיין שייכים לאוסטריה עילית ולא משתתפים בכרטיס כלל. בדיוק בגלל זה שיבצנו את היום הזה לפני הפעלת הכרטיס (מחר).</div>
+                </article>
+                <article class="event">
+                    <span class="time">09:45</span>
+                    <h3>🏘️ העיירה האלשטאט (Hallstatt)</h3>
+                    <p>אחת העיירות המצולמות בעולם — בתים צבעוניים על צלע הר, נושקים לאגם צלול. טיילו בסמטאות, עלו לנקודת התצפית הקלאסית (Classic Viewpoint) בצפון העיירה, ובקרו בכיכר השוק הציורית.</p>
+                    <div class="slc slc-no">🎫 לא רלוונטי לכרטיס — הטיול בעיירה חינם ממילא.</div>
+                    <a class="map-btn" href="https://maps.google.com/?q=Hallstatt,+Austria" target="_blank" rel="noopener">
                         <svg viewBox="0 0 24 24"><use href="#icon-pin"/></svg>
                         פתח ב-Google Maps
                     </a>
-                    <a class="map-btn web-btn" href="https://www.liechtensteinklamm.at" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><use href="#icon-globe"/></svg>אתר רשמי</a>
+                    <a class="map-btn web-btn" href="https://www.hallstatt.net" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><use href="#icon-globe"/></svg>אתר רשמי</a>
+                </article>
+                <article class="event">
+                    <span class="time">11:00</span>
+                    <h3>🛥️ שיט בסירת מנוע חשמלית באגם</h3>
+                    <p>שוכרים סירת מנוע חשמלית קטנה (אין צורך ברישיון!) ושטים כל המשפחה באגם האלשטאט — הזווית הכי יפה על העיירה היא מהמים. השכרה בעמדות לאורך הטיילת, כ-30–60 דק'.</p>
+                    <div class="tip">💡 שכרו סירה עם גגון אם השמש חזקה. הביאו מזומן — חלק מהעמדות לא מקבלות אשראי.</div>
+                    <div class="slc slc-no">🎫 לא בכרטיס — תשלום במקום.</div>
+                    <a class="map-btn" href="https://maps.google.com/?q=Boat+rental+Hallstatt" target="_blank" rel="noopener">
+                        <svg viewBox="0 0 24 24"><use href="#icon-pin"/></svg>
+                        פתח ב-Google Maps
+                    </a>
                 </article>
                 <article class="event">
                     <span class="time">13:00</span>
-                    <h3>🍽️ ארוחת צהריים באבטנאו</h3>
-                    <p>נסיעה של כ-35 דק' לעיירה הכפרית אבטנאו וארוחת צהריים באחד הגסטהאוסים בכיכר הכפר — שניצל, קנודל (כופתאות) או נקניקיות עם צ'יפס לילדים.</p>
-                    <a class="map-btn" href="https://maps.google.com/?q=Abtenau+Marktplatz" target="_blank" rel="noopener">
+                    <h3>🍽️ ארוחת צהריים באוברטראון</h3>
+                    <p>נסיעה קצרה (10 דק') לאוברטראון שבצד השני של האגם — מסעדות רגועות וזולות יותר מאשר בהאלשטאט עצמה.</p>
+                    <a class="map-btn" href="https://maps.google.com/?q=Obertraun,+Austria" target="_blank" rel="noopener">
                         <svg viewBox="0 0 24 24"><use href="#icon-pin"/></svg>
                         פתח ב-Google Maps
                     </a>
                 </article>
                 <article class="event">
-                    <span class="time">14:30</span>
-                    <h3>🛷 מגלשות הרים בקרקוגל (Karkogel)</h3>
-                    <p>עולים ברכבל אל ראש הר הקרקוגל ויורדים במגלשת הרים קיצית מהירה שאורכה כמעט 2 ק"מ! כל גולש שולט במהירות בעצמו — בן ה-9 יכול לגלוש לבד או עם הורה. אפשר לעלות ולרדת כמה פעמים. חוויה מלאת אדרנלין עם נוף מדהים על עמק הלאמרטל.</p>
-                    <div class="tip">💡 המגלשת פועלת רק במזג אוויר יבש — אם צפוי גשם, החליפו עם יום אחר. עלייה ברכבל מכוסה ע"י SalzburgerLand Card.</div>
-                    <a class="map-btn" href="https://maps.google.com/?q=Karkogel+Sommerrodelbahn+Abtenau" target="_blank" rel="noopener">
+                    <span class="time">14:15</span>
+                    <h3>🖐️ תצפית חמש האצבעות (5 Fingers) — הר דאכשטיין</h3>
+                    <p>עולים ברכבל הדאכשטיין קריפנשטיין מאוברטראון עד התחנה העליונה (Krippenstein, 2,100 מ'). הליכה קלה של כ-20–30 דק' בנוף קארסטי "ירחי" עד למרפסת התצפית המפורסמת בצורת כף יד — חמש זרועות פלדה (אחת עם רצפת זכוכית!) התלויות באוויר מעל תהום של 400 מטר. נוף עוצר נשימה על אגם האלשטאט וקצת פיק ברכיים.</p>
+                    <div class="tip">⚠️ בדקו מזג אוויר לפני העלייה — בערפל אין נוף. הרכבל האחרון יורד סביב 16:30–17:00, תכננו בהתאם. קר למעלה — קחו שכבה חמה.</div>
+                    <div class="slc slc-no">🎫 רכבל הדאכשטיין לא משתתף בכרטיס (אוסטריה עילית) — תשלום מלא בכל מקרה, ולכן שובץ ליום שלפני הפעלת הכרטיס.</div>
+                    <a class="map-btn" href="https://maps.google.com/?q=5+Fingers+viewing+platform+Krippenstein" target="_blank" rel="noopener">
                         <svg viewBox="0 0 24 24"><use href="#icon-pin"/></svg>
                         פתח ב-Google Maps
                     </a>
-                    <a class="map-btn web-btn" href="https://www.karkogel.com" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><use href="#icon-globe"/></svg>אתר רשמי</a>
+                    <a class="map-btn web-btn" href="https://dachstein-salzkammergut.com" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><use href="#icon-globe"/></svg>אתר רשמי</a>
                 </article>
                 <article class="event">
-                    <span class="time">18:30</span>
-                    <h3>🌭 ערב רגוע בוורפנוונג</h3>
-                    <p>חזרה למלון, בריכה/ספא למי שרוצה, וארוחת ערב במלון או בפיצריה בכפר.</p>
+                    <span class="time">18:00</span>
+                    <h3>🚗 חזרה למלון</h3>
+                    <p>נסיעה חזרה לוואגריין (כ-1:15 שעה) וארוחת ערב במלון או בכפר.</p>
                 </article>
             </div>
         </section>
@@ -768,14 +807,16 @@
                 <article class="event">
                     <span class="time">09:00</span>
                     <h3>🚗 נסיעה לזלצבורג</h3>
-                    <p>כ-45 דק' נסיעה. חנייה מומלצת: חניון Salzburg Süd + אוטובוס, או ישירות בחניון הלברון (חינם למבקרי הארמון).</p>
+                    <p>כ-55 דק' נסיעה מואגריין. חנייה מומלצת: חניון Salzburg Süd + אוטובוס, או ישירות בחניון הלברון (חינם למבקרי הארמון).</p>
                     <div class="tip">💡 יום ראשון — החנויות סגורות אבל כל האטרקציות והמסעדות פתוחות. יום מושלם לזלצבורג!</div>
+                    <div class="slc slc-yes">🎫 היום מפעילים את ה-SalzburgerLand Card (הסריקה הראשונה = תחילת 6 הימים, 20–25.9). כל כרטיס כולל הטבת ג'וקר חד-פעמית: המרה ל-Salzburg Card ל-24 שעות שמכסה את כל אטרקציות העיר היום (הלברון, המבצר, מוזיאון הטבע) — או נסיעה חינם בגרוסגלוקנר. טריק חכם: שלושה מבני המשפחה יממשו כאן את הג'וקר, ואחד ההורים ישמור את שלו לאגרת הרכב בגרוסגלוקנר (יום 6).</div>
                 </article>
                 <article class="event">
                     <span class="time">09:45</span>
                     <h3>⛲ ארמון הלברון ומזרקות הפח (Hellbrunn)</h3>
                     <p>ארמון הקיץ מ-1615 שבנה הארכיבישוף מרקוס סיטיקוס כבדיחה אחת גדולה: סיור מודרך קליל וקורע מצחוק שבו המדריך משפריץ מים בהפתעה ממקומות מסתור — כיסאות אבן, קרניים בקירות, ותיאטרון בובות מכני המופעל כולו בכוח המים. משך הסיור: כ-40 דק', יוצא כל 30 דק'.</p>
-                    <div class="tip">💡 בן ה-9 כנראה יירטב — הביאו חולצה להחלפה! מכוסה ע"י SalzburgerLand Card. אחרי הסיור שווה להסתובב בגני הארמון (חינם).</div>
+                    <div class="tip">💡 בן ה-9 כנראה יירטב — הביאו חולצה להחלפה! אחרי הסיור שווה להסתובב בגני הארמון (חינם).</div>
+                    <div class="slc slc-yes">🎫 חינם עם ה-Salzburg Card היומי (הטבת הג'וקר של ה-SalzburgerLand Card).</div>
                     <a class="map-btn" href="https://maps.google.com/?q=Schloss+Hellbrunn,+Salzburg" target="_blank" rel="noopener">
                         <svg viewBox="0 0 24 24"><use href="#icon-pin"/></svg>
                         פתח ב-Google Maps
@@ -795,7 +836,8 @@
                     <span class="time">14:00</span>
                     <h3>🏰 מבצר הוהנזלצבורג (Festung Hohensalzburg)</h3>
                     <p>עולים בפוניקולר (מעלית משופעת) אל המבצר הגדול והשמור באירופה, החולש על העיר מזה 900 שנה. נוף פנורמי מרהיב על העיר וההרים, מוזיאונים קטנים עם כלי נשק ושריון עתיקים, חדרי הנסיכים המוזהבים ומוזיאון המריונטות.</p>
-                    <div class="tip">💡 הפוניקולר והכניסה מכוסים ע"י SalzburgerLand Card. הקצו כשעתיים.</div>
+                    <div class="tip">💡 הקצו כשעתיים.</div>
+                    <div class="slc slc-yes">🎫 הפוניקולר + הכניסה חינם עם ה-Salzburg Card היומי (הטבת הג'וקר).</div>
                     <a class="map-btn" href="https://maps.google.com/?q=Festung+Hohensalzburg,+Salzburg" target="_blank" rel="noopener">
                         <svg viewBox="0 0 24 24"><use href="#icon-pin"/></svg>
                         פתח ב-Google Maps
@@ -806,7 +848,8 @@
                     <span class="time">16:00</span>
                     <h3>🔬 מוזיאון הטבע והמדע (Haus der Natur)</h3>
                     <p>מוזיאון ענק ומרתק: אקווריומים עם כרישים ודגים טרופיים, תצוגות חלל עם חלליות אמיתיות, שלד דינוזאורים, עולם הזוחלים, ומרכז מדע אינטראקטיבי עצום שבו הילדים עושים ניסויים בפיזיקה, כוחות, מים וקול. פתוח עד 17:00 — ואפשר בקלות לבלות בו גם 3 שעות, אז אם הילדים מתלהבים אפשר להפוך את הסדר עם המבצר.</p>
-                    <div class="tip">💡 מכוסה ע"י SalzburgerLand Card. מרכז המדע בקומות העליונות — אל תפספסו!</div>
+                    <div class="tip">💡 מרכז המדע בקומות העליונות — אל תפספסו!</div>
+                    <div class="slc slc-yes">🎫 חינם עם ה-Salzburg Card היומי (הטבת הג'וקר).</div>
                     <a class="map-btn" href="https://maps.google.com/?q=Haus+der+Natur,+Salzburg" target="_blank" rel="noopener">
                         <svg viewBox="0 0 24 24"><use href="#icon-pin"/></svg>
                         פתח ב-Google Maps
@@ -835,8 +878,9 @@
                 <article class="event">
                     <span class="time">09:00</span>
                     <h3>🧊 מערת הקרח בוורפן (Eisriesenwelt)</h3>
-                    <p>מערת הקרח הגדולה בעולם — "עולם ענקי הקרח". רק 15 דק' נסיעה מהמלון! עולים ברכבל תלול, הולכים כ-20 דקות בשביל הרים עד לפתח המערה, מקבלים פנסי שמן אמיתיים ונכנסים לעולם של פסלי קרח טבעיים עצומים. הסיור במערה כ-75 דק', סה"כ החוויה כ-3 שעות.</p>
-                    <div class="tip">⚠️ חובה: מעילי חורף, כובע וכפפות לכולם — בפנים סביב 0°C גם בקיץ! במערה כ-700 מדרגות (עולות ויורדות). נעלי הליכה סגורות בלבד. הגיעו מוקדם — בשעות הבוקר פחות עומס. מכוסה ע"י SalzburgerLand Card.</div>
+                    <p>מערת הקרח הגדולה בעולם — "עולם ענקי הקרח". כ-30 דק' נסיעה מהמלון. עולים ברכבל תלול, הולכים כ-20 דקות בשביל הרים עד לפתח המערה, מקבלים פנסי שמן אמיתיים ונכנסים לעולם של פסלי קרח טבעיים עצומים. הסיור במערה כ-75 דק', סה"כ החוויה כ-3 שעות.</p>
+                    <div class="tip">⚠️ חובה: מעילי חורף, כובע וכפפות לכולם — בפנים סביב 0°C גם בקיץ! במערה כ-700 מדרגות (עולות ויורדות). נעלי הליכה סגורות בלבד. הגיעו מוקדם — בשעות הבוקר פחות עומס.</div>
+                    <div class="slc slc-yes">🎫 כלול בכרטיס — הסיור + הרכבל חינם (חד-פעמי). שווי בקופה: 45€ למבוגר / 32€ לנוער / 24€ לילד! בדקנו את השמועה: ההנחה הקטנה וה"מצחיקה" היא של כרטיסי אורח מקומיים — ב-SalzburgerLand Card הכניסה כלולה במלואה, ולכן המערה נשארת בתוך חלון הכרטיס (20–25.9).</div>
                     <a class="map-btn" href="https://maps.google.com/?q=Eisriesenwelt,+Werfen" target="_blank" rel="noopener">
                         <svg viewBox="0 0 24 24"><use href="#icon-pin"/></svg>
                         פתח ב-Google Maps
@@ -856,7 +900,8 @@
                     <span class="time">14:30</span>
                     <h3>🦅 טירת הוהנוורפן ומופע הבזיירות (Hohenwerfen)</h3>
                     <p>טירת אבירים אותנטית בת 900 שנה על צוק, ממש מול ההר של מערת הקרח. גולת הכותרת: מופע בזיירות מרהיב — נשרים, בזים וינשופים חולפים בצלילה ממש מעל ראשי הקהל, עם מדריכים בלבוש היסטורי. בטירה גם מוזיאון בזיירות, נשקייה וסיורים בחדרי הטירה.</p>
-                    <div class="tip">💡 בדקו את שעת המופע מראש באתר (בד"כ 11:15 ו-15:15). הגיעו לפחות 30 דק' לפני לתפוס מקום טוב. מכוסה ע"י SalzburgerLand Card.</div>
+                    <div class="tip">💡 בדקו את שעת המופע מראש באתר (בד"כ 11:15 ו-15:15). הגיעו לפחות 30 דק' לפני לתפוס מקום טוב.</div>
+                    <div class="slc slc-yes">🎫 כלול בכרטיס — כניסה חינם (חד-פעמית), כולל מופע הבזיירות והסיור בטירה (מאושר באתר הכרטיס לעונת 2026).</div>
                     <a class="map-btn" href="https://maps.google.com/?q=Burg+Hohenwerfen,+Werfen" target="_blank" rel="noopener">
                         <svg viewBox="0 0 24 24"><use href="#icon-pin"/></svg>
                         פתח ב-Google Maps
@@ -875,59 +920,64 @@
         <section class="day" id="day-5">
             <div class="day-header">
                 <div class="day-num">5</div>
-                <h2>יום שלישי, 22 בספטמבר — האלשטאט ו-5 האצבעות 📸</h2>
+                <h2>יום שלישי, 22 בספטמבר — נקיק ליכטנשטיין ועמק גאסטיין 💦🌉</h2>
             </div>
             <div class="timeline">
                 <article class="event">
-                    <span class="time">08:30</span>
-                    <h3>🚗 יציאה מוקדמת להאלשטאט</h3>
-                    <p>כ-1:15 שעה נסיעה בנוף אגמים ויערות של חבל הזלצקאמרגוט. כדאי לצאת מוקדם — האלשטאט מתמלאת בתיירים מ-10:00.</p>
-                    <div class="tip">💡 חנייה: חניון P1 בכניסה הדרומית לעיירה. אם מלא — P2. אל תנסו להיכנס עם רכב לעיירה עצמה.</div>
-                </article>
-                <article class="event">
-                    <span class="time">09:45</span>
-                    <h3>🏘️ העיירה האלשטאט (Hallstatt)</h3>
-                    <p>אחת העיירות המצולמות בעולם — בתים צבעוניים על צלע הר, נושקים לאגם צלול. טיילו בסמטאות, עלו לנקודת התצפית הקלאסית (Classic Viewpoint) בצפון העיירה, ובקרו בכיכר השוק הציורית.</p>
-                    <a class="map-btn" href="https://maps.google.com/?q=Hallstatt,+Austria" target="_blank" rel="noopener">
+                    <span class="time">09:00</span>
+                    <h3>🏞️ נקיק ליכטנשטיין (Liechtensteinklamm)</h3>
+                    <p>אחד הנקיקים העמוקים והיפים באלפים — מסלול הליכה על גשרי עץ תלויים ממש מעל נהר שוצף בתוך קניון בעומק 300 מטר. המסלול שופץ וכולל מדרגות לולייניות דרמטיות ("הליקס") ומסתיים במפל עצום. רק כ-15 דק' נסיעה מהמלון (סנט יוהאן אים פונגאו). משך: כ-1.5–2 שעות הלוך ושוב.</p>
+                    <div class="tip">💡 מצטלם נהדר לאינסטגרם של בן ה-16! הביאו נעליים סגורות — הגשרים רטובים מהתזות המים.</div>
+                    <div class="slc slc-yes">🎫 כלול בכרטיס — כניסה חינם (חד-פעמית) לכל המשפחה.</div>
+                    <a class="map-btn" href="https://maps.google.com/?q=Liechtensteinklamm,+Sankt+Johann+im+Pongau" target="_blank" rel="noopener">
                         <svg viewBox="0 0 24 24"><use href="#icon-pin"/></svg>
                         פתח ב-Google Maps
                     </a>
-                    <a class="map-btn web-btn" href="https://www.hallstatt.net" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><use href="#icon-globe"/></svg>אתר רשמי</a>
+                    <a class="map-btn web-btn" href="https://www.liechtensteinklamm.at" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><use href="#icon-globe"/></svg>אתר רשמי</a>
                 </article>
                 <article class="event">
-                    <span class="time">11:00</span>
-                    <h3>🛥️ שיט בסירת מנוע חשמלית באגם</h3>
-                    <p>שוכרים סירת מנוע חשמלית קטנה (אין צורך ברישיון!) ושטים כל המשפחה באגם האלשטאט — הזווית הכי יפה על העיירה היא מהמים. השכרה בעמדות לאורך הטיילת, כ-30–60 דק'.</p>
-                    <div class="tip">💡 שכרו סירה עם גגון אם השמש חזקה. הביאו מזומן — חלק מהעמדות לא מקבלות אשראי.</div>
-                    <a class="map-btn" href="https://maps.google.com/?q=Boat+rental+Hallstatt" target="_blank" rel="noopener">
+                    <span class="time">12:00</span>
+                    <h3>🚗 נסיעה לבאד גאסטיין</h3>
+                    <p>כ-40 דק' נסיעה דרומה לתוך עמק גאסטיין המפורסם.</p>
+                </article>
+                <article class="event">
+                    <span class="time">12:45</span>
+                    <h3>🌉 הגשר התלוי בשטובנרקוגל (Stubnerkogel)</h3>
+                    <p>עלייה ברכבל מבאד גאסטיין לפסגת השטובנרקוגל (2,246 מ'). למעלה: גשר פלדה תלוי ומתנדנד באורך 140 מטר מעל תהום — בטוח לחלוטין, שקוף למחצה ומספק פיק ברכיים איכותי. בהמשך גם מרפסת התצפית Glocknerblick עם נוף לגרוסגלוקנר.</p>
+                    <div class="tip">💡 בדקו מזג אוויר — בערפל הגשר פחות מרשים. אם התחזית גרועה, החליפו יום עם מכרות המלח (יום 8) — שניהם בתוך חלון הכרטיס.</div>
+                    <div class="slc slc-yes">🎫 כלול בכרטיס — עלייה + ירידה חינם ברכבל (חד-פעמי). עדכון 2026: ההטבה תקפה לאחד מרכבלי גאסטיין — Stubnerkogel או Schlossalm או Graukogel.</div>
+                    <a class="map-btn" href="https://maps.google.com/?q=Stubnerkogel+suspension+bridge+Bad+Gastein" target="_blank" rel="noopener">
+                        <svg viewBox="0 0 24 24"><use href="#icon-pin"/></svg>
+                        פתח ב-Google Maps
+                    </a>
+                    <a class="map-btn web-btn" href="https://www.gastein.com" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><use href="#icon-globe"/></svg>אתר רשמי</a>
+                </article>
+                <article class="event">
+                    <span class="time">13:30</span>
+                    <h3>🥞 ארוחת צהריים ב-Stubneralm</h3>
+                    <p>מסעדת הרים עם נוף פנורמי מהמם על הפסגה. מרק גולאש חם, ולקינוח — "קייזרשמרן": פנקייק אוסטרי קרוע עם אבקת סוכר ורסק תפוחים. קינוח חובה בטיול!</p>
+                    <a class="map-btn" href="https://maps.google.com/?q=Stubneralm+Bad+Gastein" target="_blank" rel="noopener">
                         <svg viewBox="0 0 24 24"><use href="#icon-pin"/></svg>
                         פתח ב-Google Maps
                     </a>
                 </article>
                 <article class="event">
-                    <span class="time">13:00</span>
-                    <h3>🍽️ ארוחת צהריים באוברטראון</h3>
-                    <p>נסיעה קצרה (10 דק') לאוברטראון שבצד השני של האגם — מסעדות רגועות וזולות יותר מאשר בהאלשטאט עצמה.</p>
-                    <a class="map-btn" href="https://maps.google.com/?q=Obertraun,+Austria" target="_blank" rel="noopener">
+                    <span class="time">15:30</span>
+                    <h3>💦 באד גאסטיין והמפל במרכז העיר</h3>
+                    <p>ירידה ברכבל וסיור בעיירה הייחודית: באד גאסטיין נראית כמו עיר פאר פריזאית מהמאה ה-19 שנבנתה על צלע הר, עם מלונות "בל אפוק" מפוארים — ומפל מים אדיר (Gasteiner Wasserfall, 341 מ' של קסקדות) חוצה אותה ממש במרכז בין הבניינים. יש שביל תצפיות נוח לאורך המפל.</p>
+                    <a class="map-btn" href="https://maps.google.com/?q=Gasteiner+Wasserfall,+Bad+Gastein" target="_blank" rel="noopener">
                         <svg viewBox="0 0 24 24"><use href="#icon-pin"/></svg>
                         פתח ב-Google Maps
                     </a>
-                </article>
-                <article class="event">
-                    <span class="time">14:15</span>
-                    <h3>🖐️ תצפית חמש האצבעות (5 Fingers) — הר דאכשטיין</h3>
-                    <p>עולים ברכבל הדאכשטיין קריפנשטיין מאוברטראון עד התחנה העליונה (Krippenstein, 2,100 מ'). הליכה קלה של כ-20–30 דק' בנוף קארסטי "ירחי" עד למרפסת התצפית המפורסמת בצורת כף יד — חמש זרועות פלדה (אחת עם רצפת זכוכית!) התלויות באוויר מעל תהום של 400 מטר. נוף עוצר נשימה על אגם האלשטאט וקצת פיק ברכיים.</p>
-                    <div class="tip">⚠️ בדקו מזג אוויר לפני העלייה — בערפל אין נוף. הרכבל האחרון יורד סביב 16:30–17:00, תכננו בהתאם. קר למעלה — קחו שכבה חמה.</div>
-                    <a class="map-btn" href="https://maps.google.com/?q=5+Fingers+viewing+platform+Krippenstein" target="_blank" rel="noopener">
-                        <svg viewBox="0 0 24 24"><use href="#icon-pin"/></svg>
-                        פתח ב-Google Maps
-                    </a>
-                    <a class="map-btn web-btn" href="https://dachstein-salzkammergut.com" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><use href="#icon-globe"/></svg>אתר רשמי</a>
                 </article>
                 <article class="event">
                     <span class="time">18:00</span>
-                    <h3>🚗 חזרה למלון</h3>
-                    <p>נסיעה חזרה לוורפנוונג (כ-1:15 שעה) וארוחת ערב.</p>
+                    <h3>🍕 ארוחת ערב בבאד גאסטיין</h3>
+                    <p>Silver Bullet — בר-מסעדה עם וייב בינלאומי תוסס, המבורגרים ופיצות (בן ה-16 יעריך), או Pizzeria Angelo לפיצה איטלקית קלאסית. חזרה למלון אחרי הארוחה.</p>
+                    <a class="map-btn" href="https://maps.google.com/?q=Silver+Bullet+Bar+Bad+Gastein" target="_blank" rel="noopener">
+                        <svg viewBox="0 0 24 24"><use href="#icon-pin"/></svg>
+                        פתח ב-Google Maps
+                    </a>
                 </article>
             </div>
         </section>
@@ -944,6 +994,7 @@
                     <h3>🚗 יציאה לכביש גרוסגלוקנר (Grossglockner)</h3>
                     <p>כ-1:15 שעה נסיעה לשער הכניסה בפרש (Fusch) / ברוק. כביש האלפים הגבוה של גרוסגלוקנר הוא אחת הדרכים היפות באירופה — 48 ק"מ, 36 פיתולים, ומטפס עד 2,504 מטר.</p>
                     <div class="tip">💡 אגרת כניסה: כ-45€ לרכב (כרטיס יומי). בדקו באתר שהכביש פתוח (נסגר בשלג). תדלקו לפני! קחו שכבות חמות — למעלה יכול להיות גם 0°C ושלג בספטמבר.</div>
+                    <div class="slc slc-yes">🎫 טריק הג'וקר: כל כרטיס מזכה חד-פעמית ב-Salzburg Card 24ש' או בנסיעה חינם בגרוסגלוקנר. אם אחד ההורים שמר את הג'וקר שלו (ולא המיר אותו בזלצבורג ביום 3) — אגרת הרכב כאן חינם!</div>
                     <a class="map-btn" href="https://maps.google.com/?q=Grossglockner+Hochalpenstrasse+Fusch+toll" target="_blank" rel="noopener">
                         <svg viewBox="0 0 24 24"><use href="#icon-pin"/></svg>
                         פתח ב-Google Maps
@@ -974,6 +1025,7 @@
                     <h3>🪂 אופציה למתבגר: Flying Fox XXL בלאוגנג</h3>
                     <p>בדרך חזרה (סטייה של כ-40 דק') — אחת האומגות הארוכות בעולם: 1.6 ק"מ טיסה בשכיבה, עד 130 קמ"ש! מתאים מגיל 10 ומעלה (מגבלות משקל: 30–125 ק"ג). בתוספת תשלום, חובה להזמין מראש.</p>
                     <div class="tip">💡 אופציונלי — רק אם נשאר כוח וההזמנה אושרה מראש. אפשר גם לדחות ליום גמיש אחר.</div>
+                    <div class="slc slc-no">🎫 לא כלול בכרטיס — תשלום נפרד.</div>
                     <a class="map-btn" href="https://maps.google.com/?q=Flying+Fox+XXL+Leogang" target="_blank" rel="noopener">
                         <svg viewBox="0 0 24 24"><use href="#icon-pin"/></svg>
                         פתח ב-Google Maps
@@ -1004,7 +1056,8 @@
                     <span class="time">10:15</span>
                     <h3>🏗️ סכרי קפרון (Kaprun Hochgebirgsstauseen)</h3>
                     <p>מסע הנדסי מרשים: אוטובוס מיוחד ואז המעלית המשופעת הפתוחה הגדולה באירופה — Lärchwand — שמעלה אוטובוס שלם במעלה ההר! למעלה מחכים שני סכרי ענק (Mooserboden בגובה 2,036 מ') האוגרים מים בצבע טורקיז-חלבי עוצר נשימה. הולכים על הסכר עצמו, ויש סיור פנימי "Erlebniswelt Strom" על בניית המפעל ההידרואלקטרי.</p>
-                    <div class="tip">⚠️ העונה מסתיימת בתחילת אוקטובר — ודאו שפתוח. קחו בגד חם, למעלה קריר. הקצו כ-4 שעות לכל החוויה. כדאי להזמין כרטיסים מראש באתר.</div>
+                    <div class="tip">⚠️ העונה מסתיימת בתחילת אוקטובר — ודאו שפתוח. קחו בגד חם, למעלה קריר. הקצו כ-4 שעות לכל החוויה.</div>
+                    <div class="slc slc-yes">🎫 כלול בכרטיס — האוטובוס + המעלית המשופעת לסכרים חינם (חד-פעמי).</div>
                     <a class="map-btn" href="https://maps.google.com/?q=Kaprun+Hochgebirgsstauseen+Mooserboden" target="_blank" rel="noopener">
                         <svg viewBox="0 0 24 24"><use href="#icon-pin"/></svg>
                         פתח ב-Google Maps
@@ -1021,10 +1074,23 @@
                     </a>
                 </article>
                 <article class="event">
+                    <span class="time">15:15</span>
+                    <h3>🛷 מגלשת הרים Maisiflitzer — לבן ה-9!</h3>
+                    <p>ממש ליד הספא בקפרון: אלפיין-קוסטר על מסילה באורך 1.3 ק"מ במורד המאיסקוגל — עיקולים, גלים וקפיצות קטנות. כל אחד שולט במהירות בעצמו, והמסלול פועל גם בגשם (עגלות סגורות למחצה). התחליף המושלם למגלשת הקרקוגל באבטנאו שנסגרה לצמיתות.</p>
+                    <div class="tip">💡 גיל מינימום לנסיעה עצמאית: 8. אפשר לקנות כרטיסייה של כמה ירידות — הוא ירצה שוב!</div>
+                    <div class="slc slc-no">🎫 לא כלול בכרטיס — תשלום נפרד (כ-9€ לנסיעה).</div>
+                    <a class="map-btn" href="https://maps.google.com/?q=Maisiflitzer+Alpine+Coaster+Kaprun" target="_blank" rel="noopener">
+                        <svg viewBox="0 0 24 24"><use href="#icon-pin"/></svg>
+                        פתח ב-Google Maps
+                    </a>
+                    <a class="map-btn web-btn" href="https://www.kitzsteinhorn.at/en/maiskogel/maisiflitzer" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><use href="#icon-globe"/></svg>אתר רשמי</a>
+                </article>
+                <article class="event">
                     <span class="time">16:00</span>
                     <h3>🧖 טאוארן ספא (Tauern Spa Kaprun)</h3>
                     <p>סיום יום מושלם: מרחצאות יוקרתיים עם 11 בריכות מחוממות (פנימיות וחיצוניות) מול ההרים, בריכת אינפיניטי על הגג עם נוף לקיצשטיינהורן, ומתחם ילדים ייעודי עם שלוש מגלשות מים מהנות. בן ה-9 במגלשות, בן ה-16 בבריכות או בסאונות, וההורים — בג'קוזי מול השקיעה.</p>
                     <div class="tip">💡 קנו כרטיס ערב (מוזל אחרי 16:00–17:00). קחו בגדי ים, מגבות אפשר לשכור. מתחם הסאונות ללא בגדים (נהוג באוסטריה) — יש אזורים משפחתיים נפרדים.</div>
+                    <div class="slc slc-no">🎫 לא כלול בכרטיס — משלמים בנפרד (יש כרטיס ערב מוזל).</div>
                     <a class="map-btn" href="https://maps.google.com/?q=Tauern+Spa+Kaprun" target="_blank" rel="noopener">
                         <svg viewBox="0 0 24 24"><use href="#icon-pin"/></svg>
                         פתח ב-Google Maps
@@ -1043,67 +1109,15 @@
         <section class="day" id="day-8">
             <div class="day-header">
                 <div class="day-num">8</div>
-                <h2>יום שישי, 25 בספטמבר — תהומות ומפלים בעמק גאסטיין 🌉</h2>
-            </div>
-            <div class="timeline">
-                <article class="event">
-                    <span class="time">09:00</span>
-                    <h3>🚗 נסיעה לבאד גאסטיין</h3>
-                    <p>כ-50 דק' נסיעה דרומה לתוך עמק גאסטיין המפורסם.</p>
-                </article>
-                <article class="event">
-                    <span class="time">10:00</span>
-                    <h3>🌉 הגשר התלוי בשטובנרקוגל (Stubnerkogel)</h3>
-                    <p>עלייה ברכבל מבאד גאסטיין לפסגת השטובנרקוגל (2,246 מ'). למעלה: גשר פלדה תלוי ומתנדנד באורך 140 מטר מעל תהום — בטוח לחלוטין, שקוף למחצה ומספק פיק ברכיים איכותי. בהמשך גם מרפסת התצפית Glocknerblick עם נוף לגרוסגלוקנר.</p>
-                    <div class="tip">💡 הרכבל מכוסה ע"י כרטיס Gastein Card אם תקבלו, בדקו גם SalzburgerLand Card. בדקו מזג אוויר — בערפל הגשר פחות מרשים.</div>
-                    <a class="map-btn" href="https://maps.google.com/?q=Stubnerkogel+suspension+bridge+Bad+Gastein" target="_blank" rel="noopener">
-                        <svg viewBox="0 0 24 24"><use href="#icon-pin"/></svg>
-                        פתח ב-Google Maps
-                    </a>
-                    <a class="map-btn web-btn" href="https://www.gastein.com" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><use href="#icon-globe"/></svg>אתר רשמי</a>
-                </article>
-                <article class="event">
-                    <span class="time">12:30</span>
-                    <h3>🥞 ארוחת צהריים ב-Stubneralm</h3>
-                    <p>מסעדת הרים עם נוף פנורמי מהמם על הפסגה. מרק גולאש חם, ולקינוח — "קייזרשמרן": פנקייק אוסטרי קרוע עם אבקת סוכר ורסק תפוחים. קינוח חובה בטיול!</p>
-                    <a class="map-btn" href="https://maps.google.com/?q=Stubneralm+Bad+Gastein" target="_blank" rel="noopener">
-                        <svg viewBox="0 0 24 24"><use href="#icon-pin"/></svg>
-                        פתח ב-Google Maps
-                    </a>
-                </article>
-                <article class="event">
-                    <span class="time">14:30</span>
-                    <h3>💦 באד גאסטיין והמפל במרכז העיר</h3>
-                    <p>ירידה ברכבל וסיור בעיירה הייחודית: באד גאסטיין נראית כמו עיר פאר פריזאית מהמאה ה-19 שנבנתה על צלע הר, עם מלונות "בל אפוק" מפוארים — ומפל מים אדיר (Gasteiner Wasserfall, 341 מ' של קסקדות) חוצה אותה ממש במרכז בין הבניינים. יש שביל תצפיות נוח לאורך המפל.</p>
-                    <a class="map-btn" href="https://maps.google.com/?q=Gasteiner+Wasserfall,+Bad+Gastein" target="_blank" rel="noopener">
-                        <svg viewBox="0 0 24 24"><use href="#icon-pin"/></svg>
-                        פתח ב-Google Maps
-                    </a>
-                </article>
-                <article class="event">
-                    <span class="time">18:00</span>
-                    <h3>🍕 ארוחת ערב בבאד גאסטיין</h3>
-                    <p>Silver Bullet — בר-מסעדה עם וייב בינלאומי תוסס, המבורגרים ופיצות (בן ה-16 יעריך), או Pizzeria Angelo לפיצה איטלקית קלאסית. חזרה למלון אחרי הארוחה.</p>
-                    <a class="map-btn" href="https://maps.google.com/?q=Silver+Bullet+Bar+Bad+Gastein" target="_blank" rel="noopener">
-                        <svg viewBox="0 0 24 24"><use href="#icon-pin"/></svg>
-                        פתח ב-Google Maps
-                    </a>
-                </article>
-            </div>
-        </section>
-
-        <!-- ===== יום 9 | שבת 26.9 ===== -->
-        <section class="day" id="day-9">
-            <div class="day-header">
-                <div class="day-num">9</div>
-                <h2>יום שבת, 26 בספטמבר — מכרות מלח ומכונות קצה ⛏️</h2>
+                <h2>יום שישי, 25 בספטמבר — מכרות מלח ומפל גולינג ⛏️🌊</h2>
             </div>
             <div class="timeline">
                 <article class="event">
                     <span class="time">09:30</span>
                     <h3>⛏️ מכרות המלח בהליין (Salzwelten Salzburg)</h3>
-                    <p>כ-40 דק' נסיעה. חוויה מעולה לכל המשפחה: לובשים סרבלי כורים לבנים, נוסעים ברכבת כורים קטנה אל בטן ההר, גולשים בשתי מגלשות עץ תלולות של הכורים (כיף אדיר — מודדים לכם מהירות!), שטים בסירה על אגם מלח תת-קרקעי מואר, וחוצים את הגבול לגרמניה... מתחת לאדמה! משך הסיור: כ-90 דק'.</p>
-                    <div class="tip">💡 הזמינו שעת סיור מראש באתר. הטמפרטורה בפנים כ-10°C — קחו סווטשירט. מכוסה ע"י SalzburgerLand Card. ילדים מגיל 4 בלבד.</div>
+                    <p>כ-45 דק' נסיעה. חוויה מעולה לכל המשפחה: לובשים סרבלי כורים לבנים, נוסעים ברכבת כורים קטנה אל בטן ההר, גולשים בשתי מגלשות עץ תלולות של הכורים (כיף אדיר — מודדים לכם מהירות! גם זו "מגלשה" לבן ה-9), שטים בסירה על אגם מלח תת-קרקעי מואר, וחוצים את הגבול לגרמניה... מתחת לאדמה! משך הסיור: כ-90 דק'.</p>
+                    <div class="tip">💡 הזמינו שעת סיור מראש באתר. הטמפרטורה בפנים כ-10°C — קחו סווטשירט. ילדים מגיל 4 בלבד.</div>
+                    <div class="slc slc-yes">🎫 כלול בכרטיס — כניסה חינם (חד-פעמית). מזמינים שעת סיור באתר עם קוד פרומו של הכרטיס (הסבר בעמוד ה-FAQ). זהו היום האחרון לתוקף הכרטיס — לכן המכרות שובצו לכאן ולא ל-26.9.</div>
                     <a class="map-btn" href="https://maps.google.com/?q=Salzwelten+Salzburg,+Hallein" target="_blank" rel="noopener">
                         <svg viewBox="0 0 24 24"><use href="#icon-pin"/></svg>
                         פתח ב-Google Maps
@@ -1115,6 +1129,7 @@
                     <h3>🌊 מפל גולינג (Gollinger Wasserfall)</h3>
                     <p>כ-15 דק' נסיעה ממכרות המלח. הליכה קצרה ומרעננת (כ-30 דק' הלוך ושוב) בתוך יער קסום ומכוסה טחב, שמובילה לאחד המפלים העוצמתיים והיפים באוסטריה — 75 מטר בשתי דרגות, הבוקע ישירות מתוך חור בסלע.</p>
                     <div class="tip">💡 בדרך חזרה לרכב — עצירת קפה ועוגה בעיירה גולינג הציורית.</div>
+                    <div class="slc slc-yes">🎫 כלול בכרטיס — הכניסה למפל חינם.</div>
                     <a class="map-btn" href="https://maps.google.com/?q=Gollinger+Wasserfall" target="_blank" rel="noopener">
                         <svg viewBox="0 0 24 24"><use href="#icon-pin"/></svg>
                         פתח ב-Google Maps
@@ -1122,9 +1137,30 @@
                 </article>
                 <article class="event">
                     <span class="time">15:00</span>
+                    <h3>🏰 אופציה לסיום: מוזיאון הקלטים בהליין או בריכה במלון</h3>
+                    <p>אם נשאר כוח — מוזיאון הקלטים בהליין משלים את סיפור המלח של האזור. אחרת — חוזרים למלון לבריכה ולספא אחרי שבוע אינטנסיבי.</p>
+                    <div class="slc slc-yes">🎫 מוזיאון הקלטים כלול בכרטיס — כניסה חינם (חד-פעמית).</div>
+                    <a class="map-btn" href="https://maps.google.com/?q=Celtic+Museum+Hallein" target="_blank" rel="noopener">
+                        <svg viewBox="0 0 24 24"><use href="#icon-pin"/></svg>
+                        פתח ב-Google Maps
+                    </a>
+                </article>
+            </div>
+        </section>
+
+        <!-- ===== יום 9 | שבת 26.9 ===== -->
+        <section class="day" id="day-9">
+            <div class="day-header">
+                <div class="day-num">9</div>
+                <h2>יום שבת, 26 בספטמבר — האנגר 7, קניות ופרידה 🛍️</h2>
+            </div>
+            <div class="timeline">
+                <article class="event">
+                    <span class="time">10:00</span>
                     <h3>✈️ האנגר 7 (Hangar-7) — רד בול</h3>
-                    <p>לקינוח הטיול: מבנה הזכוכית העתידני של רד בול ליד שדה התעופה של זלצבורג (כ-30 דק' נסיעה). בפנים: מטוסי פעלולים היסטוריים, מסוקים, מכוניות פורמולה 1 נוצצות, חליפת הצניחה מהסטרטוספירה של פליקס באומגרטנר — וכולו חינם! יש גם בית קפה מעוצב (Carpe Diem) לעצירת קפה ועוגה.</p>
+                    <p>לקינוח הטיול: מבנה הזכוכית העתידני של רד בול ליד שדה התעופה של זלצבורג (כ-50 דק' נסיעה). בפנים: מטוסי פעלולים היסטוריים, מסוקים, מכוניות פורמולה 1 נוצצות, חליפת הצניחה מהסטרטוספירה של פליקס באומגרטנר — וכולו חינם! יש גם בית קפה מעוצב (Carpe Diem) לעצירת קפה ועוגה.</p>
                     <div class="tip">💡 כניסה חינם, פתוח 09:00–22:00. חנייה חינם במקום. שילוב מושלם של עיצוב, טכנולוגיה ומכונות — בן ה-16 יאהב.</div>
+                    <div class="slc slc-no">🎫 לא צריך כרטיס — הכניסה חינם לכולם ממילא. לכן היום הזה משובץ אחרי שתוקף הכרטיס הסתיים (25.9).</div>
                     <a class="map-btn" href="https://maps.google.com/?q=Hangar-7,+Salzburg+Airport" target="_blank" rel="noopener">
                         <svg viewBox="0 0 24 24"><use href="#icon-pin"/></svg>
                         פתח ב-Google Maps
@@ -1132,7 +1168,18 @@
                     <a class="map-btn web-btn" href="https://www.hangar-7.com" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><use href="#icon-globe"/></svg>אתר רשמי</a>
                 </article>
                 <article class="event">
-                    <span class="time">18:00</span>
+                    <span class="time">13:00</span>
+                    <h3>🛍️ קניות באירופארק (Europark)</h3>
+                    <p>5 דק' נסיעה מהאנגר 7! אחד הקניונים הגדולים והיפים באוסטריה — H&M, Zara, חנויות ספורט ענקיות (Intersport, Hervis) ועוד. ארוחת צהריים בקומת המסעדות, מזכרות וכדורי מוצרט בסופר.</p>
+                    <div class="tip">⚠️ שבת: פתוח עד 18:00 בלבד — וזו ההזדמנות האחרונה לקניות: מחר (ראשון) כל החנויות באוסטריה סגורות, כולל SCS שבדרך לשדה התעופה!</div>
+                    <a class="map-btn" href="https://maps.google.com/?q=Europark+Salzburg" target="_blank" rel="noopener">
+                        <svg viewBox="0 0 24 24"><use href="#icon-pin"/></svg>
+                        פתח ב-Google Maps
+                    </a>
+                    <a class="map-btn web-btn" href="https://www.europark.at" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><use href="#icon-globe"/></svg>אתר רשמי</a>
+                </article>
+                <article class="event">
+                    <span class="time">18:30</span>
                     <h3>🍽️ ארוחת ערב חגיגית אחרונה</h3>
                     <p>ארוחת סיום טיול ב-Gasthof Tirolerwirt בבישופסהופן (שניצלים ענקיים) או Beefman's להמבורגרים — ואריזה ראשונית של המזוודות בערב.</p>
                     <a class="map-btn" href="https://maps.google.com/?q=Gasthof+Tirolerwirt+Bischofshofen" target="_blank" rel="noopener">
@@ -1156,10 +1203,29 @@
                     <p>ארוחת בוקר אחרונה במלון, אריזות, סריקת חדרים אחרונה (מטענים! בגדי ים בספא!) וצ'ק-אאוט.</p>
                 </article>
                 <article class="event">
-                    <span class="time">09:30</span>
-                    <h3>🚗 נסיעה לשדה התעופה בווינה</h3>
-                    <p>כ-3 שעות נסיעה + עצירת ביניים. זכרו: יום ראשון — תחנות הדלק פתוחות אבל החנויות סגורות, אז מזכרות של הרגע האחרון קונים בשדה התעופה.</p>
-                    <div class="tip">💡 תדלקו טנק מלא לפני החזרת הרכב (תחנות ליד השדה יקרות פחות מקנס ההשכרה). חשבו זמן: החזרת רכב + שאטל + צ'ק-אין = הגיעו לשדה 3 שעות לפני הטיסה.</div>
+                    <span class="time">09:00</span>
+                    <h3>🚗 נסיעה לכיוון וינה</h3>
+                    <p>כ-3 שעות נסיעה. תדלקו טנק מלא לפני החזרת הרכב (תחנות ליד השדה יקרות פחות מקנס ההשכרה).</p>
+                </article>
+                <article class="event">
+                    <span class="time">12:15</span>
+                    <h3>🎡 עצירה בפראטר (Prater) — פתוח גם בראשון!</h3>
+                    <p>במקום קניון סגור — פארק השעשועים ההיסטורי של וינה: הכניסה לפארק חינם ומשלמים רק על מתקנים. עלייה על הגלגל הענק המפורסם (Riesenrad, מ-1897) לנוף פרידה על וינה, מתקני אדרנלין לבן ה-16, רכבות ומתקנים לבן ה-9, ודוכני לאנגוס ונקניקיות לצהריים. כ-25 דק' מהפארק לשדה התעופה.</p>
+                    <div class="tip">🧳 המזוודות איתכם? שתי אפשרויות: (1) הפתרון הבטוח — סעו קודם לשדה התעופה, הפקידו את המזוודות בשמירת החפצים (Left Luggage, טרמינל 1, כמה אירו למזוודה) וחזרו 20 דק' לפראטר בראש שקט. (2) הפשוט — חנו בחניון המקורה והמצולם Parkhaus Riesenradplatz שצמוד לגלגל הענק, השאירו הכל בתא מטען סגור ולא נראה מבחוץ, וקחו איתכם רק דרכונים ודברי ערך. אם מעדיפים לוותר על העצירה — גני שנברון הם עצירה קצרה ופתוחה יותר.</div>
+                    <div class="tip">💡 אלטרנטיבות פתוחות בראשון: גני ארמון שנברון (חינם, עצירה יפה בכניסה לווינה) או המוזיאון הטכני (10:00–18:00, מעולה לילדים). קניות בראשון אין בשום מקום — כל הקמעונאות באוסטריה סגורה בחוק, כולל SCS ופריימרק. אם הטיסה תוזז ליום חול: Westfield SCS (Primark, Zara, TK Maxx, Media Markt ועוד 300 חנויות) נמצא בדיוק על הדרך — SCS-Straße, Vösendorf, ב'–ו' 09:00–19:00, שבת עד 18:00.</div>
+                    <div class="slc slc-no">🎫 לא רלוונטי לכרטיס — וינה מחוץ לזלצבורגרלנד.</div>
+                    <a class="map-btn" href="https://maps.google.com/?q=Prater+Riesenrad+Vienna" target="_blank" rel="noopener">
+                        <svg viewBox="0 0 24 24"><use href="#icon-pin"/></svg>
+                        פתח ב-Google Maps
+                    </a>
+                    <a class="map-btn web-btn" href="https://www.praterwien.com/en/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><use href="#icon-globe"/></svg>אתר רשמי</a>
+                    <a class="map-btn web-btn" href="https://www.westfield.com/austria/shopping-city-sued" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><use href="#icon-globe"/></svg>SCS — רשימת חנויות (ליום חול)</a>
+                </article>
+                <article class="event">
+                    <span class="time">14:30</span>
+                    <h3>🚗 המשך לשדה התעופה בווינה</h3>
+                    <p>כ-25 דק' נסיעה מהפראטר. זכרו: יום ראשון — תחנות הדלק פתוחות אבל החנויות סגורות, אז מזכרות של הרגע האחרון קונים בשדה התעופה (חנויות הטרמינל פתוחות כל יום).</p>
+                    <div class="tip">💡 חשבו זמן: החזרת רכב + שאטל + צ'ק-אין = הגיעו לשדה 3 שעות לפני הטיסה.</div>
                     <a class="map-btn" href="https://maps.google.com/?q=Vienna+International+Airport+car+rental+return" target="_blank" rel="noopener">
                         <svg viewBox="0 0 24 24"><use href="#icon-pin"/></svg>
                         פתח ב-Google Maps
@@ -1182,10 +1248,10 @@
             <div class="timeline">
                 <article class="event">
                     <label class="done-check"><input type="checkbox" data-key="food-1" aria-label="סמן כבוצע"><span>✔</span></label>
-                    <span class="time">וורפנוונג</span>
-                    <h3>🏨 מסעדת מלון aja</h3>
-                    <p>בופה ערב עשיר במלון עצמו — מושלם לימים שבא לכם לסיים בלי לנסוע לשום מקום.</p>
-                    <a class="map-btn" href="https://maps.google.com/?q=aja+Werfenweng+resort" target="_blank" rel="noopener">
+                    <span class="time">ואגריין</span>
+                    <h3>🏨 מסעדת Hofgut</h3>
+                    <p>מסעדת הריזורט + מאפייה-קפה וחנות חווה במתחם — מושלם לימים שבא לכם לסיים בלי לנסוע לשום מקום.</p>
+                    <a class="map-btn" href="https://maps.google.com/?q=Hofgut+Wagrain+Apartment+Lifestyle+Resort" target="_blank" rel="noopener">
                         <svg viewBox="0 0 24 24"><use href="#icon-pin"/></svg>
                         פתח ב-Google Maps
                     </a>
@@ -1293,7 +1359,7 @@
                     <div class="shop-icon">🛍️</div>
                     <div class="shop-body">
                         <h3>Europark — זלצבורג</h3>
-                        <p>אחד הקניונים הגדולים והיפים באוסטריה (כ-40 דק' מהמלון) — H&M, Primark, Zara, חנויות ספורט ענקיות (Intersport, Hervis) ועוד. מושלם ליום גשום או ליום קניות. פתוח: ב'–ו' 09:00–19:00 (ו' עד 19:30), שבת עד 18:00, ראשון סגור.</p>
+                        <p>אחד הקניונים הגדולים והיפים באוסטריה (כ-50 דק' מהמלון) — 95 חנויות: H&M, Zara, Bershka, חנויות ספורט ענקיות (Intersport, Hervis) ועוד. שימו לב: אין פריימרק בזלצבורג — הסניף הקרוב ב-SCS ליד וינה (פתוח רק בימי חול ושבת). פתוח: ב'–ה' 09:00–19:30, ו' עד 21:00, שבת עד 18:00, ראשון סגור.</p>
                         <div class="btn-row">
                             <a class="map-btn" href="https://maps.google.com/?q=Europark+Salzburg" target="_blank" rel="noopener">
                                 <svg viewBox="0 0 24 24"><use href="#icon-pin"/></svg>
@@ -1330,10 +1396,12 @@
                 <article class="event">
                     <label class="done-check"><input type="checkbox" data-key="tip-1" aria-label="סמן כבוצע"><span>✔</span></label>
                     <span class="time">חובה</span>
-                    <h3>🎫 כרטיס SalzburgerLand Card</h3>
-                    <p>טיפ הזהב של הטיול: רכשו מראש (או ביום הראשון) את גרסת 6 הימים. הכרטיס מכסה כמעט את כל האטרקציות בתוכנית — נקיק ליכטנשטיין, מערת הקרח, טירת הוהנוורפן, הלברון, הוהנזלצבורג, מוזיאון הטבע, מכרות המלח, רכבלים ועוד 180+ אטרקציות. חיסכון של מאות אירו למשפחה!</p>
-                    <div class="tip">💡 תכננו את 6 הימים של הכרטיס על הימים העמוסים באטרקציות (ימים 2–4 ו-8–9), את גרוסגלוקנר והספא משלמים בנפרד בכל מקרה.</div>
-                    <a class="map-btn web-btn" href="https://www.salzburgerland.com/en/salzburgerland-card/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><use href="#icon-globe"/></svg>אתר רשמי</a>
+                    <h3>🎫 כרטיס SalzburgerLand Card — 6 ימים (20–25.9)</h3>
+                    <p>טיפ הזהב של הטיול: רכשו אונליין מראש את גרסת 6 הימים — 103€ למבוגר, 52€ לילד (מחירי עונת 2026; סה"כ למשפחה שלכם: 310€). הכרטיס מקנה כניסה חד-פעמית חינם לכ-180 אטרקציות, ומופעל רק בסריקה הראשונה באטרקציה — אפשר להזמין כבר עכשיו. חשוב: תקף ל-6 ימים רצופים מהסריקה הראשונה — אצלנו: סורקים לראשונה ב-20.9 והוא מכסה עד 25.9 כולל.</p>
+                    <div class="tip">💡 התוכנית מסודרת כך שכל אטרקציות הכרטיס בחלון 20–25.9: זלצבורג (ג'וקר Salzburg Card), מערת הקרח + הוהנוורפן, ליכטנשטיין + רכבל גאסטיין, גרוסגלוקנר (ג'וקר), סכרי קפרון, ומכרות המלח + גולינג. הימים 19.9 (האלשטאט — לא משתתפת בכרטיס) ו-26.9 (האנגר 7 חינם + קניות) לא זקוקים לכרטיס. אין מבצעי הנחה על הכרטיס עצמו — המחיר אחיד בכל ערוצי המכירה; בדקו ב-FAQ את סעיף ה-Family Bonus.</div>
+                    <a class="map-btn web-btn" href="https://www.salzburgerland.com/en/buy-salzburgerland-card/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><use href="#icon-globe"/></svg>רכישה אונליין</a>
+                    <a class="map-btn web-btn" href="https://www.salzburgerland.com/en/all-attractions-at-a-glance/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><use href="#icon-globe"/></svg>כל האטרקציות</a>
+                    <a class="map-btn web-btn" href="https://www.salzburgerland.com/en/salzburgerland-card-faqs/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><use href="#icon-globe"/></svg>FAQ והטבות</a>
                 </article>
                 <article class="event">
                     <label class="done-check"><input type="checkbox" data-key="tip-2" aria-label="סמן כבוצע"><span>✔</span></label>
