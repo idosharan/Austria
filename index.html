@@ -7,6 +7,14 @@
     <meta name="theme-color" content="#14342b">
     <title>Austria Alps Trip 2026 🇦🇹</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏔️</text></svg>">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Austria Alps Trip 2026 🇦🇹">
+    <meta property="og:description" content="תיק טיול משפחתי לאלפים האוסטריים 18–27.9.2026 — טיסות, זלצבורג, האלשטאט, גרוסגלוקנר, מערת הקרח ועוד">
+    <meta property="og:locale" content="he_IL">
+    <!-- אחרי העלאה לאחסון: עדכנו לכתובת מלאה (https://...) של תמונת שיתוף כדי שוואטסאפ יציג תמונה -->
+    <meta property="og:image" content="icon.svg">
+    <link rel="manifest" href="manifest.webmanifest">
+    <link rel="apple-touch-icon" href="icon.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;900&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
@@ -651,6 +659,261 @@
             background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
             color: var(--navy);
         }
+
+        /* ===== Day Links (route/weather chips) ===== */
+        .day-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: -12px 0 20px;
+            padding-right: 68px;
+        }
+
+        .day-links a {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--navy);
+            text-decoration: none;
+            background: rgba(212, 175, 55, 0.14);
+            border: 1px solid rgba(212, 175, 55, 0.45);
+            border-radius: 50px;
+            padding: 5px 14px;
+            transition: background 0.25s ease, transform 0.25s ease;
+        }
+
+        .day-links a:hover {
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 540px) {
+            .day-links {
+                padding-right: 0;
+            }
+        }
+
+        /* ===== Sticky Nav ===== */
+        #stickyNav {
+            position: fixed;
+            top: 0;
+            right: 0;
+            left: 0;
+            z-index: 60;
+            background: rgba(20, 52, 43, 0.94);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            box-shadow: 0 6px 18px rgba(20, 52, 43, 0.35);
+            transform: translateY(-100%);
+            transition: transform 0.3s ease;
+        }
+
+        #stickyNav.show {
+            transform: none;
+        }
+
+        #stickyNav .date-nav {
+            margin: 0 auto;
+            max-width: 860px;
+            padding: 8px 12px;
+            flex-wrap: nowrap;
+            overflow-x: auto;
+            justify-content: flex-start;
+            scrollbar-width: none;
+        }
+
+        #stickyNav .date-nav::-webkit-scrollbar {
+            display: none;
+        }
+
+        #stickyNav .date-nav a {
+            min-width: 56px;
+            flex: 0 0 auto;
+            padding: 5px 8px;
+            border-radius: 10px;
+        }
+
+        #stickyNav .date-nav a .dn-day {
+            font-size: 0.65rem;
+        }
+
+        #stickyNav .date-nav a .dn-date {
+            font-size: 0.9rem;
+        }
+
+        .date-nav a.active {
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+            border-color: var(--gold);
+        }
+
+        .date-nav a.active .dn-day,
+        .date-nav a.active .dn-date {
+            color: var(--navy);
+        }
+
+        /* ===== Trip Progress ===== */
+        .trip-progress {
+            max-width: 420px;
+            margin: 24px auto 0;
+            position: relative;
+            z-index: 2;
+        }
+
+        .trip-progress .tp-label {
+            font-size: 0.95rem;
+            color: var(--gold-light);
+            margin-bottom: 8px;
+        }
+
+        .trip-progress .tp-bar {
+            height: 8px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .trip-progress .tp-fill {
+            height: 100%;
+            width: 0;
+            background: linear-gradient(90deg, var(--gold) 0%, var(--gold-light) 100%);
+            border-radius: 8px;
+            transition: width 0.8s ease;
+        }
+
+        /* ===== Booking Details ===== */
+        .booking-row {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 0;
+            border-bottom: 1px dashed rgba(20, 52, 43, 0.12);
+            font-size: 0.98rem;
+        }
+
+        .booking-row:last-of-type {
+            border-bottom: none;
+        }
+
+        .booking-row .b-label {
+            font-weight: 700;
+            color: var(--navy);
+            min-width: 150px;
+        }
+
+        .booking-row .b-value {
+            flex: 1 1 160px;
+            min-height: 1.4em;
+            padding: 4px 10px;
+            border-radius: 8px;
+            background: rgba(212, 175, 55, 0.1);
+            border: 1px dashed rgba(212, 175, 55, 0.6);
+            direction: ltr;
+            text-align: left;
+            outline: none;
+        }
+
+        .booking-row .b-value:focus {
+            border-style: solid;
+            background: var(--white);
+        }
+
+        .booking-row .b-value:empty::before {
+            content: attr(data-ph);
+            color: var(--text-soft);
+            opacity: 0.6;
+        }
+
+        /* ===== Dark Mode ===== */
+        @media (prefers-color-scheme: dark) {
+            body {
+                background: linear-gradient(160deg, #101c17 0%, #16241d 100%);
+                color: #e8e6df;
+            }
+
+            header::after {
+                background: linear-gradient(160deg, #101c17 0%, #16241d 100%);
+            }
+
+            .event,
+            .shop-card {
+                background: #1d2b24;
+                border-color: rgba(212, 175, 55, 0.15);
+                box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+            }
+
+            .event::before {
+                background: #1d2b24;
+            }
+
+            .day-header h2,
+            .event h3,
+            .shop-card h3 {
+                color: #e8c96a;
+            }
+
+            .event p,
+            .shop-card p {
+                color: #b8c0b9;
+            }
+
+            .event .tip {
+                color: #e8e6df;
+                background: rgba(212, 175, 55, 0.1);
+            }
+
+            .slc-yes {
+                color: #a9d8bf;
+            }
+
+            .slc-no {
+                color: #e0a3a3;
+            }
+
+            .shop-card .shop-icon {
+                background: #16241d;
+            }
+
+            .timeline {
+                border-right-color: rgba(120, 200, 160, 0.25);
+            }
+
+            footer {
+                color: #8fa096;
+            }
+
+            .done-check span {
+                background: #1d2b24;
+            }
+
+            .day-links a {
+                color: #e8c96a;
+                background: rgba(212, 175, 55, 0.1);
+            }
+
+            .day-links a:hover {
+                color: var(--navy);
+            }
+
+            .event .time {
+                background: #0d1512;
+                color: #e8c96a;
+            }
+
+            .booking-row {
+                border-bottom-color: rgba(232, 201, 106, 0.15);
+            }
+
+            .booking-row .b-label {
+                color: #e8c96a;
+            }
+
+            .booking-row .b-value:focus {
+                background: #101c17;
+            }
+        }
     </style>
 </head>
 <body>
@@ -691,9 +954,23 @@
                 <div class="day-num">1</div>
                 <h2>יום שישי, 18 בספטמבר — נוחתים ומתמקמים 🛬</h2>
             </div>
+            <div class="day-links">
+                <a href="https://www.google.com/maps/dir/Vienna+International+Airport/BILLA+PLUS+Bischofshofen/Hofgut+Wagrain" target="_blank" rel="noopener">🗺️ מסלול היום המלא</a>
+                <a href="https://www.google.com/search?q=weather+Wagrain" target="_blank" rel="noopener">🌤️ מזג אוויר</a>
+            </div>
             <div class="timeline">
                 <article class="event">
-                    <span class="time">בוקר</span>
+                    <span class="time">07:40</span>
+                    <h3>🛫 טיסה LY361 אל על — תל אביב ✈ וינה</h3>
+                    <p><strong>אל על LY361</strong> | המראה 07:40 מטרמינל 3 בנתב"ג (לפי רשות שדות התעופה) — נחיתה כ-10:20 שעון מקומי (אוסטריה שעה אחורה מישראל) בטרמינל 3 בווינה. משך הטיסה כ-3:40 שעות, מטוס בואינג 737-800.</p>
+                    <div class="tip">⏰ המראה ב-07:40 = הגעה לנתב"ג עד 04:40 (3 שעות לפני). הזמינו הסעה/חניה מראש והכינו את התיקים בערב — יוצאים באמצע הלילה.</div>
+                    <div class="tip">💡 צ'ק-אין אונליין נפתח 24 שעות לפני (אתר/אפליקציית אל על). כבודה: טרולי 8 ק"ג + מזוודה 23 ק"ג לנוסע (ודאו בכרטוס). טיסת בוקר = הילדים ישנים בדרך ומגיעים עם יום שלם באוסטריה.</div>
+                    <a class="map-btn web-btn" href="https://www.elal.com" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><use href="#icon-globe"/></svg>אל על — צ'ק-אין</a>
+                    <a class="map-btn web-btn" href="https://www.flightstats.com/v2/flight-tracker/LY/361" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><use href="#icon-globe"/></svg>סטטוס טיסה LY361</a>
+                    <a class="map-btn web-btn add-cal" href="#" data-cal="LY361">📅 הוסף ליומן</a>
+                </article>
+                <article class="event">
+                    <span class="time">10:20</span>
                     <h3>✈️ נחיתה בנמל התעופה וינה (VIE)</h3>
                     <p>נחיתה בשדה התעופה וינה-שווכאט, מעבר ביקורת דרכונים ואיסוף מזוודות. שדה התעופה גדול — חשבו על כשעה מהנחיתה ועד היציאה עם המזוודות.</p>
                     <div class="tip">💡 קנו בשדה כרטיס SIM מקומי או ודאו ש-eSIM פעיל. חבילת גלישה חיונית לניווט בהרים.</div>
@@ -704,13 +981,13 @@
                     <a class="map-btn web-btn" href="https://www.viennaairport.com" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><use href="#icon-globe"/></svg>אתר רשמי</a>
                 </article>
                 <article class="event">
-                    <span class="time">צהריים</span>
+                    <span class="time">11:30</span>
                     <h3>🚗 איסוף רכב שכור ויציאה לדרך</h3>
                     <p>איסוף הרכב מעמדות ההשכרה בשדה. נסיעה של כ-290 ק"מ (כ-3 שעות) בכביש המהיר A1 לכיוון חבל פונגאו. הדרך נוחה עם תחנות עצירה (Raststation) מסודרות.</p>
                     <div class="tip">💡 ודאו שברכב יש מדבקת אגרה (Vignette) לכבישים המהירים — בד"כ כלולה ברכב שכור אוסטרי, אבל חובה לוודא! קנס על נסיעה בלעדיה: 120€+.</div>
                 </article>
                 <article class="event">
-                    <span class="time">16:30</span>
+                    <span class="time">15:30</span>
                     <h3>🛒 עצירת הצטיידות בבישופסהופן</h3>
                     <p>עצירה בסופרמרקט BILLA PLUS או EUROSPAR בבישופסהופן (15 דק' מהמלון) לקניית מצרכים לארוחות בוקר, נשנושים, מים ופירות. זכרו: ביום ראשון הכל סגור — קנו מספיק!</p>
                     <a class="map-btn" href="https://maps.google.com/?q=BILLA+PLUS+Bischofshofen" target="_blank" rel="noopener">
@@ -719,7 +996,7 @@
                     </a>
                 </article>
                 <article class="event">
-                    <span class="time">18:00</span>
+                    <span class="time">17:00</span>
                     <h3>🏨 צ'ק-אין ב-Hofgut Wagrain — Apartment & Lifestyle Resort</h3>
                     <p>הגעה לריזורט הדירות בכפר האלפיני ואגריין (Wagrain) שבלב חבל פונגאו. דירות מרווחות עם מטבחון — מושלם למשפחה, ובמתחם: בריכה, אזור ספא, מסעדה, מאפייה-קפה וחנות חווה (Hofladen). התארגנות וארוחת ערב רגועה במסעדת הריזורט או בכפר.</p>
                     <div class="tip">💡 בצ'ק-אין בקשו את כרטיס האורח של ואגריין-קליינארל (Gästekarte) — מקנה הנחות באטרקציות באזור, בנוסף ל-SalzburgerLand Card.</div>
@@ -737,6 +1014,10 @@
             <div class="day-header">
                 <div class="day-num">2</div>
                 <h2>יום שבת, 19 בספטמבר — האלשטאט ו-5 האצבעות 📸</h2>
+            </div>
+            <div class="day-links">
+                <a href="https://www.google.com/maps/dir/Hofgut+Wagrain/Hallstatt+Parkplatz+P1/Dachstein+Krippenstein+Seilbahn+Obertraun/Hofgut+Wagrain" target="_blank" rel="noopener">🗺️ מסלול היום המלא</a>
+                <a href="https://www.google.com/search?q=weather+Hallstatt" target="_blank" rel="noopener">🌤️ מזג אוויר</a>
             </div>
             <div class="timeline">
                 <article class="event">
@@ -802,6 +1083,10 @@
             <div class="day-header">
                 <div class="day-num">3</div>
                 <h2>יום ראשון, 20 בספטמבר — זלצבורג: הומור, היסטוריה ומדע 🏰</h2>
+            </div>
+            <div class="day-links">
+                <a href="https://www.google.com/maps/dir/Hofgut+Wagrain/Schloss+Hellbrunn+Salzburg/Haus+der+Natur+Salzburg/Hofgut+Wagrain" target="_blank" rel="noopener">🗺️ מסלול היום המלא</a>
+                <a href="https://www.google.com/search?q=weather+Salzburg" target="_blank" rel="noopener">🌤️ מזג אוויר</a>
             </div>
             <div class="timeline">
                 <article class="event">
@@ -874,6 +1159,10 @@
                 <div class="day-num">4</div>
                 <h2>יום שני, 21 בספטמבר — בטן ההר ואבירי השחקים 🧊🦅</h2>
             </div>
+            <div class="day-links">
+                <a href="https://www.google.com/maps/dir/Hofgut+Wagrain/Eisriesenwelt+Werfen/Burg+Hohenwerfen/Hofgut+Wagrain" target="_blank" rel="noopener">🗺️ מסלול היום המלא</a>
+                <a href="https://www.google.com/search?q=weather+Werfen" target="_blank" rel="noopener">🌤️ מזג אוויר</a>
+            </div>
             <div class="timeline">
                 <article class="event">
                     <span class="time">09:00</span>
@@ -921,6 +1210,10 @@
             <div class="day-header">
                 <div class="day-num">5</div>
                 <h2>יום שלישי, 22 בספטמבר — נקיק ליכטנשטיין ועמק גאסטיין 💦🌉</h2>
+            </div>
+            <div class="day-links">
+                <a href="https://www.google.com/maps/dir/Hofgut+Wagrain/Liechtensteinklamm/Stubnerkogelbahn+Bad+Gastein/Hofgut+Wagrain" target="_blank" rel="noopener">🗺️ מסלול היום המלא</a>
+                <a href="https://www.google.com/search?q=weather+Bad+Gastein" target="_blank" rel="noopener">🌤️ מזג אוויר</a>
             </div>
             <div class="timeline">
                 <article class="event">
@@ -988,6 +1281,10 @@
                 <div class="day-num">6</div>
                 <h2>יום רביעי, 23 בספטמבר — כביש הנוף גרוסגלוקנר 🏔️</h2>
             </div>
+            <div class="day-links">
+                <a href="https://www.google.com/maps/dir/Hofgut+Wagrain/Grossglockner+Hochalpenstrasse+Fusch/Kaiser-Franz-Josefs-H%C3%B6he/Hofgut+Wagrain" target="_blank" rel="noopener">🗺️ מסלול היום המלא</a>
+                <a href="https://www.google.com/search?q=weather+Grossglockner" target="_blank" rel="noopener">🌤️ מזג אוויר</a>
+            </div>
             <div class="timeline">
                 <article class="event">
                     <span class="time">08:30</span>
@@ -1045,6 +1342,10 @@
             <div class="day-header">
                 <div class="day-num">7</div>
                 <h2>יום חמישי, 24 בספטמבר — הנדסה מטורפת וספא מפנק 💧</h2>
+            </div>
+            <div class="day-links">
+                <a href="https://www.google.com/maps/dir/Hofgut+Wagrain/Kesselfallhaus+Kaprun/Tauern+Spa+Kaprun/Hofgut+Wagrain" target="_blank" rel="noopener">🗺️ מסלול היום המלא</a>
+                <a href="https://www.google.com/search?q=weather+Kaprun" target="_blank" rel="noopener">🌤️ מזג אוויר</a>
             </div>
             <div class="timeline">
                 <article class="event">
@@ -1111,6 +1412,10 @@
                 <div class="day-num">8</div>
                 <h2>יום שישי, 25 בספטמבר — מכרות מלח ומפל גולינג ⛏️🌊</h2>
             </div>
+            <div class="day-links">
+                <a href="https://www.google.com/maps/dir/Hofgut+Wagrain/Salzwelten+Salzburg+Hallein/Gollinger+Wasserfall/Hofgut+Wagrain" target="_blank" rel="noopener">🗺️ מסלול היום המלא</a>
+                <a href="https://www.google.com/search?q=weather+Golling+an+der+Salzach" target="_blank" rel="noopener">🌤️ מזג אוויר</a>
+            </div>
             <div class="timeline">
                 <article class="event">
                     <span class="time">09:30</span>
@@ -1154,6 +1459,10 @@
                 <div class="day-num">9</div>
                 <h2>יום שבת, 26 בספטמבר — האנגר 7, קניות ופרידה 🛍️</h2>
             </div>
+            <div class="day-links">
+                <a href="https://www.google.com/maps/dir/Hofgut+Wagrain/Hangar-7+Salzburg/Europark+Salzburg/Hofgut+Wagrain" target="_blank" rel="noopener">🗺️ מסלול היום המלא</a>
+                <a href="https://www.google.com/search?q=weather+Salzburg" target="_blank" rel="noopener">🌤️ מזג אוויר</a>
+            </div>
             <div class="timeline">
                 <article class="event">
                     <span class="time">10:00</span>
@@ -1196,6 +1505,10 @@
                 <div class="day-num">10</div>
                 <h2>יום ראשון, 27 בספטמבר — סיום וטיסה הביתה 🧳</h2>
             </div>
+            <div class="day-links">
+                <a href="https://www.google.com/maps/dir/Hofgut+Wagrain/Prater+Riesenrad+Wien/Vienna+International+Airport" target="_blank" rel="noopener">🗺️ מסלול היום המלא</a>
+                <a href="https://www.google.com/search?q=weather+Vienna" target="_blank" rel="noopener">🌤️ מזג אוויר</a>
+            </div>
             <div class="timeline">
                 <article class="event">
                     <span class="time">08:00</span>
@@ -1222,19 +1535,25 @@
                     <a class="map-btn web-btn" href="https://www.westfield.com/austria/shopping-city-sued" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><use href="#icon-globe"/></svg>SCS — רשימת חנויות (ליום חול)</a>
                 </article>
                 <article class="event">
-                    <span class="time">14:30</span>
+                    <span class="time">17:30</span>
                     <h3>🚗 המשך לשדה התעופה בווינה</h3>
-                    <p>כ-25 דק' נסיעה מהפראטר. זכרו: יום ראשון — תחנות הדלק פתוחות אבל החנויות סגורות, אז מזכרות של הרגע האחרון קונים בשדה התעופה (חנויות הטרמינל פתוחות כל יום).</p>
-                    <div class="tip">💡 חשבו זמן: החזרת רכב + שאטל + צ'ק-אין = הגיעו לשדה 3 שעות לפני הטיסה.</div>
+                    <p>כ-25 דק' נסיעה מהפראטר. הטיסה ממריאה רק ב-21:35, כך שאחר הצהריים רגוע — אפשר להאריך בפראטר או להוסיף עצירה בגני שנברון. יעד: החזרת רכב עד 18:15 והגעה לצ'ק-אין עד 18:30 (3 שעות לפני ההמראה). זכרו: יום ראשון — תחנות הדלק פתוחות אבל החנויות סגורות, אז מזכרות של הרגע האחרון קונים בשדה התעופה (חנויות הטרמינל פתוחות כל יום).</p>
+                    <div class="tip">💡 ארוחת ערב: אכלו בפראטר לפני הנסיעה או באחת המסעדות בטרמינל אחרי הבידוק — עדיף מלסמוך רק על ארוחת הטיסה בשעה מאוחרת.</div>
                     <a class="map-btn" href="https://maps.google.com/?q=Vienna+International+Airport+car+rental+return" target="_blank" rel="noopener">
                         <svg viewBox="0 0 24 24"><use href="#icon-pin"/></svg>
                         פתח ב-Google Maps
                     </a>
                 </article>
                 <article class="event">
-                    <span class="time">אחה"צ</span>
-                    <h3>✈️ טיסה חזרה הביתה</h3>
+                    <span class="time">21:35</span>
+                    <h3>🛫 טיסה LY364 אל על — וינה ✈ תל אביב</h3>
+                    <p><strong>אל על LY364</strong> | המראה 21:35 מטרמינל 3 בווינה — נחיתה 02:00 לפנות בוקר (שעון ישראל, כבר יום שני 28.9) בטרמינל 3 בנתב"ג. משך הטיסה כ-3:25 שעות, מטוס בואינג 737-800 (בשיתוף קוד עם Air Baltic — BT6672).</p>
+                    <div class="tip">💤 נחיתה ב-02:00 — הזמינו מראש הסעה/איסוף מנתב"ג, והלבישו את הילדים בנוח כדי שיירדמו בטיסה. קחו בחשבון בוקר איטי למחרת.</div>
+                    <div class="tip">💡 צ'ק-אין אונליין 24 שעות לפני. קניתם באירופארק? בקשו טופס Tax Free בחנויות והחתימו אותו בעמדת המכס בשדה לפני שליחת המזוודות — החזר מע"מ שווה. בדקו שעת המראה סופית יום לפני.</div>
                     <p>להתראות אוסטריה! 🇦🇹 עם כרטיס זיכרון מלא בתמונות של הרים, קרחונים, מרמיטות וקייזרשמרן.</p>
+                    <a class="map-btn web-btn" href="https://www.elal.com" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><use href="#icon-globe"/></svg>אל על — צ'ק-אין</a>
+                    <a class="map-btn web-btn" href="https://www.flightstats.com/v2/flight-tracker/LY/364" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><use href="#icon-globe"/></svg>סטטוס טיסה LY364</a>
+                    <a class="map-btn web-btn add-cal" href="#" data-cal="LY364">📅 הוסף ליומן</a>
                 </article>
             </div>
         </section>
@@ -1394,6 +1713,17 @@
             </div>
             <div class="timeline">
                 <article class="event">
+                    <label class="done-check"><input type="checkbox" data-key="tip-0" aria-label="סמן כבוצע"><span>✔</span></label>
+                    <span class="time">חשוב</span>
+                    <h3>🗂️ פרטי ההזמנות שלנו</h3>
+                    <p>מלאו פעם אחת — הפרטים נשמרים בדפדפן שלכם בלבד (מקומית) וזמינים בלחיצה גם בדלפק בשדה. לחצו על שדה כדי להקליד.</p>
+                    <div class="booking-row"><span class="b-label">✈️ אל על — קוד הזמנה</span><span class="b-value" contenteditable="true" data-field="pnr" data-ph="PNR / מס' כרטיס"></span></div>
+                    <div class="booking-row"><span class="b-label">🏨 Hofgut Wagrain</span><span class="b-value" contenteditable="true" data-field="hotel" data-ph="מס' הזמנה"></span></div>
+                    <div class="booking-row"><span class="b-label">🚗 השכרת רכב</span><span class="b-value" contenteditable="true" data-field="car" data-ph="חברה + מס' הזמנה"></span></div>
+                    <div class="booking-row"><span class="b-label">🛡️ ביטוח נסיעות</span><span class="b-value" contenteditable="true" data-field="insurance" data-ph="חברה + פוליסה + טל' חירום"></span></div>
+                    <div class="booking-row"><span class="b-label">🎫 SalzburgerLand Card</span><span class="b-value" contenteditable="true" data-field="slc" data-ph="מס' הזמנה"></span></div>
+                </article>
+                <article class="event">
                     <label class="done-check"><input type="checkbox" data-key="tip-1" aria-label="סמן כבוצע"><span>✔</span></label>
                     <span class="time">חובה</span>
                     <h3>🎫 כרטיס SalzburgerLand Card — 6 ימים (20–25.9)</h3>
@@ -1407,7 +1737,17 @@
                     <label class="done-check"><input type="checkbox" data-key="tip-2" aria-label="סמן כבוצע"><span>✔</span></label>
                     <span class="time">לפני</span>
                     <h3>📅 הזמנות מראש — צ'קליסט</h3>
-                    <p>דברים שכדאי להזמין לפני הטיסה: מקום למופע הבזיירות בהוהנוורפן (בדיקת שעות), שעת סיור במכרות המלח בהליין, Flying Fox XXL (אם הולכים), סירה בהאלשטאט בעונה עמוסה, וכרטיסי סכרי קפרון.</p>
+                    <p>דברים שכדאי להזמין לפני הטיסה: מקום למופע הבזיירות בהוהנוורפן (בדיקת שעות), שעת סיור במכרות המלח בהליין, Flying Fox XXL (אם הולכים), סירה בהאלשטאט בעונה עמוסה, וכרטיסי סכרי קפרון. וגם: רישיון נהיגה בינלאומי (IDP) — פרטים בטיפ הנהיגה למטה.</p>
+                </article>
+                <article class="event">
+                    <label class="done-check"><input type="checkbox" data-key="tip-9" aria-label="סמן כבוצע"><span>✔</span></label>
+                    <span class="time">טיסות</span>
+                    <h3>✈️ הטיסות שלנו — אל על</h3>
+                    <p><strong>הלוך:</strong> LY361 | שישי 18.9 | נתב"ג T3 07:40 ← וינה T3 כ-10:20. <strong>חזור:</strong> LY364 | ראשון 27.9 | וינה T3 21:35 ← נתב"ג T3 02:00 (לפנות בוקר 28.9). שתיהן בואינג 737-800, כ-3.5 שעות טיסה. אוסטריה שעה אחורה מישראל.</p>
+                    <div class="tip">💡 צ'ק-אין אונליין 24 שעות לפני כל טיסה + בדיקת סטטוס יום לפני (שעות עשויות להשתנות). כבודה: בד"כ טרולי 8 ק"ג + מזוודה 23 ק"ג לנוסע — ודאו בכרטוס. הגעה לשדה: 3 שעות לפני ההמראה (נתב"ג 04:40 / וינה 18:30).</div></div>
+                    <a class="map-btn web-btn" href="https://www.elal.com" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><use href="#icon-globe"/></svg>אל על</a>
+                    <a class="map-btn web-btn add-cal" href="#" data-cal="LY361">📅 LY361 ליומן</a>
+                    <a class="map-btn web-btn add-cal" href="#" data-cal="LY364">📅 LY364 ליומן</a>
                 </article>
                 <article class="event">
                     <label class="done-check"><input type="checkbox" data-key="tip-3" aria-label="סמן כבוצע"><span>✔</span></label>
@@ -1420,6 +1760,7 @@
                     <span class="time">נהיגה</span>
                     <h3>🚗 נהיגה באוסטריה</h3>
                     <p>וינייטה (מדבקת אגרה) חובה בכבישים מהירים — ודאו שיש ברכב השכור. מהירויות: 130 בכביש מהיר, 100 בין-עירוני, 50 בעיר. אורות חובה בנסיעה. בכבישי הרים — ברקס מנוע בירידות (הילוך נמוך), לא רק בלמים. חניה בעיירות: דיסקית חנייה כחולה (Parkscheibe) — יש בתא הכפפות של רוב הרכבים השכורים.</p>
+                    <div class="tip">🪪 רישיון נהיגה בינלאומי (IDP): רוב חברות ההשכרה באוסטריה מבקשות אותו בנוסף לרישיון הישראלי. מוציאים בסניפי ממסי בעלות סמלית תוך דקות — הביאו תמונת פספורט.</div>
                 </article>
                 <article class="event">
                     <label class="done-check"><input type="checkbox" data-key="tip-5" aria-label="סמן כבוצע"><span>✔</span></label>
@@ -1444,6 +1785,11 @@
                     <span class="time">חירום</span>
                     <h3>🆘 מספרי חירום</h3>
                     <p>חירום אירופאי: 112 | חילוץ הרים: 140 | אמבולנס: 144 | משטרה: 133. בתי מרקחת (Apotheke) מסומנים בצלב אדום — בכל עיירה יש אחת תורנית בסופ"ש.</p>
+                    <p>🏥 בית החולים הקרוב למלון: Kardinal Schwarzenberg Klinikum בשוורצאך אים פונגאו — כ-15 דק' נסיעה מוואגריין, מיון פעיל 24/7.</p>
+                    <a class="map-btn" href="https://maps.google.com/?q=Kardinal+Schwarzenberg+Klinikum+Schwarzach+im+Pongau" target="_blank" rel="noopener">
+                        <svg viewBox="0 0 24 24"><use href="#icon-pin"/></svg>
+                        בית החולים ב-Google Maps
+                    </a>
                 </article>
             </div>
         </section>
@@ -1484,6 +1830,19 @@
                 section.querySelector('.day-header h2').appendChild(badge);
                 var link = document.querySelector('.date-nav a[href="#' + id + '"]');
                 if (link) link.classList.add('is-today-link');
+            });
+        })();
+
+        // הוספת צ'קבוקס "בוצע" לכל אירוע שעדיין אין לו (חייב לרוץ לפני השמירה המקומית)
+        (function () {
+            document.querySelectorAll('section.day').forEach(function (section) {
+                section.querySelectorAll('.event').forEach(function (ev, i) {
+                    if (ev.querySelector('.done-check')) return;
+                    var label = document.createElement('label');
+                    label.className = 'done-check';
+                    label.innerHTML = '<input type="checkbox" data-key="ev-' + section.id + '-' + i + '" aria-label="סמן כבוצע"><span>✔</span>';
+                    ev.appendChild(label);
+                });
             });
         })();
 
@@ -1528,6 +1887,98 @@
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             });
         })();
+
+        // פרטי הזמנות — שמירה מקומית
+        (function () {
+            var KEY = 'austria2026-booking';
+            var saved = {};
+            try { saved = JSON.parse(localStorage.getItem(KEY)) || {}; } catch (e) { }
+            document.querySelectorAll('.b-value').forEach(function (el) {
+                if (saved[el.dataset.field]) el.textContent = saved[el.dataset.field];
+                el.addEventListener('input', function () {
+                    saved[el.dataset.field] = el.textContent.trim();
+                    try { localStorage.setItem(KEY, JSON.stringify(saved)); } catch (e) { }
+                });
+            });
+        })();
+
+        // הוספת טיסות ליומן (ICS) — השעות שמורות ב-UTC
+        (function () {
+            var flights = {
+                LY361: { title: 'טיסה LY361 אל על — תל אביב - וינה', start: '20260918T044000Z', end: '20260918T082000Z', loc: 'נתב"ג טרמינל 3', desc: 'המראה 07:40 שעון ישראל. נחיתה כ-10:20 שעון מקומי. הגעה לשדה עד 04:40.' },
+                LY364: { title: 'טיסה LY364 אל על — וינה - תל אביב', start: '20260927T193500Z', end: '20260927T230000Z', loc: 'Vienna International Airport Terminal 3', desc: 'המראה 21:35 שעון מקומי. נחיתה 02:00 שעון ישראל (28.9). החזרת רכב עד 18:15.' }
+            };
+            document.querySelectorAll('.add-cal').forEach(function (btn) {
+                btn.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    var f = flights[btn.dataset.cal];
+                    if (!f) return;
+                    var ics = ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//AustriaTrip2026//HE', 'BEGIN:VEVENT',
+                        'UID:' + btn.dataset.cal + '-2026@austria-trip',
+                        'DTSTAMP:' + f.start, 'DTSTART:' + f.start, 'DTEND:' + f.end,
+                        'SUMMARY:' + f.title, 'LOCATION:' + f.loc, 'DESCRIPTION:' + f.desc,
+                        'BEGIN:VALARM', 'TRIGGER:-PT12H', 'ACTION:DISPLAY', 'DESCRIPTION:תזכורת טיסה', 'END:VALARM',
+                        'END:VEVENT', 'END:VCALENDAR'].join('\r\n');
+                    var blob = new Blob([ics], { type: 'text/calendar;charset=utf-8' });
+                    var a = document.createElement('a');
+                    a.href = URL.createObjectURL(blob);
+                    a.download = btn.dataset.cal + '.ics';
+                    document.body.appendChild(a);
+                    a.click();
+                    setTimeout(function () { URL.revokeObjectURL(a.href); a.remove(); }, 500);
+                });
+            });
+        })();
+
+        // סרגל ניווט דביק + scrollspy
+        (function () {
+            var srcNav = document.querySelector('header .date-nav');
+            var headerEl = document.querySelector('header');
+            if (!srcNav || !headerEl) return;
+            var bar = document.createElement('div');
+            bar.id = 'stickyNav';
+            var clone = srcNav.cloneNode(true);
+            bar.appendChild(clone);
+            document.body.appendChild(bar);
+            var headerH = headerEl.offsetHeight;
+            window.addEventListener('resize', function () { headerH = headerEl.offsetHeight; });
+            window.addEventListener('scroll', function () {
+                bar.classList.toggle('show', window.scrollY > headerH - 60);
+            }, { passive: true });
+
+            var links = document.querySelectorAll('.date-nav a');
+            function setActive(id) {
+                links.forEach(function (a) { a.classList.toggle('active', a.getAttribute('href') === '#' + id); });
+                var act = clone.querySelector('a.active');
+                if (act && bar.classList.contains('show')) act.scrollIntoView({ block: 'nearest', inline: 'center', behavior: 'smooth' });
+            }
+            if ('IntersectionObserver' in window) {
+                var spy = new IntersectionObserver(function (entries) {
+                    entries.forEach(function (en) { if (en.isIntersecting) setActive(en.target.id); });
+                }, { rootMargin: '-20% 0px -70% 0px' });
+                document.querySelectorAll('section.day').forEach(function (s) { spy.observe(s); });
+            }
+        })();
+
+        // פס התקדמות — מוצג רק בימי הטיול עצמם
+        (function () {
+            var start = new Date(2026, 8, 18), end = new Date(2026, 8, 27);
+            var now = new Date();
+            var today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+            if (today < start || today > end) return;
+            var dayNum = Math.round((today - start) / 86400000) + 1;
+            var wrap = document.createElement('div');
+            wrap.className = 'trip-progress';
+            wrap.innerHTML = '<div class="tp-label">יום ' + dayNum + ' מתוך 10 בטיול 🏔️</div><div class="tp-bar"><div class="tp-fill"></div></div>';
+            var nav = document.querySelector('header .date-nav');
+            nav.parentNode.insertBefore(wrap, nav);
+            requestAnimationFrame(function () { wrap.querySelector('.tp-fill').style.width = (dayNum * 10) + '%'; });
+        })();
+
+        // מצב אופליין (PWA) — נרשם רק כשמוגש משרת http/https
+        if ('serviceWorker' in navigator && location.protocol.indexOf('http') === 0) {
+            navigator.serviceWorker.register('sw.js').catch(function () { });
+        }
     </script>
 </body>
 </html>
