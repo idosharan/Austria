@@ -12,9 +12,9 @@
     <meta property="og:description" content="תיק טיול משפחתי לאלפים האוסטריים 18–27.9.2026 — טיסות, זלצבורג, האלשטאט, גרוסגלוקנר, מערת הקרח ועוד">
     <meta property="og:locale" content="he_IL">
     <!-- אחרי העלאה לאחסון: עדכנו לכתובת מלאה (https://...) של תמונת שיתוף כדי שוואטסאפ יציג תמונה -->
-    <meta property="og:image" content="icon.svg">
+    <meta property="og:image" content="icon-512.png">
     <link rel="manifest" href="manifest.webmanifest">
-    <link rel="apple-touch-icon" href="icon.svg">
+    <link rel="apple-touch-icon" href="icon-192.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;900&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
@@ -122,6 +122,55 @@
             background: var(--gold);
             border-radius: 4px;
             margin: 26px auto 0;
+        }
+
+        /* ===== Install Button ===== */
+        #installBtn {
+            position: relative;
+            z-index: 2;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 26px;
+            padding: 12px 28px;
+            font-family: 'Heebo', sans-serif;
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--navy);
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.4);
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        #installBtn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 26px rgba(212, 175, 55, 0.55);
+        }
+
+        #installBtn[hidden] {
+            display: none;
+        }
+
+        #installHint {
+            display: none;
+            position: relative;
+            z-index: 2;
+            max-width: 460px;
+            margin: 14px auto 0;
+            padding: 10px 16px;
+            font-size: 0.92rem;
+            line-height: 1.5;
+            color: rgba(255, 255, 255, 0.95);
+            background: rgba(0, 0, 0, 0.28);
+            border: 1px dashed rgba(212, 175, 55, 0.6);
+            border-radius: 12px;
+        }
+
+        #installHint.show {
+            display: block;
         }
 
         /* ===== Date Navigation ===== */
@@ -334,6 +383,44 @@
             background: rgba(178, 59, 59, 0.08);
             border-right: 3px solid #b23b3b;
             color: #7c2d2d;
+        }
+
+        /* ===== Booking Status ===== */
+        .event .book {
+            border-radius: 10px;
+            padding: 9px 14px;
+            font-size: 0.92rem;
+            margin-bottom: 16px;
+        }
+
+        .book-yes {
+            background: rgba(178, 59, 59, 0.14);
+            border-right: 3px solid #b23b3b;
+            color: #7c2d2d;
+            font-weight: 500;
+        }
+
+        .book-rec {
+            background: rgba(217, 144, 31, 0.14);
+            border-right: 3px solid #d9901f;
+            color: #7a4d08;
+        }
+
+        .book-no {
+            background: rgba(45, 106, 79, 0.1);
+            border-right: 3px solid var(--navy-light);
+            color: var(--navy);
+        }
+
+        /* ===== Diet Info (restaurants) ===== */
+        .event .diet {
+            background: rgba(120, 200, 160, 0.14);
+            border-right: 3px solid var(--navy-light);
+            border-radius: 10px;
+            padding: 10px 14px;
+            font-size: 0.95rem;
+            color: var(--text);
+            margin-bottom: 16px;
         }
 
         /* ===== Map Button ===== */
@@ -872,6 +959,23 @@
                 color: #e0a3a3;
             }
 
+            .book-yes {
+                color: #e0a3a3;
+            }
+
+            .book-rec {
+                color: #e8c98a;
+            }
+
+            .book-no {
+                color: #a9d8bf;
+            }
+
+            .event .diet {
+                color: #cfe3d6;
+                background: rgba(120, 200, 160, 0.08);
+            }
+
             .shop-card .shop-icon {
                 background: #16241d;
             }
@@ -929,6 +1033,8 @@
         <p class="dates">18.9.2026 — 27.9.2026</p>
         <p class="subtitle">2 מבוגרים + 2 ילדים (9, 16) ✦ לינה: ואגריין (Wagrain), חבל פונגאו</p>
         <div class="gold-line"></div>
+        <button id="installBtn" hidden>📲 התקינו את התיק כאפליקציה</button>
+        <div id="installHint" role="status"></div>
         <nav class="date-nav" aria-label="ניווט לפי תאריך">
             <a href="#day-1"><span class="dn-day">שישי</span><span class="dn-date">18.9</span></a>
             <a href="#day-2"><span class="dn-day">שבת</span><span class="dn-date">19.9</span></a>
@@ -1043,6 +1149,7 @@
                     <h3>🛥️ שיט בסירת מנוע חשמלית באגם</h3>
                     <p>שוכרים סירת מנוע חשמלית קטנה (אין צורך ברישיון!) ושטים כל המשפחה באגם האלשטאט — הזווית הכי יפה על העיירה היא מהמים. השכרה בעמדות לאורך הטיילת, כ-30–60 דק'.</p>
                     <div class="tip">💡 שכרו סירה עם גגון אם השמש חזקה. הביאו מזומן — חלק מהעמדות לא מקבלות אשראי.</div>
+                    <div class="book book-no">🟢 אין צורך להזמין מראש — שוכרים במקום בעמדות שלאורך הטיילת (בשבת עמוסה עדיף לפני הצהריים).</div>
                     <div class="slc slc-no">🎫 לא בכרטיס — תשלום במקום.</div>
                     <a class="map-btn" href="https://maps.google.com/?q=Boat+rental+Hallstatt" target="_blank" rel="noopener">
                         <svg viewBox="0 0 24 24"><use href="#icon-pin"/></svg>
@@ -1063,6 +1170,7 @@
                     <h3>🖐️ תצפית חמש האצבעות (5 Fingers) — הר דאכשטיין</h3>
                     <p>עולים ברכבל הדאכשטיין קריפנשטיין מאוברטראון עד התחנה העליונה (Krippenstein, 2,100 מ'). הליכה קלה של כ-20–30 דק' בנוף קארסטי "ירחי" עד למרפסת התצפית המפורסמת בצורת כף יד — חמש זרועות פלדה (אחת עם רצפת זכוכית!) התלויות באוויר מעל תהום של 400 מטר. נוף עוצר נשימה על אגם האלשטאט וקצת פיק ברכיים.</p>
                     <div class="tip">⚠️ בדקו מזג אוויר לפני העלייה — בערפל אין נוף. הרכבל האחרון יורד סביב 16:30–17:00, תכננו בהתאם. קר למעלה — קחו שכבה חמה.</div>
+                    <div class="book book-rec">🟡 מומלץ לקנות כרטיס רכבל אונליין מראש — חוסך תור בקופה בשבת עמוסה; אין חובת שעה מדויקת.</div>
                     <div class="slc slc-no">🎫 רכבל הדאכשטיין לא משתתף בכרטיס (אוסטריה עילית) — תשלום מלא בכל מקרה, ולכן שובץ ליום שלפני הפעלת הכרטיס.</div>
                     <a class="map-btn" href="https://maps.google.com/?q=5+Fingers+viewing+platform+Krippenstein" target="_blank" rel="noopener">
                         <svg viewBox="0 0 24 24"><use href="#icon-pin"/></svg>
@@ -1101,6 +1209,7 @@
                     <h3>⛲ ארמון הלברון ומזרקות הפח (Hellbrunn)</h3>
                     <p>ארמון הקיץ מ-1615 שבנה הארכיבישוף מרקוס סיטיקוס כבדיחה אחת גדולה: סיור מודרך קליל וקורע מצחוק שבו המדריך משפריץ מים בהפתעה ממקומות מסתור — כיסאות אבן, קרניים בקירות, ותיאטרון בובות מכני המופעל כולו בכוח המים. משך הסיור: כ-40 דק', יוצא כל 30 דק'.</p>
                     <div class="tip">💡 בן ה-9 כנראה יירטב — הביאו חולצה להחלפה! אחרי הסיור שווה להסתובב בגני הארמון (חינם).</div>
+                    <div class="book book-no">🟢 אין צורך להזמין מראש — הסיורים יוצאים כל 30 דק', מציגים כרטיס/Salzburg Card בקופה.</div>
                     <div class="slc slc-yes">🎫 חינם עם ה-Salzburg Card היומי (הטבת הג'וקר של ה-SalzburgerLand Card).</div>
                     <a class="map-btn" href="https://maps.google.com/?q=Schloss+Hellbrunn,+Salzburg" target="_blank" rel="noopener">
                         <svg viewBox="0 0 24 24"><use href="#icon-pin"/></svg>
@@ -1122,6 +1231,7 @@
                     <h3>🏰 מבצר הוהנזלצבורג (Festung Hohensalzburg)</h3>
                     <p>עולים בפוניקולר (מעלית משופעת) אל המבצר הגדול והשמור באירופה, החולש על העיר מזה 900 שנה. נוף פנורמי מרהיב על העיר וההרים, מוזיאונים קטנים עם כלי נשק ושריון עתיקים, חדרי הנסיכים המוזהבים ומוזיאון המריונטות.</p>
                     <div class="tip">💡 הקצו כשעתיים.</div>
+                    <div class="book book-no">🟢 אין צורך להזמין מראש — עם ה-Salzburg Card עולים ישר לפוניקולר.</div>
                     <div class="slc slc-yes">🎫 הפוניקולר + הכניסה חינם עם ה-Salzburg Card היומי (הטבת הג'וקר).</div>
                     <a class="map-btn" href="https://maps.google.com/?q=Festung+Hohensalzburg,+Salzburg" target="_blank" rel="noopener">
                         <svg viewBox="0 0 24 24"><use href="#icon-pin"/></svg>
@@ -1134,6 +1244,7 @@
                     <h3>🔬 מוזיאון הטבע והמדע (Haus der Natur)</h3>
                     <p>מוזיאון ענק ומרתק: אקווריומים עם כרישים ודגים טרופיים, תצוגות חלל עם חלליות אמיתיות, שלד דינוזאורים, עולם הזוחלים, ומרכז מדע אינטראקטיבי עצום שבו הילדים עושים ניסויים בפיזיקה, כוחות, מים וקול. פתוח עד 17:00 — ואפשר בקלות לבלות בו גם 3 שעות, אז אם הילדים מתלהבים אפשר להפוך את הסדר עם המבצר.</p>
                     <div class="tip">💡 מרכז המדע בקומות העליונות — אל תפספסו!</div>
+                    <div class="book book-no">🟢 אין צורך להזמין מראש — נכנסים ישירות עם הכרטיס.</div>
                     <div class="slc slc-yes">🎫 חינם עם ה-Salzburg Card היומי (הטבת הג'וקר).</div>
                     <a class="map-btn" href="https://maps.google.com/?q=Haus+der+Natur,+Salzburg" target="_blank" rel="noopener">
                         <svg viewBox="0 0 24 24"><use href="#icon-pin"/></svg>
@@ -1169,6 +1280,7 @@
                     <h3>🧊 מערת הקרח בוורפן (Eisriesenwelt)</h3>
                     <p>מערת הקרח הגדולה בעולם — "עולם ענקי הקרח". כ-30 דק' נסיעה מהמלון. עולים ברכבל תלול, הולכים כ-20 דקות בשביל הרים עד לפתח המערה, מקבלים פנסי שמן אמיתיים ונכנסים לעולם של פסלי קרח טבעיים עצומים. הסיור במערה כ-75 דק', סה"כ החוויה כ-3 שעות.</p>
                     <div class="tip">⚠️ חובה: מעילי חורף, כובע וכפפות לכולם — בפנים סביב 0°C גם בקיץ! במערה כ-700 מדרגות (עולות ויורדות). נעלי הליכה סגורות בלבד. הגיעו מוקדם — בשעות הבוקר פחות עומס.</div>
+                    <div class="book book-no">🟢 אין צורך להזמין מראש — מציגים את ה-SalzburgerLand Card בקופה ומצטרפים לסיור הקרוב. ההגעה המוקדמת היא ה"הזמנה" שלכם.</div>
                     <div class="slc slc-yes">🎫 כלול בכרטיס — הסיור + הרכבל חינם (חד-פעמי). שווי בקופה: 45€ למבוגר / 32€ לנוער / 24€ לילד! בדקנו את השמועה: ההנחה הקטנה וה"מצחיקה" היא של כרטיסי אורח מקומיים — ב-SalzburgerLand Card הכניסה כלולה במלואה, ולכן המערה נשארת בתוך חלון הכרטיס (20–25.9).</div>
                     <a class="map-btn" href="https://maps.google.com/?q=Eisriesenwelt,+Werfen" target="_blank" rel="noopener">
                         <svg viewBox="0 0 24 24"><use href="#icon-pin"/></svg>
@@ -1190,6 +1302,7 @@
                     <h3>🦅 טירת הוהנוורפן ומופע הבזיירות (Hohenwerfen)</h3>
                     <p>טירת אבירים אותנטית בת 900 שנה על צוק, ממש מול ההר של מערת הקרח. גולת הכותרת: מופע בזיירות מרהיב — נשרים, בזים וינשופים חולפים בצלילה ממש מעל ראשי הקהל, עם מדריכים בלבוש היסטורי. בטירה גם מוזיאון בזיירות, נשקייה וסיורים בחדרי הטירה.</p>
                     <div class="tip">💡 בדקו את שעת המופע מראש באתר (בד"כ 11:15 ו-15:15). הגיעו לפחות 30 דק' לפני לתפוס מקום טוב.</div>
+                    <div class="book book-no">🟢 אין צורך להזמין כרטיסים מראש — נכנסים עם הכרטיס; רק ודאו את שעת מופע הבזיירות והגיעו מוקדם.</div>
                     <div class="slc slc-yes">🎫 כלול בכרטיס — כניסה חינם (חד-פעמית), כולל מופע הבזיירות והסיור בטירה (מאושר באתר הכרטיס לעונת 2026).</div>
                     <a class="map-btn" href="https://maps.google.com/?q=Burg+Hohenwerfen,+Werfen" target="_blank" rel="noopener">
                         <svg viewBox="0 0 24 24"><use href="#icon-pin"/></svg>
@@ -1221,6 +1334,7 @@
                     <h3>🏞️ נקיק ליכטנשטיין (Liechtensteinklamm)</h3>
                     <p>אחד הנקיקים העמוקים והיפים באלפים — מסלול הליכה על גשרי עץ תלויים ממש מעל נהר שוצף בתוך קניון בעומק 300 מטר. המסלול שופץ וכולל מדרגות לולייניות דרמטיות ("הליקס") ומסתיים במפל עצום. רק כ-15 דק' נסיעה מהמלון (סנט יוהאן אים פונגאו). משך: כ-1.5–2 שעות הלוך ושוב.</p>
                     <div class="tip">💡 מצטלם נהדר לאינסטגרם של בן ה-16! הביאו נעליים סגורות — הגשרים רטובים מהתזות המים.</div>
+                    <div class="book book-no">🟢 אין צורך להזמין מראש — נכנסים עם הכרטיס בעמדת הכניסה; בבקרים אין עומס.</div>
                     <div class="slc slc-yes">🎫 כלול בכרטיס — כניסה חינם (חד-פעמית) לכל המשפחה.</div>
                     <a class="map-btn" href="https://maps.google.com/?q=Liechtensteinklamm,+Sankt+Johann+im+Pongau" target="_blank" rel="noopener">
                         <svg viewBox="0 0 24 24"><use href="#icon-pin"/></svg>
@@ -1238,6 +1352,7 @@
                     <h3>🌉 הגשר התלוי בשטובנרקוגל (Stubnerkogel)</h3>
                     <p>עלייה ברכבל מבאד גאסטיין לפסגת השטובנרקוגל (2,246 מ'). למעלה: גשר פלדה תלוי ומתנדנד באורך 140 מטר מעל תהום — בטוח לחלוטין, שקוף למחצה ומספק פיק ברכיים איכותי. בהמשך גם מרפסת התצפית Glocknerblick עם נוף לגרוסגלוקנר.</p>
                     <div class="tip">💡 בדקו מזג אוויר — בערפל הגשר פחות מרשים. אם התחזית גרועה, החליפו יום עם מכרות המלח (יום 8) — שניהם בתוך חלון הכרטיס.</div>
+                    <div class="book book-no">🟢 אין צורך להזמין מראש — עולים עם ה-SalzburgerLand Card ישירות לרכבל.</div>
                     <div class="slc slc-yes">🎫 כלול בכרטיס — עלייה + ירידה חינם ברכבל (חד-פעמי). עדכון 2026: ההטבה תקפה לאחד מרכבלי גאסטיין — Stubnerkogel או Schlossalm או Graukogel.</div>
                     <a class="map-btn" href="https://maps.google.com/?q=Stubnerkogel+suspension+bridge+Bad+Gastein" target="_blank" rel="noopener">
                         <svg viewBox="0 0 24 24"><use href="#icon-pin"/></svg>
@@ -1291,6 +1406,7 @@
                     <h3>🚗 יציאה לכביש גרוסגלוקנר (Grossglockner)</h3>
                     <p>כ-1:15 שעה נסיעה לשער הכניסה בפרש (Fusch) / ברוק. כביש האלפים הגבוה של גרוסגלוקנר הוא אחת הדרכים היפות באירופה — 48 ק"מ, 36 פיתולים, ומטפס עד 2,504 מטר.</p>
                     <div class="tip">💡 אגרת כניסה: כ-45€ לרכב (כרטיס יומי). בדקו באתר שהכביש פתוח (נסגר בשלג). תדלקו לפני! קחו שכבות חמות — למעלה יכול להיות גם 0°C ושלג בספטמבר.</div>
+                    <div class="book book-no">🟢 אין צורך להזמין מראש — משלמים בשער הכניסה (או מציגים את ג'וקר הכרטיס).</div>
                     <div class="slc slc-yes">🎫 טריק הג'וקר: כל כרטיס מזכה חד-פעמית ב-Salzburg Card 24ש' או בנסיעה חינם בגרוסגלוקנר. אם אחד ההורים שמר את הג'וקר שלו (ולא המיר אותו בזלצבורג ביום 3) — אגרת הרכב כאן חינם!</div>
                     <a class="map-btn" href="https://maps.google.com/?q=Grossglockner+Hochalpenstrasse+Fusch+toll" target="_blank" rel="noopener">
                         <svg viewBox="0 0 24 24"><use href="#icon-pin"/></svg>
@@ -1322,6 +1438,7 @@
                     <h3>🪂 אופציה למתבגר: Flying Fox XXL בלאוגנג</h3>
                     <p>בדרך חזרה (סטייה של כ-40 דק') — אחת האומגות הארוכות בעולם: 1.6 ק"מ טיסה בשכיבה, עד 130 קמ"ש! מתאים מגיל 10 ומעלה (מגבלות משקל: 30–125 ק"ג). בתוספת תשלום, חובה להזמין מראש.</p>
                     <div class="tip">💡 אופציונלי — רק אם נשאר כוח וההזמנה אושרה מראש. אפשר גם לדחות ליום גמיש אחר.</div>
+                    <div class="book book-yes">🔴 חובה להזמין מראש! מספר המקומות מוגבל — שריינו מקום באתר לפני הטיסה (ובדקו מגבלות משקל 30–125 ק"ג).</div>
                     <div class="slc slc-no">🎫 לא כלול בכרטיס — תשלום נפרד.</div>
                     <a class="map-btn" href="https://maps.google.com/?q=Flying+Fox+XXL+Leogang" target="_blank" rel="noopener">
                         <svg viewBox="0 0 24 24"><use href="#icon-pin"/></svg>
@@ -1358,6 +1475,7 @@
                     <h3>🏗️ סכרי קפרון (Kaprun Hochgebirgsstauseen)</h3>
                     <p>מסע הנדסי מרשים: אוטובוס מיוחד ואז המעלית המשופעת הפתוחה הגדולה באירופה — Lärchwand — שמעלה אוטובוס שלם במעלה ההר! למעלה מחכים שני סכרי ענק (Mooserboden בגובה 2,036 מ') האוגרים מים בצבע טורקיז-חלבי עוצר נשימה. הולכים על הסכר עצמו, ויש סיור פנימי "Erlebniswelt Strom" על בניית המפעל ההידרואלקטרי.</p>
                     <div class="tip">⚠️ העונה מסתיימת בתחילת אוקטובר — ודאו שפתוח. קחו בגד חם, למעלה קריר. הקצו כ-4 שעות לכל החוויה.</div>
+                    <div class="book book-rec">🟡 מומלץ להזמין מראש אונליין — המקומות באוטובוס ובמעלית מוגבלים, ובימים יפים נגמרים מקומות.</div>
                     <div class="slc slc-yes">🎫 כלול בכרטיס — האוטובוס + המעלית המשופעת לסכרים חינם (חד-פעמי).</div>
                     <a class="map-btn" href="https://maps.google.com/?q=Kaprun+Hochgebirgsstauseen+Mooserboden" target="_blank" rel="noopener">
                         <svg viewBox="0 0 24 24"><use href="#icon-pin"/></svg>
@@ -1379,6 +1497,7 @@
                     <h3>🛷 מגלשת הרים Maisiflitzer — לבן ה-9!</h3>
                     <p>ממש ליד הספא בקפרון: אלפיין-קוסטר על מסילה באורך 1.3 ק"מ במורד המאיסקוגל — עיקולים, גלים וקפיצות קטנות. כל אחד שולט במהירות בעצמו, והמסלול פועל גם בגשם (עגלות סגורות למחצה). התחליף המושלם למגלשת הקרקוגל באבטנאו שנסגרה לצמיתות.</p>
                     <div class="tip">💡 גיל מינימום לנסיעה עצמאית: 8. אפשר לקנות כרטיסייה של כמה ירידות — הוא ירצה שוב!</div>
+                    <div class="book book-no">🟢 אין צורך להזמין מראש — קונים כרטיס בקופה במקום.</div>
                     <div class="slc slc-no">🎫 לא כלול בכרטיס — תשלום נפרד (כ-9€ לנסיעה).</div>
                     <a class="map-btn" href="https://maps.google.com/?q=Maisiflitzer+Alpine+Coaster+Kaprun" target="_blank" rel="noopener">
                         <svg viewBox="0 0 24 24"><use href="#icon-pin"/></svg>
@@ -1391,6 +1510,7 @@
                     <h3>🧖 טאוארן ספא (Tauern Spa Kaprun)</h3>
                     <p>סיום יום מושלם: מרחצאות יוקרתיים עם 11 בריכות מחוממות (פנימיות וחיצוניות) מול ההרים, בריכת אינפיניטי על הגג עם נוף לקיצשטיינהורן, ומתחם ילדים ייעודי עם שלוש מגלשות מים מהנות. בן ה-9 במגלשות, בן ה-16 בבריכות או בסאונות, וההורים — בג'קוזי מול השקיעה.</p>
                     <div class="tip">💡 קנו כרטיס ערב (מוזל אחרי 16:00–17:00). קחו בגדי ים, מגבות אפשר לשכור. מתחם הסאונות ללא בגדים (נהוג באוסטריה) — יש אזורים משפחתיים נפרדים.</div>
+                    <div class="book book-no">🟢 אין צורך להזמין מראש — קונים כרטיס בכניסה (אפשר גם אונליין אם רוצים לחסוך תור).</div>
                     <div class="slc slc-no">🎫 לא כלול בכרטיס — משלמים בנפרד (יש כרטיס ערב מוזל).</div>
                     <a class="map-btn" href="https://maps.google.com/?q=Tauern+Spa+Kaprun" target="_blank" rel="noopener">
                         <svg viewBox="0 0 24 24"><use href="#icon-pin"/></svg>
@@ -1422,6 +1542,7 @@
                     <h3>⛏️ מכרות המלח בהליין (Salzwelten Salzburg)</h3>
                     <p>כ-45 דק' נסיעה. חוויה מעולה לכל המשפחה: לובשים סרבלי כורים לבנים, נוסעים ברכבת כורים קטנה אל בטן ההר, גולשים בשתי מגלשות עץ תלולות של הכורים (כיף אדיר — מודדים לכם מהירות! גם זו "מגלשה" לבן ה-9), שטים בסירה על אגם מלח תת-קרקעי מואר, וחוצים את הגבול לגרמניה... מתחת לאדמה! משך הסיור: כ-90 דק'.</p>
                     <div class="tip">💡 הזמינו שעת סיור מראש באתר. הטמפרטורה בפנים כ-10°C — קחו סווטשירט. ילדים מגיל 4 בלבד.</div>
+                    <div class="book book-yes">🔴 חובה לשריין שעת סיור מראש באתר — הסיורים מתמלאים, במיוחד בסופ"ש. ההזמנה עם קוד ה-SalzburgerLand Card (הסבר ב-FAQ של הכרטיס).</div>
                     <div class="slc slc-yes">🎫 כלול בכרטיס — כניסה חינם (חד-פעמית). מזמינים שעת סיור באתר עם קוד פרומו של הכרטיס (הסבר בעמוד ה-FAQ). זהו היום האחרון לתוקף הכרטיס — לכן המכרות שובצו לכאן ולא ל-26.9.</div>
                     <a class="map-btn" href="https://maps.google.com/?q=Salzwelten+Salzburg,+Hallein" target="_blank" rel="noopener">
                         <svg viewBox="0 0 24 24"><use href="#icon-pin"/></svg>
@@ -1434,6 +1555,7 @@
                     <h3>🌊 מפל גולינג (Gollinger Wasserfall)</h3>
                     <p>כ-15 דק' נסיעה ממכרות המלח. הליכה קצרה ומרעננת (כ-30 דק' הלוך ושוב) בתוך יער קסום ומכוסה טחב, שמובילה לאחד המפלים העוצמתיים והיפים באוסטריה — 75 מטר בשתי דרגות, הבוקע ישירות מתוך חור בסלע.</p>
                     <div class="tip">💡 בדרך חזרה לרכב — עצירת קפה ועוגה בעיירה גולינג הציורית.</div>
+                    <div class="book book-no">🟢 אין צורך להזמין מראש — מגיעים ונכנסים.</div>
                     <div class="slc slc-yes">🎫 כלול בכרטיס — הכניסה למפל חינם.</div>
                     <a class="map-btn" href="https://maps.google.com/?q=Gollinger+Wasserfall" target="_blank" rel="noopener">
                         <svg viewBox="0 0 24 24"><use href="#icon-pin"/></svg>
@@ -1444,6 +1566,7 @@
                     <span class="time">15:00</span>
                     <h3>🏰 אופציה לסיום: מוזיאון הקלטים בהליין או בריכה במלון</h3>
                     <p>אם נשאר כוח — מוזיאון הקלטים בהליין משלים את סיפור המלח של האזור. אחרת — חוזרים למלון לבריכה ולספא אחרי שבוע אינטנסיבי.</p>
+                    <div class="book book-no">🟢 אין צורך להזמין מראש.</div>
                     <div class="slc slc-yes">🎫 מוזיאון הקלטים כלול בכרטיס — כניסה חינם (חד-פעמית).</div>
                     <a class="map-btn" href="https://maps.google.com/?q=Celtic+Museum+Hallein" target="_blank" rel="noopener">
                         <svg viewBox="0 0 24 24"><use href="#icon-pin"/></svg>
@@ -1469,6 +1592,7 @@
                     <h3>✈️ האנגר 7 (Hangar-7) — רד בול</h3>
                     <p>לקינוח הטיול: מבנה הזכוכית העתידני של רד בול ליד שדה התעופה של זלצבורג (כ-50 דק' נסיעה). בפנים: מטוסי פעלולים היסטוריים, מסוקים, מכוניות פורמולה 1 נוצצות, חליפת הצניחה מהסטרטוספירה של פליקס באומגרטנר — וכולו חינם! יש גם בית קפה מעוצב (Carpe Diem) לעצירת קפה ועוגה.</p>
                     <div class="tip">💡 כניסה חינם, פתוח 09:00–22:00. חנייה חינם במקום. שילוב מושלם של עיצוב, טכנולוגיה ומכונות — בן ה-16 יאהב.</div>
+                    <div class="book book-no">🟢 אין צורך להזמין מראש — נכנסים חופשי, בלי כרטיס בכלל.</div>
                     <div class="slc slc-no">🎫 לא צריך כרטיס — הכניסה חינם לכולם ממילא. לכן היום הזה משובץ אחרי שתוקף הכרטיס הסתיים (25.9).</div>
                     <a class="map-btn" href="https://maps.google.com/?q=Hangar-7,+Salzburg+Airport" target="_blank" rel="noopener">
                         <svg viewBox="0 0 24 24"><use href="#icon-pin"/></svg>
@@ -1526,6 +1650,7 @@
                     <p>במקום קניון סגור — פארק השעשועים ההיסטורי של וינה: הכניסה לפארק חינם ומשלמים רק על מתקנים. עלייה על הגלגל הענק המפורסם (Riesenrad, מ-1897) לנוף פרידה על וינה, מתקני אדרנלין לבן ה-16, רכבות ומתקנים לבן ה-9, ודוכני לאנגוס ונקניקיות לצהריים. כ-25 דק' מהפארק לשדה התעופה.</p>
                     <div class="tip">🧳 המזוודות איתכם? שתי אפשרויות: (1) הפתרון הבטוח — סעו קודם לשדה התעופה, הפקידו את המזוודות בשמירת החפצים (Left Luggage, טרמינל 1, כמה אירו למזוודה) וחזרו 20 דק' לפראטר בראש שקט. (2) הפשוט — חנו בחניון המקורה והמצולם Parkhaus Riesenradplatz שצמוד לגלגל הענק, השאירו הכל בתא מטען סגור ולא נראה מבחוץ, וקחו איתכם רק דרכונים ודברי ערך. אם מעדיפים לוותר על העצירה — גני שנברון הם עצירה קצרה ופתוחה יותר.</div>
                     <div class="tip">💡 אלטרנטיבות פתוחות בראשון: גני ארמון שנברון (חינם, עצירה יפה בכניסה לווינה) או המוזיאון הטכני (10:00–18:00, מעולה לילדים). קניות בראשון אין בשום מקום — כל הקמעונאות באוסטריה סגורה בחוק, כולל SCS ופריימרק. אם הטיסה תוזז ליום חול: Westfield SCS (Primark, Zara, TK Maxx, Media Markt ועוד 300 חנויות) נמצא בדיוק על הדרך — SCS-Straße, Vösendorf, ב'–ו' 09:00–19:00, שבת עד 18:00.</div>
+                    <div class="book book-no">🟢 אין צורך להזמין מראש — הכניסה לפארק חינם ומשלמים על כל מתקן בנפרד במקום.</div>
                     <div class="slc slc-no">🎫 לא רלוונטי לכרטיס — וינה מחוץ לזלצבורגרלנד.</div>
                     <a class="map-btn" href="https://maps.google.com/?q=Prater+Riesenrad+Vienna" target="_blank" rel="noopener">
                         <svg viewBox="0 0 24 24"><use href="#icon-pin"/></svg>
@@ -1570,6 +1695,7 @@
                     <span class="time">ואגריין</span>
                     <h3>🏨 מסעדת Hofgut</h3>
                     <p>מסעדת הריזורט + מאפייה-קפה וחנות חווה במתחם — מושלם לימים שבא לכם לסיים בלי לנסוע לשום מקום.</p>
+                    <div class="diet">🥗 צמחוני: יש — מסעדת מלון עם מנות צמחוניות קבועות (פסטות, סלטים גדולים, קייזרשמרן) + מאפים טריים. 🥑 קיטו: קל להסתדר — בשר/דג מהגריל, בקשו ירקות או סלט במקום התוספת.</div>
                     <a class="map-btn" href="https://maps.google.com/?q=Hofgut+Wagrain+Apartment+Lifestyle+Resort" target="_blank" rel="noopener">
                         <svg viewBox="0 0 24 24"><use href="#icon-pin"/></svg>
                         פתח ב-Google Maps
@@ -1580,6 +1706,7 @@
                     <span class="time">בישופסהופן</span>
                     <h3>🥩 Gasthof Tirolerwirt</h3>
                     <p>פונדק משפחתי מעולה (12 דק' נסיעה מהמלון). שניצלים אותנטיים, גדולים ומצוינים שילדים טורפים. אווירה אוסטרית חמה ומחירים הוגנים.</p>
+                    <div class="diet">🥗 צמחוני: קלאסיקות אוסטריות ללא בשר — קייזשפצלה (נוקדי גבינה), מרקים צמחוניים, סלטים וקייזרשמרן. 🥑 קיטו: השניצל מצופה פירורים (לא קיטו) — בחרו צלי/סטייק או דג, וסלט במקום תוספת עמילנית.</div>
                     <a class="map-btn" href="https://maps.google.com/?q=Gasthof+Tirolerwirt+Bischofshofen" target="_blank" rel="noopener">
                         <svg viewBox="0 0 24 24"><use href="#icon-pin"/></svg>
                         פתח ב-Google Maps
@@ -1590,6 +1717,7 @@
                     <span class="time">בישופסהופן</span>
                     <h3>🍔 Beefman's Restaurant</h3>
                     <p>ה-מקום לבן ה-16: עיצוב מודרני, המבורגרים מושחתים, בשרים וקערות (Bowls) בסגנון אמריקאי/מודרני.</p>
+                    <div class="diet">🥗 צמחוני: יש בורגר צמחוני וקערות ירקות. 🥑 קיטו: מהמתאימות בטיול — המבורגר בלי לחמנייה עם סלט, סטייקים, או Bowl בלי דגנים.</div>
                     <a class="map-btn" href="https://maps.google.com/?q=Beefman's+Restaurant+Bischofshofen" target="_blank" rel="noopener">
                         <svg viewBox="0 0 24 24"><use href="#icon-pin"/></svg>
                         פתח ב-Google Maps
@@ -1600,6 +1728,7 @@
                     <span class="time">וורפן</span>
                     <h3>🍲 Gasthof Werfenerhof</h3>
                     <p>מעולה לסגור בה את הרעב אחרי מערת הקרח הקפואה או טירת וורפן. אוכל אוסטרי מסורתי ומחמם.</p>
+                    <div class="diet">🥗 צמחוני: מסתדרים — מרקים צמחוניים, שפצלה עם גבינה וקייזרשמרן (תפריט גסטהוף קלאסי). 🥑 קיטו: צלי בשר ומנות גריל — בקשו בלי כופתאות/תוספת עמילנית.</div>
                     <a class="map-btn" href="https://maps.google.com/?q=Gasthof+Werfenerhof,+Werfen" target="_blank" rel="noopener">
                         <svg viewBox="0 0 24 24"><use href="#icon-pin"/></svg>
                         פתח ב-Google Maps
@@ -1610,6 +1739,7 @@
                     <span class="time">גאסטיין</span>
                     <h3>🥞 Stubneralm — פסגת השטובנרקוגל</h3>
                     <p>מסעדת הרים עם נוף פנורמי מהמם. מרק גולאש חם ו"קייזרשמרן" — פנקייק אוסטרי מתוק עם אבקת סוכר ורסק תפוחים. קינוח חובה בטיול!</p>
+                    <div class="diet">🥗 צמחוני: כן — קייזרשמרן, כופתאות גבינה (Kaspressknödel) ומרקים ללא בשר. 🥑 קיטו: מוגבל — מסעדת הרים עמילנית באופייה; הבחירה הטובה: מרק גולאש (בלי הלחם) או נקניקיות.</div>
                     <a class="map-btn" href="https://maps.google.com/?q=Stubneralm+Bad+Gastein" target="_blank" rel="noopener">
                         <svg viewBox="0 0 24 24"><use href="#icon-pin"/></svg>
                         פתח ב-Google Maps
@@ -1620,6 +1750,7 @@
                     <span class="time">באד גאסטיין</span>
                     <h3>🍔 Silver Bullet</h3>
                     <p>בר-מסעדה עם וייב בינלאומי תוסס — מוזיקה, אווירת חו"ל, תפריט המבורגרים ופיצות. בן ה-16 יעריך את האווירה.</p>
+                    <div class="diet">🥗 צמחוני: פיצות צמחוניות ובד"כ גם בורגר צמחוני. 🥑 קיטו: המבורגר בלי לחמנייה + סלט או כנפיים — רק דלגו על הפיצה והצ'יפס.</div>
                     <a class="map-btn" href="https://maps.google.com/?q=Silver+Bullet+Bar+Bad+Gastein" target="_blank" rel="noopener">
                         <svg viewBox="0 0 24 24"><use href="#icon-pin"/></svg>
                         פתח ב-Google Maps
@@ -1630,6 +1761,7 @@
                     <span class="time">באד גאסטיין</span>
                     <h3>🍕 Pizzeria Angelo</h3>
                     <p>פיצה איטלקית טובה — למקרה שהילדים מאסו בשניצל.</p>
+                    <div class="diet">🥗 צמחוני: מצוין — מגוון פיצות ופסטות צמחוניות וסלטים. 🥑 קיטו: הכי פחות מתאימה בטיול — יש סלטים ואנטיפסטי, אבל אם קיטו חשוב הערב — עדיף Silver Bullet.</div>
                     <a class="map-btn" href="https://maps.google.com/?q=Pizzeria+Angelo+Bad+Gastein" target="_blank" rel="noopener">
                         <svg viewBox="0 0 24 24"><use href="#icon-pin"/></svg>
                         פתח ב-Google Maps
@@ -1737,7 +1869,7 @@
                     <label class="done-check"><input type="checkbox" data-key="tip-2" aria-label="סמן כבוצע"><span>✔</span></label>
                     <span class="time">לפני</span>
                     <h3>📅 הזמנות מראש — צ'קליסט</h3>
-                    <p>דברים שכדאי להזמין לפני הטיסה: מקום למופע הבזיירות בהוהנוורפן (בדיקת שעות), שעת סיור במכרות המלח בהליין, Flying Fox XXL (אם הולכים), סירה בהאלשטאט בעונה עמוסה, וכרטיסי סכרי קפרון. וגם: רישיון נהיגה בינלאומי (IDP) — פרטים בטיפ הנהיגה למטה.</p>
+                    <p>סימנו ליד כל אטרקציה בתוכנית אם צריך להזמין מראש. סיכום: 🔴 חובה — שעת סיור במכרות המלח בהליין + Flying Fox XXL (אם הולכים). 🟡 מומלץ — רכבל הדאכשטיין (5 האצבעות) לשבת וסכרי קפרון. 🟢 כל השאר — קונים בכניסה. וגם: רישיון נהיגה בינלאומי (IDP) — פרטים בטיפ הנהיגה למטה.</p>
                 </article>
                 <article class="event">
                     <label class="done-check"><input type="checkbox" data-key="tip-9" aria-label="סמן כבוצע"><span>✔</span></label>
@@ -1979,6 +2111,47 @@
         if ('serviceWorker' in navigator && location.protocol.indexOf('http') === 0) {
             navigator.serviceWorker.register('sw.js').catch(function () { });
         }
+
+        // כפתור התקנת האפליקציה — אנדרואיד (Chrome) מקבל חלון התקנה אמיתי, והשאר הנחיות לפי הדפדפן
+        (function () {
+            var btn = document.getElementById('installBtn');
+            var hint = document.getElementById('installHint');
+            if (!btn) return;
+            var standalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
+            if (standalone) return; // כבר רץ כאפליקציה מותקנת
+            var deferred = null;
+            window.addEventListener('beforeinstallprompt', function (e) {
+                e.preventDefault();
+                deferred = e;
+                hint.classList.remove('show');
+            });
+            btn.hidden = false;
+            btn.addEventListener('click', function () {
+                if (deferred) {
+                    deferred.prompt();
+                    deferred.userChoice.then(function (choice) {
+                        if (choice && choice.outcome === 'accepted') btn.hidden = true;
+                        deferred = null;
+                    });
+                    return;
+                }
+                var ua = navigator.userAgent;
+                var msg;
+                if (/iPhone|iPad|iPod/.test(ua)) {
+                    msg = 'באייפון: פתחו את האתר ב-Safari, לחצו על כפתור השיתוף (ריבוע עם חץ למעלה) ובחרו "הוסף למסך הבית".';
+                } else if (/Android/i.test(ua)) {
+                    msg = 'באנדרואיד: פתחו את האתר ב-Chrome, ואז בתפריט ⋮ (למעלה מימין) בחרו "הוספה למסך הבית" או "התקנת אפליקציה".';
+                } else {
+                    msg = 'בדפדפן: חפשו בתפריט את האפשרות "התקנת אפליקציה" / "הוספה למסך הבית".';
+                }
+                hint.textContent = msg;
+                hint.classList.add('show');
+            });
+            window.addEventListener('appinstalled', function () {
+                btn.hidden = true;
+                hint.classList.remove('show');
+            });
+        })();
     </script>
 </body>
 </html>

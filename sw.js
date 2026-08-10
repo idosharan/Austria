@@ -1,6 +1,6 @@
 // Service Worker — מטמון אופליין לתיק הטיול
-var CACHE = 'austria2026-v1';
-var CORE = ['./', './index.html', './manifest.webmanifest', './icon.svg'];
+var CACHE = 'austria2026-v2';
+var CORE = ['./', './index.html', './manifest.webmanifest', './icon.svg', './icon-192.png', './icon-512.png', './icon-192-maskable.png', './icon-512-maskable.png'];
 
 self.addEventListener('install', function (e) {
     e.waitUntil(
