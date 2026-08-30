@@ -11,8 +11,23 @@
     <meta property="og:title" content="Austria Alps Trip 2026 🇦🇹">
     <meta property="og:description" content="תיק טיול משפחתי לאלפים האוסטריים 18–27.9.2026 — טיסות, זלצבורג, האלשטאט, גרוסגלוקנר, מערת הקרח ועוד">
     <meta property="og:locale" content="he_IL">
-    <!-- אחרי העלאה לאחסון: עדכנו לכתובת מלאה (https://...) של תמונת שיתוף כדי שוואטסאפ יציג תמונה -->
-    <meta property="og:image" content="icon-512.png">
+    <meta property="og:url" content="https://idosharan.github.io/Austria/">
+    <meta property="og:image" content="https://idosharan.github.io/Austria/icon-512.png">
+    <meta property="og:image:width" content="512">
+    <meta property="og:image:height" content="512">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Austria Alps Trip 2026 🇦🇹">
+    <meta name="twitter:description" content="תיק טיול משפחתי לאלפים האוסטריים 18–27.9.2026">
+    <meta name="twitter:image" content="https://idosharan.github.io/Austria/icon-512.png">
+    <script>
+        // נקבע לפני הציור הראשון כדי למנוע הבהוב בהחלפת ערכת נושא
+        (function () {
+            var t = null;
+            try { t = localStorage.getItem('austria2026-theme'); } catch (e) { }
+            if (!t) t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+            document.documentElement.setAttribute('data-theme', t);
+        })();
+    </script>
     <link rel="manifest" href="manifest.webmanifest">
     <link rel="apple-touch-icon" href="icon-192.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -427,16 +442,24 @@
         .map-btn {
             display: inline-flex;
             align-items: center;
+            /* inline-flex מיושר לפי baseline של הפריט הראשון — לכן כפתור עם אייקון וכפתור בלעדיו לא ישבו באותו גובה */
+            vertical-align: middle;
             gap: 8px;
             background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
             color: var(--white);
             text-decoration: none;
             font-weight: 500;
             font-size: 0.95rem;
+            line-height: 1.5;
             padding: 10px 20px;
+            margin-bottom: 8px;
             border-radius: 50px;
             transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
             box-shadow: 0 6px 16px rgba(20, 52, 43, 0.25);
+        }
+
+        .map-btn + .map-btn {
+            margin-right: 10px;
         }
 
         .map-btn svg {
@@ -461,7 +484,6 @@
             background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
             color: var(--navy);
             box-shadow: 0 6px 16px rgba(212, 175, 55, 0.3);
-            margin-right: 8px;
         }
 
         .web-btn svg {
@@ -485,7 +507,8 @@
             margin-top: auto;
         }
 
-        .btn-row .map-btn {
+        .btn-row .map-btn,
+        .btn-row .map-btn + .map-btn {
             margin: 0;
             flex: 1 1 auto;
             justify-content: center;
@@ -914,113 +937,272 @@
         }
 
         /* ===== Dark Mode ===== */
-        @media (prefers-color-scheme: dark) {
-            body {
-                background: linear-gradient(160deg, #101c17 0%, #16241d 100%);
-                color: #e8e6df;
-            }
+        [data-theme="dark"] body {
+            background: linear-gradient(160deg, #101c17 0%, #16241d 100%);
+            color: #e8e6df;
+        }
 
-            header::after {
-                background: linear-gradient(160deg, #101c17 0%, #16241d 100%);
-            }
+        [data-theme="dark"] header::after {
+            background: linear-gradient(160deg, #101c17 0%, #16241d 100%);
+        }
 
-            .event,
-            .shop-card {
-                background: #1d2b24;
-                border-color: rgba(212, 175, 55, 0.15);
-                box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
-            }
+        [data-theme="dark"] .event,
+        [data-theme="dark"] .shop-card {
+            background: #1d2b24;
+            border-color: rgba(212, 175, 55, 0.15);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+        }
 
-            .event::before {
-                background: #1d2b24;
-            }
+        [data-theme="dark"] .event::before {
+            background: #1d2b24;
+        }
 
-            .day-header h2,
-            .event h3,
-            .shop-card h3 {
-                color: #e8c96a;
-            }
+        [data-theme="dark"] .day-header h2,
+        [data-theme="dark"] .event h3,
+        [data-theme="dark"] .shop-card h3 {
+            color: #e8c96a;
+        }
 
-            .event p,
-            .shop-card p {
-                color: #b8c0b9;
-            }
+        [data-theme="dark"] .event p,
+        [data-theme="dark"] .shop-card p {
+            color: #b8c0b9;
+        }
 
-            .event .tip {
-                color: #e8e6df;
-                background: rgba(212, 175, 55, 0.1);
-            }
+        [data-theme="dark"] .event .tip {
+            color: #e8e6df;
+            background: rgba(212, 175, 55, 0.1);
+        }
 
-            .slc-yes {
-                color: #a9d8bf;
-            }
+        [data-theme="dark"] .slc-yes {
+            color: #a9d8bf;
+        }
 
-            .slc-no {
-                color: #e0a3a3;
-            }
+        [data-theme="dark"] .slc-no {
+            color: #e0a3a3;
+        }
 
-            .book-yes {
-                color: #e0a3a3;
-            }
+        [data-theme="dark"] .book-yes {
+            color: #e0a3a3;
+        }
 
-            .book-rec {
-                color: #e8c98a;
-            }
+        [data-theme="dark"] .book-rec {
+            color: #e8c98a;
+        }
 
-            .book-no {
-                color: #a9d8bf;
-            }
+        [data-theme="dark"] .book-no {
+            color: #a9d8bf;
+        }
 
-            .event .diet {
-                color: #cfe3d6;
-                background: rgba(120, 200, 160, 0.08);
-            }
+        [data-theme="dark"] .event .diet {
+            color: #cfe3d6;
+            background: rgba(120, 200, 160, 0.08);
+        }
 
-            .shop-card .shop-icon {
-                background: #16241d;
-            }
+        [data-theme="dark"] .shop-card .shop-icon {
+            background: #16241d;
+        }
 
-            .timeline {
-                border-right-color: rgba(120, 200, 160, 0.25);
-            }
+        [data-theme="dark"] .timeline {
+            border-right-color: rgba(120, 200, 160, 0.25);
+        }
 
-            footer {
-                color: #8fa096;
-            }
+        [data-theme="dark"] footer {
+            color: #8fa096;
+        }
 
-            .done-check span {
-                background: #1d2b24;
-            }
+        [data-theme="dark"] .done-check span {
+            background: #1d2b24;
+        }
 
-            .day-links a {
-                color: #e8c96a;
-                background: rgba(212, 175, 55, 0.1);
-            }
+        [data-theme="dark"] .day-links a {
+            color: #e8c96a;
+            background: rgba(212, 175, 55, 0.1);
+        }
 
-            .day-links a:hover {
-                color: var(--navy);
-            }
+        [data-theme="dark"] .day-links a:hover {
+            color: var(--navy);
+        }
 
-            .event .time {
-                background: #0d1512;
-                color: #e8c96a;
-            }
+        [data-theme="dark"] .event .time {
+            background: #0d1512;
+            color: #e8c96a;
+        }
 
-            .booking-row {
-                border-bottom-color: rgba(232, 201, 106, 0.15);
-            }
+        [data-theme="dark"] .booking-row {
+            border-bottom-color: rgba(232, 201, 106, 0.15);
+        }
 
-            .booking-row .b-label {
-                color: #e8c96a;
-            }
+        [data-theme="dark"] .booking-row .b-label {
+            color: #e8c96a;
+        }
 
-            .booking-row .b-value:focus {
-                background: #101c17;
-            }
+        [data-theme="dark"] .booking-row .b-value:focus {
+            background: #101c17;
+        }
+
+        [data-theme="dark"] #stickyNav {
+            background: rgba(13, 21, 18, 0.95);
+        }
+
+        [data-theme="dark"] .pack-item,
+        [data-theme="dark"] .phrase-row {
+            background: #1d2b24;
+            border-color: rgba(212, 175, 55, 0.15);
+            color: #e8e6df;
+        }
+
+        [data-theme="dark"] #tripSearch {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+        }
+
+        /* ===== Search ===== */
+        .search-wrap {
+            position: relative;
+            z-index: 3;
+            max-width: 460px;
+            margin: 26px auto 0;
+        }
+
+        #tripSearch {
+            width: 100%;
+            padding: 12px 44px 12px 16px;
+            font-family: 'Heebo', sans-serif;
+            font-size: 1rem;
+            color: var(--white);
+            background: rgba(255, 255, 255, 0.12);
+            border: 1px solid rgba(212, 175, 55, 0.45);
+            border-radius: 50px;
+            outline: none;
+        }
+
+        #tripSearch::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        #tripSearch:focus {
+            border-color: var(--gold);
+            background: rgba(255, 255, 255, 0.18);
+        }
+
+        .search-wrap::after {
+            content: "🔎";
+            position: absolute;
+            top: 50%;
+            right: 16px;
+            transform: translateY(-50%);
+            pointer-events: none;
+            opacity: 0.75;
+        }
+
+        .search-count {
+            margin-top: 8px;
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.8);
+            min-height: 1.2em;
+        }
+
+        .hidden-by-search {
+            display: none !important;
+        }
+
+        /* ===== Theme Toggle ===== */
+        #themeToggle {
+            position: fixed;
+            top: 14px;
+            left: 14px;
+            z-index: 60;
+            width: 42px;
+            height: 42px;
+            font-size: 1.15rem;
+            line-height: 1;
+            color: var(--white);
+            background: rgba(20, 52, 43, 0.75);
+            border: 1px solid rgba(212, 175, 55, 0.5);
+            border-radius: 50%;
+            cursor: pointer;
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+        }
+
+        /* ===== Packing Checklist ===== */
+        .pack-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+            gap: 10px;
+        }
+
+        .pack-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 14px;
+            background: var(--white);
+            border: 1px solid rgba(20, 52, 43, 0.08);
+            border-radius: 14px;
+            cursor: pointer;
+            font-size: 0.95rem;
+        }
+
+        .pack-item input {
+            width: 18px;
+            height: 18px;
+            accent-color: var(--navy-light);
+            flex-shrink: 0;
+        }
+
+        .pack-item input:checked + span {
+            text-decoration: line-through;
+            opacity: 0.55;
+        }
+
+        .pack-cat {
+            grid-column: 1 / -1;
+            margin-top: 8px;
+            font-weight: 700;
+            color: var(--navy-light);
+        }
+
+        /* ===== Phrasebook ===== */
+        .phrase-row {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: baseline;
+            gap: 6px 12px;
+            padding: 10px 14px;
+            margin-bottom: 8px;
+            background: var(--white);
+            border: 1px solid rgba(20, 52, 43, 0.08);
+            border-radius: 14px;
+        }
+
+        .phrase-row .ph-he {
+            font-weight: 700;
+            min-width: 130px;
+        }
+
+        .phrase-row .ph-de {
+            direction: ltr;
+            color: var(--navy-light);
+            font-weight: 500;
+        }
+
+        .phrase-row .ph-say {
+            color: var(--text-soft);
+            font-size: 0.9rem;
+        }
+
+        [data-theme="dark"] .phrase-row .ph-de {
+            color: #a9d8bf;
+        }
+
+        [data-theme="dark"] .phrase-row .ph-say {
+            color: #8fa096;
         }
     </style>
 </head>
 <body>
+    <button id="themeToggle" type="button" aria-label="החלפת מצב תצוגה בהיר/כהה">🌙</button>
     <svg width="0" height="0" style="position:absolute" aria-hidden="true">
         <defs>
             <symbol id="icon-pin" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></symbol>
@@ -1031,10 +1213,14 @@
         <span class="badge">Family Travel Itinerary</span>
         <h1>Austria Alps 2026 🇦🇹</h1>
         <p class="dates">18.9.2026 — 27.9.2026</p>
-        <p class="subtitle">2 מבוגרים + 2 ילדים (9, 16) ✦ לינה: ואגריין (Wagrain), חבל פונגאו</p>
+        <p class="subtitle">2 מבוגרים + ילד בן 9.5 ובת 16 ✦ לינה: ואגריין (Wagrain), חבל פונגאו</p>
         <div class="gold-line"></div>
         <button id="installBtn" hidden>📲 התקינו את התיק כאפליקציה</button>
         <div id="installHint" role="status"></div>
+        <div class="search-wrap">
+            <input id="tripSearch" type="search" placeholder="חיפוש בתיק — מקום, מסעדה, טיפ…" aria-label="חיפוש בתוך התיק">
+            <div class="search-count" id="searchCount" role="status"></div>
+        </div>
         <nav class="date-nav" aria-label="ניווט לפי תאריך">
             <a href="#day-1"><span class="dn-day">שישי</span><span class="dn-date">18.9</span></a>
             <a href="#day-2"><span class="dn-day">שבת</span><span class="dn-date">19.9</span></a>
@@ -1046,8 +1232,11 @@
             <a href="#day-8"><span class="dn-day">שישי</span><span class="dn-date">25.9</span></a>
             <a href="#day-9"><span class="dn-day">שבת</span><span class="dn-date">26.9</span></a>
             <a href="#day-10"><span class="dn-day">ראשון</span><span class="dn-date">27.9</span></a>
+            <a href="#backup"><span class="dn-day">גיבוי</span><span class="dn-date">☔</span></a>
             <a href="#food"><span class="dn-day">מסעדות</span><span class="dn-date">🍽️</span></a>
             <a href="#shopping"><span class="dn-day">קניות</span><span class="dn-date">🛒</span></a>
+            <a href="#packing"><span class="dn-day">אריזה</span><span class="dn-date">🎒</span></a>
+            <a href="#phrases"><span class="dn-day">גרמנית</span><span class="dn-date">🗣️</span></a>
             <a href="#tips"><span class="dn-day">טיפים</span><span class="dn-date">💡</span></a>
         </nav>
     </header>
@@ -1062,7 +1251,7 @@
             </div>
             <div class="day-links">
                 <a href="https://www.google.com/maps/dir/Vienna+International+Airport/BILLA+PLUS+Bischofshofen/Hofgut+Wagrain" target="_blank" rel="noopener">🗺️ מסלול היום המלא</a>
-                <a href="https://www.google.com/search?q=weather+Wagrain" target="_blank" rel="noopener">🌤️ מזג אוויר</a>
+                <a href="https://www.google.com/search?q=bergfex+Wagrain+wetter" target="_blank" rel="noopener">🌤️ תחזית הרים (bergfex)</a>
             </div>
             <div class="timeline">
                 <article class="event">
@@ -1089,11 +1278,11 @@
                 <article class="event">
                     <span class="time">11:30</span>
                     <h3>🚗 איסוף רכב שכור ויציאה לדרך</h3>
-                    <p>איסוף הרכב מעמדות ההשכרה בשדה. נסיעה של כ-290 ק"מ (כ-3 שעות) בכביש המהיר A1 לכיוון חבל פונגאו. הדרך נוחה עם תחנות עצירה (Raststation) מסודרות.</p>
-                    <div class="tip">💡 ודאו שברכב יש מדבקת אגרה (Vignette) לכבישים המהירים — בד"כ כלולה ברכב שכור אוסטרי, אבל חובה לוודא! קנס על נסיעה בלעדיה: 120€+.</div>
+                    <p>איסוף הרכב מעמדות ההשכרה בשדה. נסיעה של כ-330 קמ"ר (3:15–3:45 שעות עם עצירה) בכביש המהיר A1 ואז A10 לכיוון חבל פונגאו. הדרך נוחה עם תחנות עצירה (Raststation) מסודרות — תכננו עצירה אחת של 20–30 דק'.</p>
+                    <div class="tip">💡 ודאו שברכב יש מדבקת אגרה (Vignette) לכבישים המהירים — בד"כ כלולה ברכב שכור אוסטרי, אבל חובה לוודא! קנס על נסיעה בלעדיה: 120€+. בנוסף, במנהרות האגרה של ה-A10 (Tauerntunnel) משלמים בנפרד — אבל הם דרומית לוואגריין ולא ניסע דרכם.</div>
                 </article>
                 <article class="event">
-                    <span class="time">15:30</span>
+                    <span class="time">15:15</span>
                     <h3>🛒 עצירת הצטיידות בבישופסהופן</h3>
                     <p>עצירה בסופרמרקט BILLA PLUS או EUROSPAR בבישופסהופן (15 דק' מהמלון) לקניית מצרכים לארוחות בוקר, נשנושים, מים ופירות. זכרו: ביום ראשון הכל סגור — קנו מספיק!</p>
                     <a class="map-btn" href="https://maps.google.com/?q=BILLA+PLUS+Bischofshofen" target="_blank" rel="noopener">
@@ -1102,7 +1291,7 @@
                     </a>
                 </article>
                 <article class="event">
-                    <span class="time">17:00</span>
+                    <span class="time">16:30</span>
                     <h3>🏨 צ'ק-אין ב-Hofgut Wagrain — Apartment & Lifestyle Resort</h3>
                     <p>הגעה לריזורט הדירות בכפר האלפיני ואגריין (Wagrain) שבלב חבל פונגאו. דירות מרווחות עם מטבחון — מושלם למשפחה, ובמתחם: בריכה, אזור ספא, מסעדה, מאפייה-קפה וחנות חווה (Hofladen). התארגנות וארוחת ערב רגועה במסעדת הריזורט או בכפר.</p>
                     <div class="tip">💡 בצ'ק-אין בקשו את כרטיס האורח של ואגריין-קליינארל (Gästekarte) — מקנה הנחות באטרקציות באזור, בנוסף ל-SalzburgerLand Card.</div>
@@ -1123,18 +1312,18 @@
             </div>
             <div class="day-links">
                 <a href="https://www.google.com/maps/dir/Hofgut+Wagrain/Hallstatt+Parkplatz+P1/Dachstein+Krippenstein+Seilbahn+Obertraun/Hofgut+Wagrain" target="_blank" rel="noopener">🗺️ מסלול היום המלא</a>
-                <a href="https://www.google.com/search?q=weather+Hallstatt" target="_blank" rel="noopener">🌤️ מזג אוויר</a>
+                <a href="https://www.google.com/search?q=bergfex+Hallstatt+wetter" target="_blank" rel="noopener">🌤️ תחזית הרים (bergfex)</a>
             </div>
             <div class="timeline">
                 <article class="event">
-                    <span class="time">08:30</span>
+                    <span class="time">08:00</span>
                     <h3>🚗 יציאה מוקדמת להאלשטאט</h3>
-                    <p>כ-1:15 שעה נסיעה בנוף אגמים ויערות של חבל הזלצקאמרגוט. כדאי לצאת מוקדם — בשבת האלשטאט מתמלאת בתיירים כבר מ-10:00.</p>
+                    <p>כ-1:15 שעה נסיעה בנוף אגמים ויערות של חבל הזלצקאמרגוט. יוצאים מוקדם — בשבת האלשטאט מתמלאת בתיירים כבר מ-10:00, והחניונים נסגרים עוד לפני כן.</p>
                     <div class="tip">💡 חנייה: חניון P1 בכניסה הדרומית לעיירה. אם מלא — P2. אל תנסו להיכנס עם רכב לעיירה עצמה.</div>
                     <div class="slc slc-no">🎫 SalzburgerLand Card: היום כולו ללא הכרטיס — האלשטאט והדאכשטיין שייכים לאוסטריה עילית ולא משתתפים בכרטיס כלל. בדיוק בגלל זה שיבצנו את היום הזה לפני הפעלת הכרטיס (מחר).</div>
                 </article>
                 <article class="event">
-                    <span class="time">09:45</span>
+                    <span class="time">09:15</span>
                     <h3>🏘️ העיירה האלשטאט (Hallstatt)</h3>
                     <p>אחת העיירות המצולמות בעולם — בתים צבעוניים על צלע הר, נושקים לאגם צלול. טיילו בסמטאות, עלו לנקודת התצפית הקלאסית (Classic Viewpoint) בצפון העיירה, ובקרו בכיכר השוק הציורית.</p>
                     <div class="slc slc-no">🎫 לא רלוונטי לכרטיס — הטיול בעיירה חינם ממילא.</div>
@@ -1145,7 +1334,7 @@
                     <a class="map-btn web-btn" href="https://www.hallstatt.net" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><use href="#icon-globe"/></svg>אתר רשמי</a>
                 </article>
                 <article class="event">
-                    <span class="time">11:00</span>
+                    <span class="time">10:45</span>
                     <h3>🛥️ שיט בסירת מנוע חשמלית באגם</h3>
                     <p>שוכרים סירת מנוע חשמלית קטנה (אין צורך ברישיון!) ושטים כל המשפחה באגם האלשטאט — הזווית הכי יפה על העיירה היא מהמים. השכרה בעמדות לאורך הטיילת, כ-30–60 דק'.</p>
                     <div class="tip">💡 שכרו סירה עם גגון אם השמש חזקה. הביאו מזומן — חלק מהעמדות לא מקבלות אשראי.</div>
@@ -1157,7 +1346,7 @@
                     </a>
                 </article>
                 <article class="event">
-                    <span class="time">13:00</span>
+                    <span class="time">12:15</span>
                     <h3>🍽️ ארוחת צהריים באוברטראון</h3>
                     <p>נסיעה קצרה (10 דק') לאוברטראון שבצד השני של האגם — מסעדות רגועות וזולות יותר מאשר בהאלשטאט עצמה.</p>
                     <a class="map-btn" href="https://maps.google.com/?q=Obertraun,+Austria" target="_blank" rel="noopener">
@@ -1166,10 +1355,11 @@
                     </a>
                 </article>
                 <article class="event">
-                    <span class="time">14:15</span>
+                    <span class="time">13:30</span>
                     <h3>🖐️ תצפית חמש האצבעות (5 Fingers) — הר דאכשטיין</h3>
                     <p>עולים ברכבל הדאכשטיין קריפנשטיין מאוברטראון עד התחנה העליונה (Krippenstein, 2,100 מ'). הליכה קלה של כ-20–30 דק' בנוף קארסטי "ירחי" עד למרפסת התצפית המפורסמת בצורת כף יד — חמש זרועות פלדה (אחת עם רצפת זכוכית!) התלויות באוויר מעל תהום של 400 מטר. נוף עוצר נשימה על אגם האלשטאט וקצת פיק ברכיים.</p>
-                    <div class="tip">⚠️ בדקו מזג אוויר לפני העלייה — בערפל אין נוף. הרכבל האחרון יורד סביב 16:30–17:00, תכננו בהתאם. קר למעלה — קחו שכבה חמה.</div>
+                    <div class="tip">⏱️ תכננו כ-3 שעות לכל החוויה (רכבל הלוך-חזור, הליכה וצילומים). הרכבל האחרון יורד סביב 16:30–17:00 — לכן עולים עד 13:30 ולא מאוחר יותר.</div>
+                    <div class="tip">⚠️ בדקו מזג אוויר לפני העלייה — בערפל אין נוף ואין טעם לעלות. קר למעלה — קחו שכבה חמה.</div>
                     <div class="book book-rec">🟡 מומלץ לקנות כרטיס רכבל אונליין מראש — חוסך תור בקופה בשבת עמוסה; אין חובת שעה מדויקת.</div>
                     <div class="slc slc-no">🎫 רכבל הדאכשטיין לא משתתף בכרטיס (אוסטריה עילית) — תשלום מלא בכל מקרה, ולכן שובץ ליום שלפני הפעלת הכרטיס.</div>
                     <a class="map-btn" href="https://maps.google.com/?q=5+Fingers+viewing+platform+Krippenstein" target="_blank" rel="noopener">
@@ -1179,7 +1369,7 @@
                     <a class="map-btn web-btn" href="https://dachstein-salzkammergut.com" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><use href="#icon-globe"/></svg>אתר רשמי</a>
                 </article>
                 <article class="event">
-                    <span class="time">18:00</span>
+                    <span class="time">17:00</span>
                     <h3>🚗 חזרה למלון</h3>
                     <p>נסיעה חזרה לוואגריין (כ-1:15 שעה) וארוחת ערב במלון או בכפר.</p>
                 </article>
@@ -1194,7 +1384,7 @@
             </div>
             <div class="day-links">
                 <a href="https://www.google.com/maps/dir/Hofgut+Wagrain/Schloss+Hellbrunn+Salzburg/Haus+der+Natur+Salzburg/Hofgut+Wagrain" target="_blank" rel="noopener">🗺️ מסלול היום המלא</a>
-                <a href="https://www.google.com/search?q=weather+Salzburg" target="_blank" rel="noopener">🌤️ מזג אוויר</a>
+                <a href="https://www.google.com/search?q=bergfex+Salzburg+wetter" target="_blank" rel="noopener">🌤️ תחזית הרים (bergfex)</a>
             </div>
             <div class="timeline">
                 <article class="event">
@@ -1272,7 +1462,7 @@
             </div>
             <div class="day-links">
                 <a href="https://www.google.com/maps/dir/Hofgut+Wagrain/Eisriesenwelt+Werfen/Burg+Hohenwerfen/Hofgut+Wagrain" target="_blank" rel="noopener">🗺️ מסלול היום המלא</a>
-                <a href="https://www.google.com/search?q=weather+Werfen" target="_blank" rel="noopener">🌤️ מזג אוויר</a>
+                <a href="https://www.google.com/search?q=bergfex+Werfen+wetter" target="_blank" rel="noopener">🌤️ תחזית הרים (bergfex)</a>
             </div>
             <div class="timeline">
                 <article class="event">
@@ -1280,8 +1470,9 @@
                     <h3>🧊 מערת הקרח בוורפן (Eisriesenwelt)</h3>
                     <p>מערת הקרח הגדולה בעולם — "עולם ענקי הקרח". כ-30 דק' נסיעה מהמלון. עולים ברכבל תלול, הולכים כ-20 דקות בשביל הרים עד לפתח המערה, מקבלים פנסי שמן אמיתיים ונכנסים לעולם של פסלי קרח טבעיים עצומים. הסיור במערה כ-75 דק', סה"כ החוויה כ-3 שעות.</p>
                     <div class="tip">⚠️ חובה: מעילי חורף, כובע וכפפות לכולם — בפנים סביב 0°C גם בקיץ! במערה כ-700 מדרגות (עולות ויורדות). נעלי הליכה סגורות בלבד. הגיעו מוקדם — בשעות הבוקר פחות עומס.</div>
+                    <div class="tip">🕓 שעות 2026 (מהאתר הרשמי): קופה 08:30–15:00 | רכבל 08:45–15:20 | סיורי מערה 09:30–15:45. פתוח יומיום עד 1.11.2026.</div>
                     <div class="book book-no">🟢 אין צורך להזמין מראש — מציגים את ה-SalzburgerLand Card בקופה ומצטרפים לסיור הקרוב. ההגעה המוקדמת היא ה"הזמנה" שלכם.</div>
-                    <div class="slc slc-yes">🎫 כלול בכרטיס — הסיור + הרכבל חינם (חד-פעמי). שווי בקופה: 45€ למבוגר / 32€ לנוער / 24€ לילד! בדקנו את השמועה: ההנחה הקטנה וה"מצחיקה" היא של כרטיסי אורח מקומיים — ב-SalzburgerLand Card הכניסה כלולה במלואה, ולכן המערה נשארת בתוך חלון הכרטיס (20–25.9).</div>
+                    <div class="slc slc-yes">🎫 כלול בכרטיס — הסיור + הרכבל חינם (חד-פעמי). שווי בקופה (מחירון 2026): 45€ למבוגר / 32€ לנוער 15–18 / 24€ לילד 5–14 — כלומר כ-146€ למשפחה שלנו במכה אחת!</div>
                     <a class="map-btn" href="https://maps.google.com/?q=Eisriesenwelt,+Werfen" target="_blank" rel="noopener">
                         <svg viewBox="0 0 24 24"><use href="#icon-pin"/></svg>
                         פתח ב-Google Maps
@@ -1326,14 +1517,14 @@
             </div>
             <div class="day-links">
                 <a href="https://www.google.com/maps/dir/Hofgut+Wagrain/Liechtensteinklamm/Stubnerkogelbahn+Bad+Gastein/Hofgut+Wagrain" target="_blank" rel="noopener">🗺️ מסלול היום המלא</a>
-                <a href="https://www.google.com/search?q=weather+Bad+Gastein" target="_blank" rel="noopener">🌤️ מזג אוויר</a>
+                <a href="https://www.google.com/search?q=bergfex+Bad+Gastein+wetter" target="_blank" rel="noopener">🌤️ תחזית הרים (bergfex)</a>
             </div>
             <div class="timeline">
                 <article class="event">
                     <span class="time">09:00</span>
                     <h3>🏞️ נקיק ליכטנשטיין (Liechtensteinklamm)</h3>
                     <p>אחד הנקיקים העמוקים והיפים באלפים — מסלול הליכה על גשרי עץ תלויים ממש מעל נהר שוצף בתוך קניון בעומק 300 מטר. המסלול שופץ וכולל מדרגות לולייניות דרמטיות ("הליקס") ומסתיים במפל עצום. רק כ-15 דק' נסיעה מהמלון (סנט יוהאן אים פונגאו). משך: כ-1.5–2 שעות הלוך ושוב.</p>
-                    <div class="tip">💡 מצטלם נהדר לאינסטגרם של בן ה-16! הביאו נעליים סגורות — הגשרים רטובים מהתזות המים.</div>
+                    <div class="tip">💡 מצטלם נהדר לאינסטגרם של בת ה-16! הביאו נעליים סגורות — הגשרים רטובים מהתזות המים.</div>
                     <div class="book book-no">🟢 אין צורך להזמין מראש — נכנסים עם הכרטיס בעמדת הכניסה; בבקרים אין עומס.</div>
                     <div class="slc slc-yes">🎫 כלול בכרטיס — כניסה חינם (חד-פעמית) לכל המשפחה.</div>
                     <a class="map-btn" href="https://maps.google.com/?q=Liechtensteinklamm,+Sankt+Johann+im+Pongau" target="_blank" rel="noopener">
@@ -1381,7 +1572,7 @@
                 <article class="event">
                     <span class="time">18:00</span>
                     <h3>🍕 ארוחת ערב בבאד גאסטיין</h3>
-                    <p>Silver Bullet — בר-מסעדה עם וייב בינלאומי תוסס, המבורגרים ופיצות (בן ה-16 יעריך), או Pizzeria Angelo לפיצה איטלקית קלאסית. חזרה למלון אחרי הארוחה.</p>
+                    <p>Silver Bullet — בר-מסעדה עם וייב בינלאומי תוסס, המבורגרים ופיצות (בת ה-16 תעריך), או Pizzeria Angelo לפיצה איטלקית קלאסית. חזרה למלון אחרי הארוחה.</p>
                     <a class="map-btn" href="https://maps.google.com/?q=Silver+Bullet+Bar+Bad+Gastein" target="_blank" rel="noopener">
                         <svg viewBox="0 0 24 24"><use href="#icon-pin"/></svg>
                         פתח ב-Google Maps
@@ -1398,14 +1589,15 @@
             </div>
             <div class="day-links">
                 <a href="https://www.google.com/maps/dir/Hofgut+Wagrain/Grossglockner+Hochalpenstrasse+Fusch/Kaiser-Franz-Josefs-H%C3%B6he/Hofgut+Wagrain" target="_blank" rel="noopener">🗺️ מסלול היום המלא</a>
-                <a href="https://www.google.com/search?q=weather+Grossglockner" target="_blank" rel="noopener">🌤️ מזג אוויר</a>
+                <a href="https://www.google.com/search?q=bergfex+Grossglockner+wetter" target="_blank" rel="noopener">🌤️ תחזית הרים (bergfex)</a>
             </div>
             <div class="timeline">
                 <article class="event">
                     <span class="time">08:30</span>
                     <h3>🚗 יציאה לכביש גרוסגלוקנר (Grossglockner)</h3>
                     <p>כ-1:15 שעה נסיעה לשער הכניסה בפרש (Fusch) / ברוק. כביש האלפים הגבוה של גרוסגלוקנר הוא אחת הדרכים היפות באירופה — 48 ק"מ, 36 פיתולים, ומטפס עד 2,504 מטר.</p>
-                    <div class="tip">💡 אגרת כניסה: כ-45€ לרכב (כרטיס יומי). בדקו באתר שהכביש פתוח (נסגר בשלג). תדלקו לפני! קחו שכבות חמות — למעלה יכול להיות גם 0°C ושלג בספטמבר.</div>
+                    <div class="tip">💡 אגרת כניסה: כרטיס יומי לרכב (מחיר 2026 באתר הרשמי — סדר גודל של כ-40–45€). רכישה אונליין מראש מקנה 10% הנחה בחנויות ובמסעדות שלאורך הכביש. בדקו באתר שהכביש פתוח (נסגר בשלג). תדלקו לפני! קחו שכבות חמות — למעלה יכול להיות גם 0°C ושלג בספטמבר.</div>
+                    <div class="tip">🕓 שעות הכביש בספטמבר (מהאתר הרשמי): 06:00–19:30, כניסה אחרונה 18:45 — אחריה יש איסור נסיעה לילי. מרכז המבקרים בקייזר-פרנץ-יוזפס: 10:00–17:00, שאר התצוגות 09:00–17:00. עם כרטיס יומי אפשר להיכנס ולצאת כמה פעמים באותו יום, והוא כולל את כל 15 התצוגות והמסלולים.</div>
                     <div class="book book-no">🟢 אין צורך להזמין מראש — משלמים בשער הכניסה (או מציגים את ג'וקר הכרטיס).</div>
                     <div class="slc slc-yes">🎫 טריק הג'וקר: כל כרטיס מזכה חד-פעמית ב-Salzburg Card 24ש' או בנסיעה חינם בגרוסגלוקנר. אם אחד ההורים שמר את הג'וקר שלו (ולא המיר אותו בזלצבורג ביום 3) — אגרת הרכב כאן חינם!</div>
                     <a class="map-btn" href="https://maps.google.com/?q=Grossglockner+Hochalpenstrasse+Fusch+toll" target="_blank" rel="noopener">
@@ -1435,16 +1627,13 @@
                 </article>
                 <article class="event">
                     <span class="time">15:30</span>
-                    <h3>🪂 אופציה למתבגר: Flying Fox XXL בלאוגנג</h3>
-                    <p>בדרך חזרה (סטייה של כ-40 דק') — אחת האומגות הארוכות בעולם: 1.6 ק"מ טיסה בשכיבה, עד 130 קמ"ש! מתאים מגיל 10 ומעלה (מגבלות משקל: 30–125 ק"ג). בתוספת תשלום, חובה להזמין מראש.</p>
-                    <div class="tip">💡 אופציונלי — רק אם נשאר כוח וההזמנה אושרה מראש. אפשר גם לדחות ליום גמיש אחר.</div>
-                    <div class="book book-yes">🔴 חובה להזמין מראש! מספר המקומות מוגבל — שריינו מקום באתר לפני הטיסה (ובדקו מגבלות משקל 30–125 ק"ג).</div>
-                    <div class="slc slc-no">🎫 לא כלול בכרטיס — תשלום נפרד.</div>
-                    <a class="map-btn" href="https://maps.google.com/?q=Flying+Fox+XXL+Leogang" target="_blank" rel="noopener">
+                    <h3>🚗 ירידה נינוחה ועצירה בצל אם זה</h3>
+                    <p>יורדים בנחת באותו כביש (עם הכרטיס היומי מותר לעצור ולהמשיך כמה פעמים), ובדרך חזרה עצירה קצרה בטיילת האגם של צל אם זה (Zell am See) — גלידה מול המים ורגליים באגם אחרי יום ארוך ברכב.</p>
+                    <div class="tip">🪂 האומגה Flying Fox XXL בלאוגנג לא משובצת היום — היא כ-1:15 שעה מקייזר-פרנץ-יוזפס והיום הזה ארוך ממילא. העברנו אותה לסעיף "תוכנית גיבוי" — היא רק 30–35 דק' מקפרון ומשתלבת יפה עם יום 7.</div>
+                    <a class="map-btn" href="https://maps.google.com/?q=Zell+am+See+promenade" target="_blank" rel="noopener">
                         <svg viewBox="0 0 24 24"><use href="#icon-pin"/></svg>
                         פתח ב-Google Maps
                     </a>
-                    <a class="map-btn web-btn" href="https://www.saalfelden-leogang.com" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><use href="#icon-globe"/></svg>אתר רשמי</a>
                 </article>
                 <article class="event">
                     <span class="time">18:30</span>
@@ -1462,16 +1651,16 @@
             </div>
             <div class="day-links">
                 <a href="https://www.google.com/maps/dir/Hofgut+Wagrain/Kesselfallhaus+Kaprun/Tauern+Spa+Kaprun/Hofgut+Wagrain" target="_blank" rel="noopener">🗺️ מסלול היום המלא</a>
-                <a href="https://www.google.com/search?q=weather+Kaprun" target="_blank" rel="noopener">🌤️ מזג אוויר</a>
+                <a href="https://www.google.com/search?q=bergfex+Kaprun+wetter" target="_blank" rel="noopener">🌤️ תחזית הרים (bergfex)</a>
             </div>
             <div class="timeline">
                 <article class="event">
-                    <span class="time">09:00</span>
+                    <span class="time">08:15</span>
                     <h3>🚗 נסיעה לקפרון (Kaprun)</h3>
-                    <p>כ-1 שעה נסיעה לעיירה קפרון שלרגלי הקיצשטיינהורן.</p>
+                    <p>כ-1 שעה נסיעה לעיירה קפרון שלרגלי הקיצשטיינהורן. יוצאים מוקדם — יום עמוס מאוד.</p>
                 </article>
                 <article class="event">
-                    <span class="time">10:15</span>
+                    <span class="time">09:30</span>
                     <h3>🏗️ סכרי קפרון (Kaprun Hochgebirgsstauseen)</h3>
                     <p>מסע הנדסי מרשים: אוטובוס מיוחד ואז המעלית המשופעת הפתוחה הגדולה באירופה — Lärchwand — שמעלה אוטובוס שלם במעלה ההר! למעלה מחכים שני סכרי ענק (Mooserboden בגובה 2,036 מ') האוגרים מים בצבע טורקיז-חלבי עוצר נשימה. הולכים על הסכר עצמו, ויש סיור פנימי "Erlebniswelt Strom" על בניית המפעל ההידרואלקטרי.</p>
                     <div class="tip">⚠️ העונה מסתיימת בתחילת אוקטובר — ודאו שפתוח. קחו בגד חם, למעלה קריר. הקצו כ-4 שעות לכל החוויה.</div>
@@ -1484,10 +1673,11 @@
                     <a class="map-btn web-btn" href="https://www.verbund.com" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><use href="#icon-globe"/></svg>אתר רשמי</a>
                 </article>
                 <article class="event">
-                    <span class="time">14:30</span>
-                    <h3>🍽️ ארוחת צהריים בקפרון / צל אם זה</h3>
-                    <p>ארוחה בעיירה קפרון או בצל אם זה (Zell am See) הסמוכה — עיירת אגם יפהפייה ששווה הצצה קצרה לטיילת.</p>
-                    <a class="map-btn" href="https://maps.google.com/?q=Zell+am+See+promenade" target="_blank" rel="noopener">
+                    <span class="time">14:00</span>
+                    <h3>🍽️ ארוחת צהריים בקפרון</h3>
+                    <p>יורדים מהסכרים ואוכלים בעיירה קפרון — קרוב למגלשה ולספא, בלי לבזבז נסיעות.</p>
+                    <div class="tip">💡 אם הסכרים הסתיימו מוקדם ונשאר זמן — צל אם זה (Zell am See) היא 10 דק' מקפרון והטיילת שלה שווה הצצה. אבל אל תדחסו את זה על חשבון הספא.</div>
+                    <a class="map-btn" href="https://maps.google.com/?q=Kaprun+restaurants" target="_blank" rel="noopener">
                         <svg viewBox="0 0 24 24"><use href="#icon-pin"/></svg>
                         פתח ב-Google Maps
                     </a>
@@ -1506,9 +1696,9 @@
                     <a class="map-btn web-btn" href="https://www.kitzsteinhorn.at/en/maiskogel/maisiflitzer" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><use href="#icon-globe"/></svg>אתר רשמי</a>
                 </article>
                 <article class="event">
-                    <span class="time">16:00</span>
+                    <span class="time">16:30</span>
                     <h3>🧖 טאוארן ספא (Tauern Spa Kaprun)</h3>
-                    <p>סיום יום מושלם: מרחצאות יוקרתיים עם 11 בריכות מחוממות (פנימיות וחיצוניות) מול ההרים, בריכת אינפיניטי על הגג עם נוף לקיצשטיינהורן, ומתחם ילדים ייעודי עם שלוש מגלשות מים מהנות. בן ה-9 במגלשות, בן ה-16 בבריכות או בסאונות, וההורים — בג'קוזי מול השקיעה.</p>
+                    <p>סיום יום מושלם: מרחצאות יוקרתיים עם 11 בריכות מחוממות (פנימיות וחיצוניות) מול ההרים, בריכת אינפיניטי על הגג עם נוף לקיצשטיינהורן, ומתחם ילדים ייעודי עם שלוש מגלשות מים מהנות. בן ה-9 במגלשות, בת ה-16 בבריכות או בסאונות, וההורים — בג'קוזי מול השקיעה.</p>
                     <div class="tip">💡 קנו כרטיס ערב (מוזל אחרי 16:00–17:00). קחו בגדי ים, מגבות אפשר לשכור. מתחם הסאונות ללא בגדים (נהוג באוסטריה) — יש אזורים משפחתיים נפרדים.</div>
                     <div class="book book-no">🟢 אין צורך להזמין מראש — קונים כרטיס בכניסה (אפשר גם אונליין אם רוצים לחסוך תור).</div>
                     <div class="slc slc-no">🎫 לא כלול בכרטיס — משלמים בנפרד (יש כרטיס ערב מוזל).</div>
@@ -1534,7 +1724,7 @@
             </div>
             <div class="day-links">
                 <a href="https://www.google.com/maps/dir/Hofgut+Wagrain/Salzwelten+Salzburg+Hallein/Gollinger+Wasserfall/Hofgut+Wagrain" target="_blank" rel="noopener">🗺️ מסלול היום המלא</a>
-                <a href="https://www.google.com/search?q=weather+Golling+an+der+Salzach" target="_blank" rel="noopener">🌤️ מזג אוויר</a>
+                <a href="https://www.google.com/search?q=bergfex+Golling+wetter" target="_blank" rel="noopener">🌤️ תחזית הרים (bergfex)</a>
             </div>
             <div class="timeline">
                 <article class="event">
@@ -1584,14 +1774,14 @@
             </div>
             <div class="day-links">
                 <a href="https://www.google.com/maps/dir/Hofgut+Wagrain/Hangar-7+Salzburg/Europark+Salzburg/Hofgut+Wagrain" target="_blank" rel="noopener">🗺️ מסלול היום המלא</a>
-                <a href="https://www.google.com/search?q=weather+Salzburg" target="_blank" rel="noopener">🌤️ מזג אוויר</a>
+                <a href="https://www.google.com/search?q=bergfex+Salzburg+wetter" target="_blank" rel="noopener">🌤️ תחזית הרים (bergfex)</a>
             </div>
             <div class="timeline">
                 <article class="event">
                     <span class="time">10:00</span>
                     <h3>✈️ האנגר 7 (Hangar-7) — רד בול</h3>
                     <p>לקינוח הטיול: מבנה הזכוכית העתידני של רד בול ליד שדה התעופה של זלצבורג (כ-50 דק' נסיעה). בפנים: מטוסי פעלולים היסטוריים, מסוקים, מכוניות פורמולה 1 נוצצות, חליפת הצניחה מהסטרטוספירה של פליקס באומגרטנר — וכולו חינם! יש גם בית קפה מעוצב (Carpe Diem) לעצירת קפה ועוגה.</p>
-                    <div class="tip">💡 כניסה חינם, פתוח 09:00–22:00. חנייה חינם במקום. שילוב מושלם של עיצוב, טכנולוגיה ומכונות — בן ה-16 יאהב.</div>
+                    <div class="tip">💡 כניסה חינם, פתוח 09:00–22:00. חנייה חינם במקום. שילוב מושלם של עיצוב, טכנולוגיה ומכונות — בת ה-16 תאהב.</div>
                     <div class="book book-no">🟢 אין צורך להזמין מראש — נכנסים חופשי, בלי כרטיס בכלל.</div>
                     <div class="slc slc-no">🎫 לא צריך כרטיס — הכניסה חינם לכולם ממילא. לכן היום הזה משובץ אחרי שתוקף הכרטיס הסתיים (25.9).</div>
                     <a class="map-btn" href="https://maps.google.com/?q=Hangar-7,+Salzburg+Airport" target="_blank" rel="noopener">
@@ -1631,7 +1821,7 @@
             </div>
             <div class="day-links">
                 <a href="https://www.google.com/maps/dir/Hofgut+Wagrain/Prater+Riesenrad+Wien/Vienna+International+Airport" target="_blank" rel="noopener">🗺️ מסלול היום המלא</a>
-                <a href="https://www.google.com/search?q=weather+Vienna" target="_blank" rel="noopener">🌤️ מזג אוויר</a>
+                <a href="https://www.google.com/search?q=bergfex+Wien+wetter" target="_blank" rel="noopener">🌤️ תחזית (bergfex)</a>
             </div>
             <div class="timeline">
                 <article class="event">
@@ -1647,7 +1837,7 @@
                 <article class="event">
                     <span class="time">12:15</span>
                     <h3>🎡 עצירה בפראטר (Prater) — פתוח גם בראשון!</h3>
-                    <p>במקום קניון סגור — פארק השעשועים ההיסטורי של וינה: הכניסה לפארק חינם ומשלמים רק על מתקנים. עלייה על הגלגל הענק המפורסם (Riesenrad, מ-1897) לנוף פרידה על וינה, מתקני אדרנלין לבן ה-16, רכבות ומתקנים לבן ה-9, ודוכני לאנגוס ונקניקיות לצהריים. כ-25 דק' מהפארק לשדה התעופה.</p>
+                    <p>במקום קניון סגור — פארק השעשועים ההיסטורי של וינה: הכניסה לפארק חינם ומשלמים רק על מתקנים. עלייה על הגלגל הענק המפורסם (Riesenrad, מ-1897) לנוף פרידה על וינה, מתקני אדרנלין לבת ה-16, רכבות ומתקנים לבן ה-9, ודוכני לאנגוס ונקניקיות לצהריים. כ-25 דק' מהפארק לשדה התעופה.</p>
                     <div class="tip">🧳 המזוודות איתכם? שתי אפשרויות: (1) הפתרון הבטוח — סעו קודם לשדה התעופה, הפקידו את המזוודות בשמירת החפצים (Left Luggage, טרמינל 1, כמה אירו למזוודה) וחזרו 20 דק' לפראטר בראש שקט. (2) הפשוט — חנו בחניון המקורה והמצולם Parkhaus Riesenradplatz שצמוד לגלגל הענק, השאירו הכל בתא מטען סגור ולא נראה מבחוץ, וקחו איתכם רק דרכונים ודברי ערך. אם מעדיפים לוותר על העצירה — גני שנברון הם עצירה קצרה ופתוחה יותר.</div>
                     <div class="tip">💡 אלטרנטיבות פתוחות בראשון: גני ארמון שנברון (חינם, עצירה יפה בכניסה לווינה) או המוזיאון הטכני (10:00–18:00, מעולה לילדים). קניות בראשון אין בשום מקום — כל הקמעונאות באוסטריה סגורה בחוק, כולל SCS ופריימרק. אם הטיסה תוזז ליום חול: Westfield SCS (Primark, Zara, TK Maxx, Media Markt ועוד 300 חנויות) נמצא בדיוק על הדרך — SCS-Straße, Vösendorf, ב'–ו' 09:00–19:00, שבת עד 18:00.</div>
                     <div class="book book-no">🟢 אין צורך להזמין מראש — הכניסה לפארק חינם ומשלמים על כל מתקן בנפרד במקום.</div>
@@ -1679,6 +1869,62 @@
                     <a class="map-btn web-btn" href="https://www.elal.com" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><use href="#icon-globe"/></svg>אל על — צ'ק-אין</a>
                     <a class="map-btn web-btn" href="https://www.flightstats.com/v2/flight-tracker/LY/364" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><use href="#icon-globe"/></svg>סטטוס טיסה LY364</a>
                     <a class="map-btn web-btn add-cal" href="#" data-cal="LY364">📅 הוסף ליומן</a>
+                </article>
+            </div>
+        </section>
+
+        <!-- ===== תוכנית גיבוי ===== -->
+        <section class="day" id="backup">
+            <div class="day-header">
+                <div class="day-num">☔</div>
+                <h2>תוכנית גיבוי — גשם, עייפות וימים גמישים</h2>
+            </div>
+            <div class="timeline">
+                <article class="event">
+                    <span class="time">הכלל</span>
+                    <h3>🔄 איך מחליפים יום בלי לשבור את הכרטיס</h3>
+                    <p>ימי הרכבלים והנוף (5 האצבעות, שטובנרקוגל, גרוסגלוקנר, סכרי קפרון) חסרי ערך בערפל ובגשם. כל הימים 20–25.9 נמצאים בתוך חלון ה-SalzburgerLand Card, ולכן אפשר להחליף ביניהם חופשי — בלי לפגוע בתקציב.</p>
+                    <div class="tip">💡 החוק הפשוט: בערב בודקים תחזית לפסגות. תחזית טובה = יום רכבל. תחזית גרועה = מושכים קדימה יום "עמיד לגשם": מכרות המלח (יום 8), זלצבורג (יום 3), האנגר 7 (יום 9), או ספא (יום 7).</div>
+                    <div class="tip">⚠️ שני ימים שאסור להזיז: 20.9 (סריקה ראשונה של הכרטיס — פותחת את חלון 6 הימים) ו-25.9 (היום האחרון בתוקף). וגם 26.9, שהוא ההזדמנות האחרונה לקניות לפני שביום ראשון הכול סגור.</div>
+                </article>
+                <article class="event">
+                    <span class="time">ליד המלון</span>
+                    <h3>🚡 גרפנברג ואגריין (Grafenbergbahn) — 5 דקות מהדלת</h3>
+                    <p>הגיבוי הכי נוח בטיול: גונדולה מוואגריין אל רמת הגרפנברג, ולמעלה עולם משחקים הררי לילדים — שביל האגדות "Sagenweg" עם דמויות עץ, אגם קטן, מתקנים ופעילויות מים, ומסעדת הרים. אין נסיעות, אין תכנון, אפשר לקפוץ לשעתיים ולחזור.</p>
+                    <div class="tip">💡 עונת הקיץ מסתיימת בדרך כלל בתחילת–אמצע אוקטובר, אז ספטמבר בסדר גמור — אבל ודאו שעות באתר המקומי. עם כרטיס האורח (Gästekarte) שתקבלו בצ'ק-אין יש לעיתים הנחה או עלייה חינם.</div>
+                    <a class="map-btn" href="https://maps.google.com/?q=Grafenbergbahn+Wagrain" target="_blank" rel="noopener">
+                        <svg viewBox="0 0 24 24"><use href="#icon-pin"/></svg>
+                        פתח ב-Google Maps
+                    </a>
+                    <a class="map-btn web-btn" href="https://www.wagrain-kleinarl.at" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><use href="#icon-globe"/></svg>אתר האזור</a>
+                </article>
+                <article class="event">
+                    <span class="time">ליד המלון</span>
+                    <h3>🎣 כפר ואגריין וסביבתו — ערב או חצי יום</h3>
+                    <p>הכפר עצמו נחמד לטיול רגלי קצר: כנסייה, נחל, גני שעשועים ומסלול הליכה קל לאורך העמק. באזור גם אגם ג'ניגן (Jägersee) ואגם טאפנקאר בעמק קליינארל — הליכות קלות סביב אגמים אלפיניים ירוקים, מושלמות ליום שאין בו כוח לנסיעות ארוכות.</p>
+                    <a class="map-btn" href="https://maps.google.com/?q=Jägersee+Kleinarl" target="_blank" rel="noopener">
+                        <svg viewBox="0 0 24 24"><use href="#icon-pin"/></svg>
+                        אגם ג'ניגן ב-Google Maps
+                    </a>
+                </article>
+                <article class="event">
+                    <span class="time">אופציה</span>
+                    <h3>🪂 Flying Fox XXL בלאוגנג — לשניהם!</h3>
+                    <p>אחת האומגות הארוכות בעולם: 1.6 ק"מ טיסה בשכיבה, עד 130 קמ"ש. <strong>הכשירות אצלנו:</strong> מגבלות המשקל הן 30–125 ק"ג וגובה מינימלי כ-1.40 מ' — הילד בן ה-9.5 עומד בשתי הדרישות, אז שניהם יכולים לטוס יחד (הכבל כפול — שניים בו-זמנית). <strong>איפה לשבץ:</strong> לאוגנג היא כ-30–35 דק' מקפרון — כלומר הכי הגיוני לשלב אותה בבוקר של יום 7 (לפני הסכרים) או במקום המגלשה, ולא בסוף יום גרוסגלוקנר הארוך.</p>
+                    <div class="tip">⚠️ יש אתרים שמפרסמים גם גיל מינימום 10. בהזמנה ציינו גיל 9.5 + גובה ומשקל, וודאו טלפונית שהוא מתקבל — עדיף לגלות עכשיו ולא בעמדת ההמראה. ילדים מתחת לגיל 14 חייבים ליווי מבוגר.</div>
+                    <div class="book book-yes">🔴 חובה להזמין מראש! מספר המקומות מוגבל — שריינו באתר לפני הטיסה לאוסטריה.</div>
+                    <div class="slc slc-no">🎫 לא כלול בכרטיס — תשלום נפרד.</div>
+                    <a class="map-btn" href="https://maps.google.com/?q=Flying+Fox+XXL+Leogang" target="_blank" rel="noopener">
+                        <svg viewBox="0 0 24 24"><use href="#icon-pin"/></svg>
+                        פתח ב-Google Maps
+                    </a>
+                    <a class="map-btn web-btn" href="https://www.saalfelden-leogang.com" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><use href="#icon-globe"/></svg>אתר רשמי</a>
+                </article>
+                <article class="event">
+                    <span class="time">גשם</span>
+                    <h3>🌧️ חלופות מקורות — כשיורד גשם כל היום</h3>
+                    <p><strong>קרוב למלון:</strong> בריכה וספא ב-Hofgut (חינם לאורחים) | בריכה מקורה ציבורית באזור פונגאו | קניון KARO בבישופסהופן.<br><strong>עד שעה נסיעה:</strong> מכרות המלח בהליין (בתוך ההר — גשם לא משנה) | מוזיאון הקלטים בהליין | ספא טאוארן בקפרון (יום שלם אפשרי).<br><strong>זלצבורג (50 דק'):</strong> מוזיאון הטבע Haus der Natur (יום שלם לילדים), מוזיאון הצעצועים, DomQuartier, מוזיאון זלצבורג, והאנגר 7 (חינם, פתוח 09:00–22:00).</p>
+                    <div class="tip">💡 כל אלה למעט הספא, הבריכות והאנגר 7 כלולים ב-SalzburgerLand Card או ב-Salzburg Card — כך שיום גשום לא עולה כסף נוסף.</div>
                 </article>
             </div>
         </section>
@@ -1716,7 +1962,7 @@
                     <label class="done-check"><input type="checkbox" data-key="food-3" aria-label="סמן כבוצע"><span>✔</span></label>
                     <span class="time">בישופסהופן</span>
                     <h3>🍔 Beefman's Restaurant</h3>
-                    <p>ה-מקום לבן ה-16: עיצוב מודרני, המבורגרים מושחתים, בשרים וקערות (Bowls) בסגנון אמריקאי/מודרני.</p>
+                    <p>ה-מקום לבת ה-16: עיצוב מודרני, המבורגרים מושחתים, בשרים וקערות (Bowls) בסגנון אמריקאי/מודרני.</p>
                     <div class="diet">🥗 צמחוני: יש בורגר צמחוני וקערות ירקות. 🥑 קיטו: מהמתאימות בטיול — המבורגר בלי לחמנייה עם סלט, סטייקים, או Bowl בלי דגנים.</div>
                     <a class="map-btn" href="https://maps.google.com/?q=Beefman's+Restaurant+Bischofshofen" target="_blank" rel="noopener">
                         <svg viewBox="0 0 24 24"><use href="#icon-pin"/></svg>
@@ -1749,7 +1995,7 @@
                     <label class="done-check"><input type="checkbox" data-key="food-6" aria-label="סמן כבוצע"><span>✔</span></label>
                     <span class="time">באד גאסטיין</span>
                     <h3>🍔 Silver Bullet</h3>
-                    <p>בר-מסעדה עם וייב בינלאומי תוסס — מוזיקה, אווירת חו"ל, תפריט המבורגרים ופיצות. בן ה-16 יעריך את האווירה.</p>
+                    <p>בר-מסעדה עם וייב בינלאומי תוסס — מוזיקה, אווירת חו"ל, תפריט המבורגרים ופיצות. בת ה-16 תעריך את האווירה.</p>
                     <div class="diet">🥗 צמחוני: פיצות צמחוניות ובד"כ גם בורגר צמחוני. 🥑 קיטו: המבורגר בלי לחמנייה + סלט או כנפיים — רק דלגו על הפיצה והצ'יפס.</div>
                     <a class="map-btn" href="https://maps.google.com/?q=Silver+Bullet+Bar+Bad+Gastein" target="_blank" rel="noopener">
                         <svg viewBox="0 0 24 24"><use href="#icon-pin"/></svg>
@@ -1837,6 +2083,92 @@
             </div>
         </section>
 
+        <!-- ===== צ'קליסט אריזה ===== -->
+        <section class="day" id="packing">
+            <div class="day-header">
+                <div class="day-num">🎒</div>
+                <h2>צ'קליסט אריזה — סמנו תוך כדי</h2>
+            </div>
+            <div class="pack-grid">
+                <div class="pack-cat">📄 מסמכים וכסף</div>
+                <label class="pack-item"><input type="checkbox" data-key="pk-01"><span>דרכונים (תוקף 6 חודשים+)</span></label>
+                <label class="pack-item"><input type="checkbox" data-key="pk-02"><span>רישיון נהיגה + IDP בינלאומי</span></label>
+                <label class="pack-item"><input type="checkbox" data-key="pk-03"><span>כרטיסי טיסה / אישור אל על</span></label>
+                <label class="pack-item"><input type="checkbox" data-key="pk-04"><span>אישור מלון + השכרת רכב</span></label>
+                <label class="pack-item"><input type="checkbox" data-key="pk-05"><span>SalzburgerLand Card (QR)</span></label>
+                <label class="pack-item"><input type="checkbox" data-key="pk-06"><span>פוליסת ביטוח נסיעות</span></label>
+                <label class="pack-item"><input type="checkbox" data-key="pk-07"><span>מזומן 200–300€</span></label>
+                <label class="pack-item"><input type="checkbox" data-key="pk-08"><span>2 כרטיסי אשראי (בנפרד)</span></label>
+
+                <div class="pack-cat">🧥 ביגוד — שכבות!</div>
+                <label class="pack-item"><input type="checkbox" data-key="pk-10"><span>מעיל חורף לכל אחד (מערת הקרח!)</span></label>
+                <label class="pack-item"><input type="checkbox" data-key="pk-11"><span>כובע + כפפות ×4</span></label>
+                <label class="pack-item"><input type="checkbox" data-key="pk-12"><span>מעיל גשם / שכמייה</span></label>
+                <label class="pack-item"><input type="checkbox" data-key="pk-13"><span>פליז / סווטשירט ×2 לאדם</span></label>
+                <label class="pack-item"><input type="checkbox" data-key="pk-14"><span>נעלי הליכה סגורות</span></label>
+                <label class="pack-item"><input type="checkbox" data-key="pk-15"><span>גרביים חמות</span></label>
+                <label class="pack-item"><input type="checkbox" data-key="pk-16"><span>בגדי ים + כפכפים (ספא)</span></label>
+                <label class="pack-item"><input type="checkbox" data-key="pk-17"><span>בגדים להחלפה לילד (הלברון!)</span></label>
+
+                <div class="pack-cat">🔌 אלקטרוניקה</div>
+                <label class="pack-item"><input type="checkbox" data-key="pk-20"><span>מטענים + כבלים</span></label>
+                <label class="pack-item"><input type="checkbox" data-key="pk-21"><span>מתאם שקע אירופאי (Type F)</span></label>
+                <label class="pack-item"><input type="checkbox" data-key="pk-22"><span>סוללה ניידת (Power Bank)</span></label>
+                <label class="pack-item"><input type="checkbox" data-key="pk-23"><span>מחזיק טלפון לרכב</span></label>
+                <label class="pack-item"><input type="checkbox" data-key="pk-24"><span>eSIM / SIM מקומי מוכן</span></label>
+                <label class="pack-item"><input type="checkbox" data-key="pk-25"><span>מצלמה + כרטיס זיכרון פנוי</span></label>
+
+                <div class="pack-cat">💊 בריאות ושונות</div>
+                <label class="pack-item"><input type="checkbox" data-key="pk-30"><span>תרופות אישיות + מרשמים</span></label>
+                <label class="pack-item"><input type="checkbox" data-key="pk-31"><span>משככי כאבים, פלסטרים, נגד בחילה</span></label>
+                <label class="pack-item"><input type="checkbox" data-key="pk-32"><span>קרם הגנה (השמש בגובה חזקה)</span></label>
+                <label class="pack-item"><input type="checkbox" data-key="pk-33"><span>בקבוקי מים רב-פעמיים</span></label>
+                <label class="pack-item"><input type="checkbox" data-key="pk-34"><span>תיק גב ליום טיול</span></label>
+                <label class="pack-item"><input type="checkbox" data-key="pk-35"><span>חטיפים לדרך מהארץ</span></label>
+                <label class="pack-item"><input type="checkbox" data-key="pk-36"><span>שקיות לכביסה מלוכלכת</span></label>
+
+                <div class="pack-cat">🏠 לפני שיוצאים מהבית</div>
+                <label class="pack-item"><input type="checkbox" data-key="pk-40"><span>צ'ק-אין אונליין (24ש' לפני)</span></label>
+                <label class="pack-item"><input type="checkbox" data-key="pk-41"><span>הסעה לנתב"ג הוזמנה (04:40!)</span></label>
+                <label class="pack-item"><input type="checkbox" data-key="pk-42"><span>הזמנת סיור במכרות המלח</span></label>
+                <label class="pack-item"><input type="checkbox" data-key="pk-43"><span>עדכון הבנק על נסיעה לחו"ל</span></label>
+                <label class="pack-item"><input type="checkbox" data-key="pk-44"><span>הורדת מפות אופליין ב-Google Maps</span></label>
+                <label class="pack-item"><input type="checkbox" data-key="pk-45"><span>איסוף מנתב"ג ב-02:00 סודר</span></label>
+            </div>
+        </section>
+
+        <!-- ===== מילון גרמנית ===== -->
+        <section class="day" id="phrases">
+            <div class="day-header">
+                <div class="day-num">🗣️</div>
+                <h2>מילון גרמנית לטיול</h2>
+            </div>
+            <p style="margin-bottom:18px;color:var(--text-soft)">באוסטריה מדברים אנגלית טוב, אבל מילה בגרמנית פותחת חיוכים. ההגייה מופיעה בסוגריים.</p>
+            <div class="phrase-row"><span class="ph-he">שלום (בוקר)</span><span class="ph-de">Grüß Gott</span><span class="ph-say">(גְרִיס גוֹט) — הברכה האוסטרית הקלאסית</span></div>
+            <div class="phrase-row"><span class="ph-he">היי / ביי</span><span class="ph-de">Servus</span><span class="ph-say">(סֶרְווּס) — לא רשמי, לכל שעה</span></div>
+            <div class="phrase-row"><span class="ph-he">להתראות</span><span class="ph-de">Auf Wiedersehen</span><span class="ph-say">(אַאוּף וִידֶרְזֵיהֶן)</span></div>
+            <div class="phrase-row"><span class="ph-he">תודה</span><span class="ph-de">Danke schön</span><span class="ph-say">(דַנְקֶה שֵׁן)</span></div>
+            <div class="phrase-row"><span class="ph-he">בבקשה / סליחה</span><span class="ph-de">Bitte / Entschuldigung</span><span class="ph-say">(בִּיטֶה / אֶנְטְשׁוּלְדִיגוּנְג)</span></div>
+            <div class="phrase-row"><span class="ph-he">כן / לא</span><span class="ph-de">Ja / Nein</span><span class="ph-say">(יָא / נַיְין)</span></div>
+            <div class="phrase-row"><span class="ph-he">אתה מדבר אנגלית?</span><span class="ph-de">Sprechen Sie Englisch?</span><span class="ph-say">(שְׁפְּרֶכֶן זִי אֶנְגְלִישׁ)</span></div>
+            <div class="phrase-row"><span class="ph-he">כמה זה עולה?</span><span class="ph-de">Was kostet das?</span><span class="ph-say">(וָוס קוֹסְטֶט דָאס)</span></div>
+            <div class="phrase-row"><span class="ph-he">החשבון בבקשה</span><span class="ph-de">Die Rechnung, bitte</span><span class="ph-say">(די רֶכְנוּנְג, בִּיטֶה)</span></div>
+            <div class="phrase-row"><span class="ph-he">שולחן ל-4</span><span class="ph-de">Ein Tisch für vier</span><span class="ph-say">(אַיין טִישׁ פִיר פִיר)</span></div>
+            <div class="phrase-row"><span class="ph-he">מים / מים מהברז</span><span class="ph-de">Wasser / Leitungswasser</span><span class="ph-say">(וָואסֶר / לַייטוּנְגְסְוָואסֶר)</span></div>
+            <div class="phrase-row"><span class="ph-he">בלי בשר / צמחוני</span><span class="ph-de">Ohne Fleisch / Vegetarisch</span><span class="ph-say">(אוֹנֶה פְלַיישׁ / וֶגֶטָארִישׁ)</span></div>
+            <div class="phrase-row"><span class="ph-he">יש בזה אגוזים?</span><span class="ph-de">Sind da Nüsse drin?</span><span class="ph-say">(זִינְד דָא נִיסֶה דְרִין)</span></div>
+            <div class="phrase-row"><span class="ph-he">איפה השירותים?</span><span class="ph-de">Wo ist die Toilette?</span><span class="ph-say">(ווֹ אִיסְט די טוֹאָלֶטֶה)</span></div>
+            <div class="phrase-row"><span class="ph-he">כרטיסים</span><span class="ph-de">Eintrittskarten</span><span class="ph-say">(אַיינְטְרִיטְסְקַרְטֶן)</span></div>
+            <div class="phrase-row"><span class="ph-he">2 מבוגרים, 2 ילדים</span><span class="ph-de">Zwei Erwachsene, zwei Kinder</span><span class="ph-say">(צְוַוי אֶרְוַואקְסֶנֶה, צְוַוי קִינְדֶר)</span></div>
+            <div class="phrase-row"><span class="ph-he">פתוח / סגור</span><span class="ph-de">Geöffnet / Geschlossen</span><span class="ph-say">(גֶאֶפְנֶט / גֶשְׁלוֹסֶן)</span></div>
+            <div class="phrase-row"><span class="ph-he">רכבל</span><span class="ph-de">Seilbahn</span><span class="ph-say">(זַיילְבָּאן)</span></div>
+            <div class="phrase-row"><span class="ph-he">חנייה</span><span class="ph-de">Parkplatz</span><span class="ph-say">(פַּארְקְפְּלַאץ)</span></div>
+            <div class="phrase-row"><span class="ph-he">תחנת דלק</span><span class="ph-de">Tankstelle</span><span class="ph-say">(טַאנְקְשְׁטֶלֶה)</span></div>
+            <div class="phrase-row"><span class="ph-he">בית מרקחת</span><span class="ph-de">Apotheke</span><span class="ph-say">(אַפּוֹטֵקֶה)</span></div>
+            <div class="phrase-row"><span class="ph-he">עזרה! / חירום</span><span class="ph-de">Hilfe! / Notfall</span><span class="ph-say">(הִילְפֶה / נוֹטְפַאל) — חירום 112</span></div>
+            <div class="phrase-row"><span class="ph-he">לחיים!</span><span class="ph-de">Prost!</span><span class="ph-say">(פְּרוֹסְט)</span></div>
+        </section>
+
         <!-- ===== טיפים ===== -->
         <section class="day" id="tips">
             <div class="day-header">
@@ -1859,8 +2191,9 @@
                     <label class="done-check"><input type="checkbox" data-key="tip-1" aria-label="סמן כבוצע"><span>✔</span></label>
                     <span class="time">חובה</span>
                     <h3>🎫 כרטיס SalzburgerLand Card — 6 ימים (20–25.9)</h3>
-                    <p>טיפ הזהב של הטיול: רכשו אונליין מראש את גרסת 6 הימים — 103€ למבוגר, 52€ לילד (מחירי עונת 2026; סה"כ למשפחה שלכם: 310€). הכרטיס מקנה כניסה חד-פעמית חינם לכ-180 אטרקציות, ומופעל רק בסריקה הראשונה באטרקציה — אפשר להזמין כבר עכשיו. חשוב: תקף ל-6 ימים רצופים מהסריקה הראשונה — אצלנו: סורקים לראשונה ב-20.9 והוא מכסה עד 25.9 כולל.</p>
-                    <div class="tip">💡 התוכנית מסודרת כך שכל אטרקציות הכרטיס בחלון 20–25.9: זלצבורג (ג'וקר Salzburg Card), מערת הקרח + הוהנוורפן, ליכטנשטיין + רכבל גאסטיין, גרוסגלוקנר (ג'וקר), סכרי קפרון, ומכרות המלח + גולינג. הימים 19.9 (האלשטאט — לא משתתפת בכרטיס) ו-26.9 (האנגר 7 חינם + קניות) לא זקוקים לכרטיס. אין מבצעי הנחה על הכרטיס עצמו — המחיר אחיד בכל ערוצי המכירה; בדקו ב-FAQ את סעיף ה-Family Bonus.</div>
+                    <p>טיפ הזהב של הטיול: רכשו אונליין מראש את גרסת 6 הימים — 103€ למבוגר, 52€ לילד (מחירון רשמי 2026). הכרטיס מקנה כניסה חד-פעמית חינם לכ-180 אטרקציות, ומופעל רק בסריקה הראשונה באטרקציה — אפשר להזמין כבר עכשיו. חשוב: תקף ל-6 ימים רצופים מהסריקה הראשונה — אצלנו: סורקים לראשונה ב-20.9 והוא מכסה עד 25.9 כולל. עונת 2026 נפתחת 1.5 ונסגרת 1.11.</p>
+                    <div class="tip">💰 שימו לב לחישוב הנכון: מחיר הילד תקף מגיל 4 ועד יום לפני יום הולדת 16 — כלומר בת ה-16 שלנו משלמת מחיר מבוגר. סה"כ למשפחה: 3×103€ + 52€ = <strong>361€</strong> (ולא 310€). הטבת Family Bonus — הכרטיס חינם מהילד השלישי ואילך (גילאי 4–15) — לא רלוונטית אצלנו.</div>
+                    <div class="tip">💡 התוכנית מסודרת כך שכל אטרקציות הכרטיס בחלון 20–25.9: זלצבורג (ג'וקר Salzburg Card), מערת הקרח + הוהנוורפן, ליכטנשטיין + רכבל גאסטיין, גרוסגלוקנר (ג'וקר), סכרי קפרון, ומכרות המלח + גולינג. הימים 19.9 (האלשטאט — לא משתתפת בכרטיס) ו-26.9 (האנגר 7 חינם + קניות) לא זקוקים לכרטיס. אין מבצעי הנחה על הכרטיס עצמו — המחיר אחיד בכל ערוצי המכירה.</div>
                     <a class="map-btn web-btn" href="https://www.salzburgerland.com/en/buy-salzburgerland-card/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><use href="#icon-globe"/></svg>רכישה אונליין</a>
                     <a class="map-btn web-btn" href="https://www.salzburgerland.com/en/all-attractions-at-a-glance/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><use href="#icon-globe"/></svg>כל האטרקציות</a>
                     <a class="map-btn web-btn" href="https://www.salzburgerland.com/en/salzburgerland-card-faqs/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><use href="#icon-globe"/></svg>FAQ והטבות</a>
@@ -1869,14 +2202,14 @@
                     <label class="done-check"><input type="checkbox" data-key="tip-2" aria-label="סמן כבוצע"><span>✔</span></label>
                     <span class="time">לפני</span>
                     <h3>📅 הזמנות מראש — צ'קליסט</h3>
-                    <p>סימנו ליד כל אטרקציה בתוכנית אם צריך להזמין מראש. סיכום: 🔴 חובה — שעת סיור במכרות המלח בהליין + Flying Fox XXL (אם הולכים). 🟡 מומלץ — רכבל הדאכשטיין (5 האצבעות) לשבת וסכרי קפרון. 🟢 כל השאר — קונים בכניסה. וגם: רישיון נהיגה בינלאומי (IDP) — פרטים בטיפ הנהיגה למטה.</p>
+                    <p>סימנו ליד כל אטרקציה בתוכנית אם צריך להזמין מראש. סיכום: 🔴 חובה — שעת סיור במכרות המלח בהליין. 🟡 מומלץ — רכבל הדאכשטיין (5 האצבעות) לשבת, סכרי קפרון, ומערת הקרח (הזמנה אונליין חוסכת תור וגם 4€ לכרטיס). 🟢 כל השאר — קונים בכניסה. וגם: רישיון נהיגה בינלאומי (IDP) — פרטים בטיפ הנהיגה למטה. אם מחליטים על Flying Fox XXL (בסעיף הגיבוי) — גם הוא 🔴 חובה מראש.</p>
                 </article>
                 <article class="event">
                     <label class="done-check"><input type="checkbox" data-key="tip-9" aria-label="סמן כבוצע"><span>✔</span></label>
                     <span class="time">טיסות</span>
                     <h3>✈️ הטיסות שלנו — אל על</h3>
                     <p><strong>הלוך:</strong> LY361 | שישי 18.9 | נתב"ג T3 07:40 ← וינה T3 כ-10:20. <strong>חזור:</strong> LY364 | ראשון 27.9 | וינה T3 21:35 ← נתב"ג T3 02:00 (לפנות בוקר 28.9). שתיהן בואינג 737-800, כ-3.5 שעות טיסה. אוסטריה שעה אחורה מישראל.</p>
-                    <div class="tip">💡 צ'ק-אין אונליין 24 שעות לפני כל טיסה + בדיקת סטטוס יום לפני (שעות עשויות להשתנות). כבודה: בד"כ טרולי 8 ק"ג + מזוודה 23 ק"ג לנוסע — ודאו בכרטוס. הגעה לשדה: 3 שעות לפני ההמראה (נתב"ג 04:40 / וינה 18:30).</div></div>
+                    <div class="tip">💡 צ'ק-אין אונליין 24 שעות לפני כל טיסה + בדיקת סטטוס יום לפני (שעות עשויות להשתנות). כבודה: בד"כ טרולי 8 ק"ג + מזוודה 23 ק"ג לנוסע — ודאו בכרטוס. הגעה לשדה: 3 שעות לפני ההמראה (נתב"ג 04:40 / וינה 18:30).</div>
                     <a class="map-btn web-btn" href="https://www.elal.com" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><use href="#icon-globe"/></svg>אל על</a>
                     <a class="map-btn web-btn add-cal" href="#" data-cal="LY361">📅 LY361 ליומן</a>
                     <a class="map-btn web-btn add-cal" href="#" data-cal="LY364">📅 LY364 ליומן</a>
@@ -1983,7 +2316,7 @@
             var KEY = 'austria2026-checks';
             var saved = {};
             try { saved = JSON.parse(localStorage.getItem(KEY)) || {}; } catch (e) { }
-            document.querySelectorAll('.done-check input').forEach(function (cb) {
+            document.querySelectorAll('input[type="checkbox"][data-key]').forEach(function (cb) {
                 cb.checked = !!saved[cb.dataset.key];
                 cb.addEventListener('change', function () {
                     saved[cb.dataset.key] = cb.checked;
@@ -2105,6 +2438,83 @@
             var nav = document.querySelector('header .date-nav');
             nav.parentNode.insertBefore(wrap, nav);
             requestAnimationFrame(function () { wrap.querySelector('.tp-fill').style.width = (dayNum * 10) + '%'; });
+        })();
+
+        // מצב לילה — הערכה הארחונה נשמרת מקומית
+        (function () {
+            var btn = document.getElementById('themeToggle');
+            var meta = document.querySelector('meta[name="theme-color"]');
+            function paint() {
+                var dark = document.documentElement.getAttribute('data-theme') === 'dark';
+                btn.textContent = dark ? '☀️' : '🌙';
+                if (meta) meta.setAttribute('content', dark ? '#101c17' : '#14342b');
+            }
+            paint();
+            btn.addEventListener('click', function () {
+                var next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+                document.documentElement.setAttribute('data-theme', next);
+                try { localStorage.setItem('austria2026-theme', next); } catch (e) { }
+                paint();
+            });
+        })();
+
+        // כפתור Waze ליד כל כפתור Google Maps — נבנה אוטומטית מהיעד שבקישור
+        (function () {
+            document.querySelectorAll('a.map-btn:not(.web-btn)').forEach(function (a) {
+                var m = /[?&]q=([^&]+)/.exec(a.getAttribute('href') || '');
+                if (!m) return;
+                var waze = document.createElement('a');
+                waze.className = 'map-btn';
+                waze.target = '_blank';
+                waze.rel = 'noopener';
+                waze.href = 'https://www.waze.com/ul?q=' + m[1] + '&navigate=yes';
+                waze.textContent = '🚗 Waze';
+                a.insertAdjacentElement('afterend', waze);
+            });
+        })();
+
+        // חיפוש חוצה התיק
+        (function () {
+            var input = document.getElementById('tripSearch');
+            var counter = document.getElementById('searchCount');
+            if (!input) return;
+            var cards = Array.prototype.slice.call(document.querySelectorAll('.event, .shop-card, .phrase-row, .pack-item'));
+            var sections = Array.prototype.slice.call(document.querySelectorAll('section.day'));
+            var timer;
+            function run() {
+                var q = input.value.trim().toLowerCase();
+                if (!q) {
+                    cards.forEach(function (c) { c.classList.remove('hidden-by-search'); });
+                    sections.forEach(function (s) { s.classList.remove('hidden-by-search'); });
+                    counter.textContent = '';
+                    return;
+                }
+                var hits = 0;
+                cards.forEach(function (c) {
+                    var match = (c.textContent || '').toLowerCase().indexOf(q) > -1;
+                    c.classList.toggle('hidden-by-search', !match);
+                    if (match) hits++;
+                });
+                sections.forEach(function (s) {
+                    var visible = s.querySelector('.event:not(.hidden-by-search), .shop-card:not(.hidden-by-search), .phrase-row:not(.hidden-by-search), .pack-item:not(.hidden-by-search)');
+                    s.classList.toggle('hidden-by-search', !visible);
+                });
+                counter.textContent = hits ? hits + ' תוצאות' : 'לא נמצאו תוצאות';
+            }
+            input.addEventListener('input', function () {
+                clearTimeout(timer);
+                timer = setTimeout(run, 150);
+            });
+        })();
+
+        // גלילה אוטומטית ליום הנוכחי בפתיחה (רק אם לא הגענו לעוגן ספציפי)
+        (function () {
+            if (location.hash) return;
+            var todaySection = document.querySelector('section.day.is-today');
+            if (!todaySection) return;
+            requestAnimationFrame(function () {
+                todaySection.scrollIntoView({ block: 'start', behavior: 'smooth' });
+            });
         })();
 
         // מצב אופליין (PWA) — נרשם רק כשמוגש משרת http/https
