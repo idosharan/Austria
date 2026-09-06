@@ -33,1177 +33,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;900&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --navy: #14342b;
-            --navy-light: #2d6a4f;
-            --gold: #d4af37;
-            --gold-light: #e8c96a;
-            --cream: #f5f7f2;
-            --white: #ffffff;
-            --text: #2b2b2b;
-            --text-soft: #5c6470;
-            --shadow: rgba(20, 52, 43, 0.08);
-            --radius: 22px;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Heebo', sans-serif;
-            background: linear-gradient(160deg, #eef5f0 0%, #f5f7f2 100%);
-            color: var(--text);
-            line-height: 1.6;
-            min-height: 100vh;
-            padding-bottom: 60px;
-        }
-
-        /* ===== Header ===== */
-        header {
-            position: relative;
-            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
-            color: var(--white);
-            text-align: center;
-            padding: 70px 20px 90px;
-            overflow: hidden;
-        }
-
-        header::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background:
-                radial-gradient(600px 320px at 18% -10%, rgba(212, 175, 55, 0.22), transparent 60%),
-                radial-gradient(520px 280px at 85% 15%, rgba(120, 200, 160, 0.25), transparent 60%);
-            pointer-events: none;
-        }
-
-        header::after {
-            content: "";
-            position: absolute;
-            bottom: -1px;
-            left: 0;
-            width: 100%;
-            height: 60px;
-            background: linear-gradient(160deg, #eef5f0 0%, #f5f7f2 100%);
-            clip-path: polygon(0 100%, 100% 100%, 100% 0);
-        }
-
-        header .badge {
-            display: inline-block;
-            font-size: 0.85rem;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            color: var(--gold-light);
-            border: 1px solid rgba(212, 175, 55, 0.5);
-            border-radius: 50px;
-            padding: 6px 18px;
-            margin-bottom: 22px;
-        }
-
-        header h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(2.2rem, 6vw, 4rem);
-            font-weight: 900;
-            line-height: 1.1;
-            margin-bottom: 16px;
-            background: linear-gradient(120deg, #ffffff 35%, var(--gold-light) 100%);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-
-        header .dates {
-            font-size: clamp(1rem, 2.5vw, 1.4rem);
-            font-weight: 300;
-            color: rgba(255, 255, 255, 0.85);
-            direction: ltr;
-        }
-
-        header .subtitle {
-            font-size: clamp(0.95rem, 2.2vw, 1.15rem);
-            font-weight: 300;
-            color: rgba(255, 255, 255, 0.75);
-            margin-top: 6px;
-        }
-
-        header .gold-line {
-            width: 80px;
-            height: 4px;
-            background: var(--gold);
-            border-radius: 4px;
-            margin: 26px auto 0;
-        }
-
-        /* ===== Install Button ===== */
-        #installBtn {
-            position: relative;
-            z-index: 2;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            margin-top: 26px;
-            padding: 12px 28px;
-            font-family: 'Heebo', sans-serif;
-            font-size: 1.05rem;
-            font-weight: 700;
-            color: var(--navy);
-            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
-            border: none;
-            border-radius: 50px;
-            cursor: pointer;
-            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.4);
-            transition: transform 0.25s ease, box-shadow 0.25s ease;
-        }
-
-        #installBtn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 26px rgba(212, 175, 55, 0.55);
-        }
-
-        #installBtn[hidden] {
-            display: none;
-        }
-
-        #installHint {
-            display: none;
-            position: relative;
-            z-index: 2;
-            max-width: 460px;
-            margin: 14px auto 0;
-            padding: 10px 16px;
-            font-size: 0.92rem;
-            line-height: 1.5;
-            color: rgba(255, 255, 255, 0.95);
-            background: rgba(0, 0, 0, 0.28);
-            border: 1px dashed rgba(212, 175, 55, 0.6);
-            border-radius: 12px;
-        }
-
-        #installHint.show {
-            display: block;
-        }
-
-        /* ===== Date Navigation ===== */
-        .date-nav {
-            position: relative;
-            z-index: 3;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 10px;
-            margin: 30px auto 0;
-            max-width: 720px;
-        }
-
-        .date-nav a {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-width: 70px;
-            padding: 10px 12px;
-            text-decoration: none;
-            color: var(--white);
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(212, 175, 55, 0.45);
-            border-radius: 14px;
-            backdrop-filter: blur(6px);
-            -webkit-backdrop-filter: blur(6px);
-            transition: transform 0.25s ease, background 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
-        }
-
-        .date-nav a .dn-day {
-            font-size: 0.8rem;
-            font-weight: 500;
-            color: rgba(255, 255, 255, 0.8);
-        }
-
-        .date-nav a .dn-date {
-            font-size: 1.1rem;
-            font-weight: 900;
-            color: var(--gold-light);
-            direction: ltr;
-            line-height: 1.2;
-        }
-
-        .date-nav a:hover,
-        .date-nav a:focus-visible {
-            transform: translateY(-4px);
-            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
-            border-color: var(--gold);
-            box-shadow: 0 10px 22px rgba(212, 175, 55, 0.4);
-        }
-
-        .date-nav a:hover .dn-day,
-        .date-nav a:hover .dn-date,
-        .date-nav a:focus-visible .dn-day,
-        .date-nav a:focus-visible .dn-date {
-            color: var(--navy);
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        .day {
-            scroll-margin-top: 20px;
-        }
-
-        /* ===== Layout ===== */
-        .container {
-            max-width: 860px;
-            margin: -40px auto 0;
-            padding: 0 18px;
-            position: relative;
-            z-index: 2;
-        }
-
-        /* ===== Day Section ===== */
-        .day {
-            margin-bottom: 46px;
-        }
-
-        .day-header {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            margin-bottom: 24px;
-        }
-
-        .day-header .day-num {
-            flex-shrink: 0;
-            width: 54px;
-            height: 54px;
-            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
-            color: var(--navy);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 900;
-            font-size: 1.3rem;
-            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.35);
-            cursor: pointer;
-            transition: transform 0.25s ease, box-shadow 0.25s ease;
-        }
-
-        .day-header .day-num:hover {
-            transform: scale(1.1);
-            box-shadow: 0 10px 26px rgba(212, 175, 55, 0.55);
-        }
-
-        .day-header h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(1.3rem, 4vw, 1.8rem);
-            color: var(--navy);
-        }
-
-        /* ===== Timeline ===== */
-        .timeline {
-            position: relative;
-            padding-right: 26px;
-            border-right: 2px dashed rgba(45, 106, 79, 0.3);
-            margin-right: 26px;
-        }
-
-        /* ===== Event Card ===== */
-        .event {
-            position: relative;
-            background: var(--white);
-            border: 1px solid rgba(20, 52, 43, 0.07);
-            border-radius: var(--radius);
-            padding: 22px 24px;
-            margin-bottom: 22px;
-            box-shadow: 0 8px 24px var(--shadow);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border-right: 5px solid var(--gold);
-        }
-
-        .event::before {
-            content: "";
-            position: absolute;
-            top: 28px;
-            right: -36px;
-            width: 16px;
-            height: 16px;
-            background: var(--white);
-            border: 4px solid var(--gold);
-            border-radius: 50%;
-            box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.18);
-        }
-
-        .event:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 16px 36px rgba(20, 52, 43, 0.16);
-        }
-
-        .event .time {
-            display: inline-block;
-            background: var(--navy);
-            color: var(--white);
-            font-weight: 700;
-            font-size: 0.95rem;
-            padding: 4px 14px;
-            border-radius: 50px;
-            margin-bottom: 12px;
-            direction: ltr;
-        }
-
-        .event h3 {
-            font-size: 1.25rem;
-            color: var(--navy);
-            margin-bottom: 8px;
-        }
-
-        .event p {
-            color: var(--text-soft);
-            font-size: 1rem;
-            margin-bottom: 16px;
-        }
-
-        .event p:last-of-type {
-            margin-bottom: 16px;
-        }
-
-        .event .tip {
-            background: rgba(212, 175, 55, 0.12);
-            border-right: 3px solid var(--gold);
-            border-radius: 10px;
-            padding: 10px 14px;
-            font-size: 0.95rem;
-            color: var(--text);
-            margin-bottom: 16px;
-        }
-
-        /* ===== SalzburgerLand Card Status ===== */
-        .event .slc {
-            border-radius: 10px;
-            padding: 9px 14px;
-            font-size: 0.92rem;
-            margin-bottom: 16px;
-        }
-
-        .slc-yes {
-            background: rgba(45, 106, 79, 0.1);
-            border-right: 3px solid var(--navy-light);
-            color: var(--navy);
-        }
-
-        .slc-no {
-            background: rgba(178, 59, 59, 0.08);
-            border-right: 3px solid #b23b3b;
-            color: #7c2d2d;
-        }
-
-        /* ===== Booking Status ===== */
-        .event .book {
-            border-radius: 10px;
-            padding: 9px 14px;
-            font-size: 0.92rem;
-            margin-bottom: 16px;
-        }
-
-        .book-yes {
-            background: rgba(178, 59, 59, 0.14);
-            border-right: 3px solid #b23b3b;
-            color: #7c2d2d;
-            font-weight: 500;
-        }
-
-        .book-rec {
-            background: rgba(217, 144, 31, 0.14);
-            border-right: 3px solid #d9901f;
-            color: #7a4d08;
-        }
-
-        .book-no {
-            background: rgba(45, 106, 79, 0.1);
-            border-right: 3px solid var(--navy-light);
-            color: var(--navy);
-        }
-
-        /* ===== Diet Info (restaurants) ===== */
-        .event .diet {
-            background: rgba(120, 200, 160, 0.14);
-            border-right: 3px solid var(--navy-light);
-            border-radius: 10px;
-            padding: 10px 14px;
-            font-size: 0.95rem;
-            color: var(--text);
-            margin-bottom: 16px;
-        }
-
-        /* ===== Map Button ===== */
-        .map-btn {
-            display: inline-flex;
-            align-items: center;
-            /* inline-flex מיושר לפי baseline של הפריט הראשון — לכן כפתור עם אייקון וכפתור בלעדיו לא ישבו באותו גובה */
-            vertical-align: middle;
-            gap: 8px;
-            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
-            color: var(--white);
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 0.95rem;
-            line-height: 1.5;
-            padding: 10px 20px;
-            margin-bottom: 8px;
-            border-radius: 50px;
-            transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
-            box-shadow: 0 6px 16px rgba(20, 52, 43, 0.25);
-        }
-
-        .map-btn + .map-btn {
-            margin-right: 10px;
-        }
-
-        .map-btn svg {
-            width: 18px;
-            height: 18px;
-            fill: none;
-            stroke: var(--gold-light);
-        }
-
-        .map-btn:hover {
-            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
-            color: var(--navy);
-            transform: scale(1.06);
-            box-shadow: 0 10px 24px rgba(212, 175, 55, 0.45);
-        }
-
-        .map-btn:hover svg {
-            stroke: var(--navy);
-        }
-
-        .web-btn {
-            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
-            color: var(--navy);
-            box-shadow: 0 6px 16px rgba(212, 175, 55, 0.3);
-        }
-
-        .web-btn svg {
-            stroke: var(--navy);
-        }
-
-        .web-btn:hover {
-            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
-            color: var(--white);
-        }
-
-        .web-btn:hover svg {
-            stroke: var(--gold-light);
-        }
-
-        /* ===== Button Row ===== */
-        .btn-row {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-top: auto;
-        }
-
-        .btn-row .map-btn,
-        .btn-row .map-btn + .map-btn {
-            margin: 0;
-            flex: 1 1 auto;
-            justify-content: center;
-        }
-
-        /* ===== Shopping Section ===== */
-        .shop-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 22px;
-        }
-
-        .shop-card {
-            background: var(--white);
-            border: 1px solid rgba(20, 52, 43, 0.07);
-            border-radius: var(--radius);
-            overflow: hidden;
-            box-shadow: 0 8px 24px var(--shadow);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border-top: 5px solid var(--gold);
-            display: flex;
-            flex-direction: column;
-        }
-
-        .shop-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 16px 36px rgba(20, 52, 43, 0.16);
-        }
-
-        .shop-card .shop-icon {
-            width: 100%;
-            height: 120px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3.4rem;
-            background: var(--cream);
-        }
-
-        .shop-card .shop-body {
-            padding: 20px 22px 24px;
-            display: flex;
-            flex-direction: column;
-            flex: 1;
-        }
-
-        .shop-card h3 {
-            font-size: 1.25rem;
-            color: var(--navy);
-            margin-bottom: 8px;
-        }
-
-        .shop-card p {
-            color: var(--text-soft);
-            font-size: 1rem;
-            margin-bottom: 16px;
-            flex: 1;
-        }
-
-        /* ===== Footer ===== */
-        footer {
-            text-align: center;
-            margin-top: 50px;
-            color: var(--text-soft);
-            font-size: 0.9rem;
-        }
-
-        /* ===== Responsive ===== */
-        @media (max-width: 540px) {
-            .timeline {
-                padding-right: 18px;
-                margin-right: 18px;
-            }
-            .event {
-                padding: 18px 18px;
-            }
-            .event h3 {
-                font-size: 1.12rem;
-            }
-            .event::before {
-                right: -28px;
-            }
-            header {
-                padding: 50px 16px 80px;
-            }
-            .container {
-                padding: 0 14px;
-            }
-            .map-btn {
-                width: 100%;
-                justify-content: center;
-            }
-            /* בנייד הכפתורים נערמים לרוחב מלא — המרווח האופקי היה דוחף אותם שמאלה */
-            .map-btn + .map-btn {
-                margin-right: 0;
-            }
-            .web-btn {
-                margin-right: 0;
-                margin-top: 0;
-            }
-            .date-nav {
-                gap: 8px;
-                margin-top: 24px;
-            }
-            .date-nav a {
-                min-width: 0;
-                flex: 1 1 52px;
-                padding: 8px 6px;
-                border-radius: 12px;
-            }
-            .date-nav a .dn-day {
-                font-size: 0.7rem;
-            }
-            .date-nav a .dn-date {
-                font-size: 0.95rem;
-            }
-        }
-
-        @media (max-width: 360px) {
-            .date-nav a .dn-day {
-                display: none;
-            }
-        }
-
-        /* ===== Today Highlight ===== */
-        .is-today .day-num {
-            animation: pulse-gold 2s ease-in-out infinite;
-        }
-
-        @keyframes pulse-gold {
-            0%, 100% { box-shadow: 0 8px 20px rgba(212, 175, 55, 0.35); }
-            50% { box-shadow: 0 0 0 10px rgba(212, 175, 55, 0), 0 8px 20px rgba(212, 175, 55, 0.6); }
-        }
-
-        .today-badge {
-            display: inline-block;
-            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
-            color: var(--navy);
-            font-size: 0.8rem;
-            font-weight: 900;
-            padding: 3px 12px;
-            border-radius: 50px;
-            margin-right: 10px;
-            vertical-align: middle;
-        }
-
-        .date-nav a.is-today-link {
-            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
-            border-color: var(--gold);
-        }
-
-        .date-nav a.is-today-link .dn-day,
-        .date-nav a.is-today-link .dn-date {
-            color: var(--navy);
-        }
-
-        /* ===== Done Checkboxes ===== */
-        .done-check {
-            position: absolute;
-            top: 16px;
-            left: 16px;
-            z-index: 2;
-            cursor: pointer;
-        }
-
-        .done-check input {
-            position: absolute;
-            opacity: 0;
-            pointer-events: none;
-        }
-
-        .done-check span {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 30px;
-            height: 30px;
-            border: 2px solid var(--gold);
-            border-radius: 50%;
-            background: var(--white);
-            color: transparent;
-            font-size: 0.95rem;
-            font-weight: 900;
-            transition: all 0.25s ease;
-        }
-
-        .done-check input:checked + span {
-            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
-            color: var(--navy);
-        }
-
-        .done-check input:focus-visible + span {
-            outline: 2px solid var(--navy);
-            outline-offset: 2px;
-        }
-
-        .shop-card {
-            position: relative;
-        }
-
-        .event:has(.done-check input:checked),
-        .shop-card:has(.done-check input:checked) {
-            opacity: 0.55;
-        }
-
-        .event:has(.done-check input:checked) h3,
-        .shop-card:has(.done-check input:checked) h3 {
-            text-decoration: line-through;
-        }
-
-        /* ===== Scroll Reveal ===== */
-        .reveal {
-            opacity: 0;
-            transform: translateY(24px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
-        }
-
-        .reveal.visible {
-            opacity: 1;
-            transform: none;
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            .reveal {
-                opacity: 1;
-                transform: none;
-                transition: none;
-            }
-            html {
-                scroll-behavior: auto;
-            }
-        }
-
-        /* ===== Back To Top ===== */
-        #backToTop {
-            position: fixed;
-            bottom: 22px;
-            left: 22px;
-            width: 48px;
-            height: 48px;
-            border: none;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
-            color: var(--gold-light);
-            font-size: 1.3rem;
-            cursor: pointer;
-            box-shadow: 0 8px 20px rgba(20, 52, 43, 0.35);
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(12px);
-            transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s, background 0.3s ease, color 0.3s ease;
-            z-index: 50;
-        }
-
-        #backToTop.show {
-            opacity: 1;
-            visibility: visible;
-            transform: none;
-        }
-
-        #backToTop:hover {
-            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
-            color: var(--navy);
-        }
-
-        /* ===== Day Links (route/weather chips) ===== */
-        .day-links {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin: -12px 0 20px;
-            padding-right: 68px;
-        }
-
-        .day-links a {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            font-size: 0.85rem;
-            font-weight: 500;
-            color: var(--navy);
-            text-decoration: none;
-            background: rgba(212, 175, 55, 0.14);
-            border: 1px solid rgba(212, 175, 55, 0.45);
-            border-radius: 50px;
-            padding: 5px 14px;
-            transition: background 0.25s ease, transform 0.25s ease;
-        }
-
-        .day-links a:hover {
-            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
-            transform: translateY(-2px);
-        }
-
-        @media (max-width: 540px) {
-            .day-links {
-                padding-right: 0;
-            }
-        }
-
-        /* ===== Sticky Nav ===== */
-        #stickyNav {
-            position: fixed;
-            top: 0;
-            right: 0;
-            left: 0;
-            z-index: 60;
-            background: rgba(20, 52, 43, 0.94);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            box-shadow: 0 6px 18px rgba(20, 52, 43, 0.35);
-            transform: translateY(-100%);
-            transition: transform 0.3s ease;
-        }
-
-        #stickyNav.show {
-            transform: none;
-        }
-
-        #stickyNav .date-nav {
-            margin: 0 auto;
-            max-width: 860px;
-            padding: 8px 12px;
-            flex-wrap: nowrap;
-            overflow-x: auto;
-            justify-content: flex-start;
-            scrollbar-width: none;
-        }
-
-        #stickyNav .date-nav::-webkit-scrollbar {
-            display: none;
-        }
-
-        #stickyNav .date-nav a {
-            min-width: 56px;
-            flex: 0 0 auto;
-            padding: 5px 8px;
-            border-radius: 10px;
-        }
-
-        #stickyNav .date-nav a .dn-day {
-            font-size: 0.65rem;
-        }
-
-        #stickyNav .date-nav a .dn-date {
-            font-size: 0.9rem;
-        }
-
-        .date-nav a.active {
-            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
-            border-color: var(--gold);
-        }
-
-        .date-nav a.active .dn-day,
-        .date-nav a.active .dn-date {
-            color: var(--navy);
-        }
-
-        /* ===== Trip Progress ===== */
-        .trip-progress {
-            max-width: 420px;
-            margin: 24px auto 0;
-            position: relative;
-            z-index: 2;
-        }
-
-        .trip-progress .tp-label {
-            font-size: 0.95rem;
-            color: var(--gold-light);
-            margin-bottom: 8px;
-        }
-
-        .trip-progress .tp-bar {
-            height: 8px;
-            background: rgba(255, 255, 255, 0.15);
-            border-radius: 8px;
-            overflow: hidden;
-        }
-
-        .trip-progress .tp-fill {
-            height: 100%;
-            width: 0;
-            background: linear-gradient(90deg, var(--gold) 0%, var(--gold-light) 100%);
-            border-radius: 8px;
-            transition: width 0.8s ease;
-        }
-
-        /* ===== Booking Details ===== */
-        .booking-row {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            gap: 8px;
-            padding: 8px 0;
-            border-bottom: 1px dashed rgba(20, 52, 43, 0.12);
-            font-size: 0.98rem;
-        }
-
-        .booking-row:last-of-type {
-            border-bottom: none;
-        }
-
-        .booking-row .b-label {
-            font-weight: 700;
-            color: var(--navy);
-            min-width: 150px;
-        }
-
-        .booking-row .b-value {
-            flex: 1 1 160px;
-            min-height: 1.4em;
-            padding: 4px 10px;
-            border-radius: 8px;
-            background: rgba(212, 175, 55, 0.1);
-            border: 1px dashed rgba(212, 175, 55, 0.6);
-            direction: ltr;
-            text-align: left;
-            outline: none;
-        }
-
-        .booking-row .b-value:focus {
-            border-style: solid;
-            background: var(--white);
-        }
-
-        .booking-row .b-value:empty::before {
-            content: attr(data-ph);
-            color: var(--text-soft);
-            opacity: 0.6;
-        }
-
-        /* ===== Dark Mode ===== */
-        [data-theme="dark"] body {
-            background: linear-gradient(160deg, #101c17 0%, #16241d 100%);
-            color: #e8e6df;
-        }
-
-        [data-theme="dark"] header::after {
-            background: linear-gradient(160deg, #101c17 0%, #16241d 100%);
-        }
-
-        [data-theme="dark"] .event,
-        [data-theme="dark"] .shop-card {
-            background: #1d2b24;
-            border-color: rgba(212, 175, 55, 0.15);
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
-        }
-
-        [data-theme="dark"] .event::before {
-            background: #1d2b24;
-        }
-
-        [data-theme="dark"] .day-header h2,
-        [data-theme="dark"] .event h3,
-        [data-theme="dark"] .shop-card h3 {
-            color: #e8c96a;
-        }
-
-        [data-theme="dark"] .event p,
-        [data-theme="dark"] .shop-card p {
-            color: #b8c0b9;
-        }
-
-        [data-theme="dark"] .event .tip {
-            color: #e8e6df;
-            background: rgba(212, 175, 55, 0.1);
-        }
-
-        [data-theme="dark"] .slc-yes {
-            color: #a9d8bf;
-        }
-
-        [data-theme="dark"] .slc-no {
-            color: #e0a3a3;
-        }
-
-        [data-theme="dark"] .book-yes {
-            color: #e0a3a3;
-        }
-
-        [data-theme="dark"] .book-rec {
-            color: #e8c98a;
-        }
-
-        [data-theme="dark"] .book-no {
-            color: #a9d8bf;
-        }
-
-        [data-theme="dark"] .event .diet {
-            color: #cfe3d6;
-            background: rgba(120, 200, 160, 0.08);
-        }
-
-        [data-theme="dark"] .shop-card .shop-icon {
-            background: #16241d;
-        }
-
-        [data-theme="dark"] .timeline {
-            border-right-color: rgba(120, 200, 160, 0.25);
-        }
-
-        [data-theme="dark"] footer {
-            color: #8fa096;
-        }
-
-        [data-theme="dark"] .done-check span {
-            background: #1d2b24;
-        }
-
-        [data-theme="dark"] .day-links a {
-            color: #e8c96a;
-            background: rgba(212, 175, 55, 0.1);
-        }
-
-        [data-theme="dark"] .day-links a:hover {
-            color: var(--navy);
-        }
-
-        [data-theme="dark"] .event .time {
-            background: #0d1512;
-            color: #e8c96a;
-        }
-
-        [data-theme="dark"] .booking-row {
-            border-bottom-color: rgba(232, 201, 106, 0.15);
-        }
-
-        [data-theme="dark"] .booking-row .b-label {
-            color: #e8c96a;
-        }
-
-        [data-theme="dark"] .booking-row .b-value:focus {
-            background: #101c17;
-        }
-
-        [data-theme="dark"] #stickyNav {
-            background: rgba(13, 21, 18, 0.95);
-        }
-
-        [data-theme="dark"] .pack-item,
-        [data-theme="dark"] .phrase-row {
-            background: #1d2b24;
-            border-color: rgba(212, 175, 55, 0.15);
-            color: #e8e6df;
-        }
-
-        [data-theme="dark"] #tripSearch {
-            background: rgba(255, 255, 255, 0.1);
-            color: #fff;
-        }
-
-        /* ===== Search ===== */
-        .search-wrap {
-            position: relative;
-            z-index: 3;
-            max-width: 460px;
-            margin: 26px auto 0;
-        }
-
-        #tripSearch {
-            width: 100%;
-            padding: 12px 44px 12px 16px;
-            font-family: 'Heebo', sans-serif;
-            font-size: 1rem;
-            color: var(--white);
-            background: rgba(255, 255, 255, 0.12);
-            border: 1px solid rgba(212, 175, 55, 0.45);
-            border-radius: 50px;
-            outline: none;
-        }
-
-        #tripSearch::placeholder {
-            color: rgba(255, 255, 255, 0.6);
-        }
-
-        #tripSearch:focus {
-            border-color: var(--gold);
-            background: rgba(255, 255, 255, 0.18);
-        }
-
-        .search-wrap::after {
-            content: "🔎";
-            position: absolute;
-            top: 50%;
-            right: 16px;
-            transform: translateY(-50%);
-            pointer-events: none;
-            opacity: 0.75;
-        }
-
-        .search-count {
-            margin-top: 8px;
-            font-size: 0.85rem;
-            color: rgba(255, 255, 255, 0.8);
-            min-height: 1.2em;
-        }
-
-        .hidden-by-search {
-            display: none !important;
-        }
-
-        /* ===== Theme Toggle ===== */
-        #themeToggle {
-            position: fixed;
-            top: 14px;
-            left: 14px;
-            z-index: 60;
-            width: 42px;
-            height: 42px;
-            font-size: 1.15rem;
-            line-height: 1;
-            color: var(--white);
-            background: rgba(20, 52, 43, 0.75);
-            border: 1px solid rgba(212, 175, 55, 0.5);
-            border-radius: 50%;
-            cursor: pointer;
-            backdrop-filter: blur(6px);
-            -webkit-backdrop-filter: blur(6px);
-        }
-
-        /* ===== Packing Checklist ===== */
-        .pack-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
-            gap: 10px;
-        }
-
-        .pack-item {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 10px 14px;
-            background: var(--white);
-            border: 1px solid rgba(20, 52, 43, 0.08);
-            border-radius: 14px;
-            cursor: pointer;
-            font-size: 0.95rem;
-        }
-
-        .pack-item input {
-            width: 18px;
-            height: 18px;
-            accent-color: var(--navy-light);
-            flex-shrink: 0;
-        }
-
-        .pack-item input:checked + span {
-            text-decoration: line-through;
-            opacity: 0.55;
-        }
-
-        .pack-cat {
-            grid-column: 1 / -1;
-            margin-top: 8px;
-            font-weight: 700;
-            color: var(--navy-light);
-        }
-
-        /* ===== Phrasebook ===== */
-        .phrase-row {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: baseline;
-            gap: 6px 12px;
-            padding: 10px 14px;
-            margin-bottom: 8px;
-            background: var(--white);
-            border: 1px solid rgba(20, 52, 43, 0.08);
-            border-radius: 14px;
-        }
-
-        .phrase-row .ph-he {
-            font-weight: 700;
-            min-width: 130px;
-        }
-
-        .phrase-row .ph-de {
-            direction: ltr;
-            color: var(--navy-light);
-            font-weight: 500;
-        }
-
-        .phrase-row .ph-say {
-            color: var(--text-soft);
-            font-size: 0.9rem;
-        }
-
-        [data-theme="dark"] .phrase-row .ph-de {
-            color: #a9d8bf;
-        }
-
-        [data-theme="dark"] .phrase-row .ph-say {
-            color: #8fa096;
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <button id="themeToggle" type="button" aria-label="החלפת מצב תצוגה בהיר/כהה">🌙</button>
@@ -1214,7 +44,7 @@
         </defs>
     </svg>
     <header>
-        <span class="badge">Family Travel Itinerary</span>
+        <img class="trip-logo" src="icon-192.png" width="44" height="44" alt="">
         <h1>Austria Alps 2026 🇦🇹</h1>
         <p class="dates">18.9.2026 — 27.9.2026</p>
         <p class="subtitle">2 מבוגרים + ילד בן 9.5 ובת 16 ✦ לינה: ואגריין (Wagrain), חבל פונגאו</p>
@@ -1223,6 +53,7 @@
         <div id="installHint" role="status"></div>
         <div class="search-wrap">
             <input id="tripSearch" type="search" placeholder="חיפוש בתיק — מקום, מסעדה, טיפ…" aria-label="חיפוש בתוך התיק">
+            <button id="clearSearch" type="button" title="ניקוי חיפוש" aria-label="ניקוי חיפוש" hidden>×</button>
             <div class="search-count" id="searchCount" role="status"></div>
         </div>
         <nav class="date-nav" aria-label="ניווט לפי תאריך">
@@ -1247,6 +78,27 @@
 
     <main class="container">
 
+        <section id="tripTools" class="trip-tools" aria-labelledby="toolsHeading" hidden>
+            <h2 id="toolsHeading">התוכנית שלנו</h2>
+            <div class="tools-row">
+                <div class="view-switch" role="group" aria-label="תצוגת המסלול">
+                    <button id="viewAll" type="button" aria-pressed="true">כל הטיול</button>
+                    <button id="viewToday" type="button" aria-pressed="false">היום</button>
+                </div>
+                <label class="select-label">יום במסלול <select id="daySelect"></select></label>
+                <label class="select-label">ניווט <select id="navigationApp"><option value="google">Google Maps</option><option value="waze">Waze</option></select></label>
+            </div>
+            <div class="next-stop">
+                <p id="dayCaption"></p>
+                <h3>התחנה הבאה <span id="nextTime" dir="auto"></span></h3>
+                <a id="nextActivity" href="#day-1"></a>
+                <dl id="dayBrief"></dl>
+                <div id="selectedDayLinks" class="day-links"></div>
+            </div>
+            <p id="offlineStatus" class="status-line" role="status">בודק זמינות ללא רשת…</p>
+            <p class="content-note">זמני נסיעה, מחירים ושעות פעילות הם לפי התוכנית; יש לאמת סמוך לביקור.</p>
+        </section>
+
         <!-- ===== יום 1 | שישי 18.9 ===== -->
         <section class="day" id="day-1">
             <div class="day-header">
@@ -1258,7 +110,7 @@
                 <a href="https://www.google.com/search?q=bergfex+Wagrain+wetter" target="_blank" rel="noopener">🌤️ תחזית הרים (bergfex)</a>
             </div>
             <div class="timeline">
-                <article class="event">
+                <article class="event" data-activity-id="activity-01-01" data-legacy-key="ev-day-1-0">
                     <span class="time">07:40</span>
                     <h3>🛫 טיסה LY361 אל על — תל אביב ✈ וינה</h3>
                     <p><strong>אל על LY361</strong> | המראה 07:40 מטרמינל 3 בנתב"ג (לפי רשות שדות התעופה) — נחיתה כ-10:20 שעון מקומי (אוסטריה שעה אחורה מישראל) בטרמינל 3 בווינה. משך הטיסה כ-3:40 שעות, מטוס בואינג 737-800.</p>
@@ -1268,7 +120,7 @@
                     <a class="map-btn web-btn" href="https://www.flightstats.com/v2/flight-tracker/LY/361" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><use href="#icon-globe"/></svg>סטטוס טיסה LY361</a>
                     <a class="map-btn web-btn add-cal" href="#" data-cal="LY361">📅 הוסף ליומן</a>
                 </article>
-                <article class="event">
+                <article class="event" data-activity-id="activity-01-02" data-legacy-key="ev-day-1-1">
                     <span class="time">10:20</span>
                     <h3>✈️ נחיתה בנמל התעופה וינה (VIE)</h3>
                     <p>נחיתה בשדה התעופה וינה-שווכאט, מעבר ביקורת דרכונים ואיסוף מזוודות. שדה התעופה גדול — חשבו על כשעה מהנחיתה ועד היציאה עם המזוודות.</p>
@@ -1279,13 +131,13 @@
                     </a>
                     <a class="map-btn web-btn" href="https://www.viennaairport.com" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><use href="#icon-globe"/></svg>אתר רשמי</a>
                 </article>
-                <article class="event">
+                <article class="event" data-activity-id="activity-01-03" data-legacy-key="ev-day-1-2">
                     <span class="time">11:30</span>
                     <h3>🚗 איסוף רכב שכור ויציאה לדרך</h3>
-                    <p>איסוף הרכב מעמדות ההשכרה בשדה. נסיעה של כ-330 קמ"ר (3:15–3:45 שעות עם עצירה) בכביש המהיר A1 ואז A10 לכיוון חבל פונגאו. הדרך נוחה עם תחנות עצירה (Raststation) מסודרות — תכננו עצירה אחת של 20–30 דק'.</p>
+                    <p>איסוף הרכב מעמדות ההשכרה בשדה. נסיעה של כ-330 ק"מ (3:15–3:45 שעות עם עצירה) בכביש המהיר A1 ואז A10 לכיוון חבל פונגאו. הדרך נוחה עם תחנות עצירה (Raststation) מסודרות — תכננו עצירה אחת של 20–30 דק'.</p>
                     <div class="tip">💡 ודאו שברכב יש מדבקת אגרה (Vignette) לכבישים המהירים — בד"כ כלולה ברכב שכור אוסטרי, אבל חובה לוודא! קנס על נסיעה בלעדיה: 120€+. בנוסף, במנהרות האגרה של ה-A10 (Tauerntunnel) משלמים בנפרד — אבל הם דרומית לוואגריין ולא ניסע דרכם.</div>
                 </article>
-                <article class="event">
+                <article class="event" data-activity-id="activity-01-04" data-legacy-key="ev-day-1-3">
                     <span class="time">15:15</span>
                     <h3>🛒 עצירת הצטיידות בבישופסהופן</h3>
                     <p>עצירה בסופרמרקט BILLA PLUS או EUROSPAR בבישופסהופן (15 דק' מהמלון) לקניית מצרכים לארוחות בוקר, נשנושים, מים ופירות. זכרו: ביום ראשון הכל סגור — קנו מספיק!</p>
@@ -1294,7 +146,7 @@
                         פתח ב-Google Maps
                     </a>
                 </article>
-                <article class="event">
+                <article class="event" data-activity-id="activity-01-05" data-legacy-key="ev-day-1-4">
                     <span class="time">16:30</span>
                     <h3>🏨 צ'ק-אין ב-Hofgut Wagrain — Apartment & Lifestyle Resort</h3>
                     <p>הגעה לריזורט הדירות בכפר האלפיני ואגריין (Wagrain) שבלב חבל פונגאו. דירות מרווחות עם מטבחון — מושלם למשפחה, ובמתחם: בריכה, אזור ספא, מסעדה, מאפייה-קפה וחנות חווה (Hofladen). התארגנות וארוחת ערב רגועה במסעדת הריזורט או בכפר.</p>
@@ -1319,14 +171,14 @@
                 <a href="https://www.google.com/search?q=bergfex+Hallstatt+wetter" target="_blank" rel="noopener">🌤️ תחזית הרים (bergfex)</a>
             </div>
             <div class="timeline">
-                <article class="event">
+                <article class="event" data-activity-id="activity-02-01" data-legacy-key="ev-day-2-0">
                     <span class="time">08:00</span>
                     <h3>🚗 יציאה מוקדמת להאלשטאט</h3>
                     <p>כ-1:15 שעה נסיעה בנוף אגמים ויערות של חבל הזלצקאמרגוט. יוצאים מוקדם — בשבת האלשטאט מתמלאת בתיירים כבר מ-10:00, והחניונים נסגרים עוד לפני כן.</p>
                     <div class="tip">💡 חנייה: חניון P1 בכניסה הדרומית לעיירה. אם מלא — P2. אל תנסו להיכנס עם רכב לעיירה עצמה.</div>
                     <div class="slc slc-no">🎫 SalzburgerLand Card: היום כולו ללא הכרטיס — האלשטאט והדאכשטיין שייכים לאוסטריה עילית ולא משתתפים בכרטיס כלל. בדיוק בגלל זה שיבצנו את היום הזה לפני הפעלת הכרטיס (מחר).</div>
                 </article>
-                <article class="event">
+                <article class="event" data-activity-id="activity-02-02" data-legacy-key="ev-day-2-1">
                     <span class="time">09:15</span>
                     <h3>🏘️ העיירה האלשטאט (Hallstatt)</h3>
                     <p>אחת העיירות המצולמות בעולם — בתים צבעוניים על צלע הר, נושקים לאגם צלול. טיילו בסמטאות, עלו לנקודת התצפית הקלאסית (Classic Viewpoint) בצפון העיירה, ובקרו בכיכר השוק הציורית.</p>
@@ -1337,7 +189,7 @@
                     </a>
                     <a class="map-btn web-btn" href="https://www.hallstatt.net" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><use href="#icon-globe"/></svg>אתר רשמי</a>
                 </article>
-                <article class="event">
+                <article class="event" data-activity-id="activity-02-03" data-legacy-key="ev-day-2-2">
                     <span class="time">10:45</span>
                     <h3>🛥️ שיט בסירת מנוע חשמלית באגם</h3>
                     <p>שוכרים סירת מנוע חשמלית קטנה (אין צורך ברישיון!) ושטים כל המשפחה באגם האלשטאט — הזווית הכי יפה על העיירה היא מהמים. השכרה בעמדות לאורך הטיילת, כ-30–60 דק'.</p>
@@ -1349,7 +201,7 @@
                         פתח ב-Google Maps
                     </a>
                 </article>
-                <article class="event">
+                <article class="event" data-activity-id="activity-02-04" data-legacy-key="ev-day-2-3">
                     <span class="time">12:15</span>
                     <h3>🍽️ ארוחת צהריים באוברטראון</h3>
                     <p>נסיעה קצרה (10 דק') לאוברטראון שבצד השני של האגם — מסעדות רגועות וזולות יותר מאשר בהאלשטאט עצמה.</p>
@@ -1358,7 +210,7 @@
                         פתח ב-Google Maps
                     </a>
                 </article>
-                <article class="event">
+                <article class="event" data-activity-id="activity-02-05" data-legacy-key="ev-day-2-4">
                     <span class="time">13:30</span>
                     <h3>🖐️ תצפית חמש האצבעות (5 Fingers) — הר דאכשטיין</h3>
                     <p>עולים ברכבל הדאכשטיין קריפנשטיין מאוברטראון עד התחנה העליונה (Krippenstein, 2,100 מ'). הליכה קלה של כ-20–30 דק' בנוף קארסטי "ירחי" עד למרפסת התצפית המפורסמת בצורת כף יד — חמש זרועות פלדה (אחת עם רצפת זכוכית!) התלויות באוויר מעל תהום של 400 מטר. נוף עוצר נשימה על אגם האלשטאט וקצת פיק ברכיים.</p>
@@ -1372,7 +224,7 @@
                     </a>
                     <a class="map-btn web-btn" href="https://dachstein-salzkammergut.com" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><use href="#icon-globe"/></svg>אתר רשמי</a>
                 </article>
-                <article class="event">
+                <article class="event" data-activity-id="activity-02-06" data-legacy-key="ev-day-2-5">
                     <span class="time">17:00</span>
                     <h3>🚗 חזרה למלון</h3>
                     <p>נסיעה חזרה לוואגריין (כ-1:15 שעה) וארוחת ערב במלון או בכפר.</p>
@@ -1391,14 +243,14 @@
                 <a href="https://www.google.com/search?q=bergfex+Salzburg+wetter" target="_blank" rel="noopener">🌤️ תחזית הרים (bergfex)</a>
             </div>
             <div class="timeline">
-                <article class="event">
+                <article class="event" data-activity-id="activity-03-01" data-legacy-key="ev-day-3-0">
                     <span class="time">09:00</span>
                     <h3>🚗 נסיעה לזלצבורג</h3>
                     <p>כ-55 דק' נסיעה מואגריין. חנייה מומלצת: חניון Salzburg Süd + אוטובוס, או ישירות בחניון הלברון (חינם למבקרי הארמון).</p>
                     <div class="tip">💡 יום ראשון — החנויות סגורות אבל כל האטרקציות והמסעדות פתוחות. יום מושלם לזלצבורג!</div>
                     <div class="slc slc-yes">🎫 היום מפעילים את ה-SalzburgerLand Card (הסריקה הראשונה = תחילת 6 הימים, 20–25.9). כל כרטיס כולל הטבת ג'וקר חד-פעמית: המרה ל-Salzburg Card ל-24 שעות שמכסה את כל אטרקציות העיר היום (הלברון, המבצר, מוזיאון הטבע) — או נסיעה חינם בגרוסגלוקנר. טריק חכם: שלושה מבני המשפחה יממשו כאן את הג'וקר, ואחד ההורים ישמור את שלו לאגרת הרכב בגרוסגלוקנר (יום 6).</div>
                 </article>
-                <article class="event">
+                <article class="event" data-activity-id="activity-03-02" data-legacy-key="ev-day-3-1">
                     <span class="time">09:45</span>
                     <h3>⛲ ארמון הלברון ומזרקות הפח (Hellbrunn)</h3>
                     <p>ארמון הקיץ מ-1615 שבנה הארכיבישוף מרקוס סיטיקוס כבדיחה אחת גדולה: סיור מודרך קליל וקורע מצחוק שבו המדריך משפריץ מים בהפתעה ממקומות מסתור — כיסאות אבן, קרניים בקירות, ותיאטרון בובות מכני המופעל כולו בכוח המים. משך הסיור: כ-40 דק', יוצא כל 30 דק'.</p>
@@ -1411,7 +263,7 @@
                     </a>
                     <a class="map-btn web-btn" href="https://www.hellbrunn.at" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><use href="#icon-globe"/></svg>אתר רשמי</a>
                 </article>
-                <article class="event">
+                <article class="event" data-activity-id="activity-03-03" data-legacy-key="ev-day-3-2">
                     <span class="time">12:30</span>
                     <h3>🍽️ ארוחת צהריים בעיר העתיקה</h3>
                     <p>נסיעה למרכז זלצבורג וארוחה באזור רחוב גטרייהגאסה (Getreidegasse) — הרחוב המפורסם עם השלטים המוזהבים שבו נולד מוצרט.</p>
@@ -1420,7 +272,7 @@
                         פתח ב-Google Maps
                     </a>
                 </article>
-                <article class="event">
+                <article class="event" data-activity-id="activity-03-04" data-legacy-key="ev-day-3-3">
                     <span class="time">14:00</span>
                     <h3>🏰 מבצר הוהנזלצבורג (Festung Hohensalzburg)</h3>
                     <p>עולים בפוניקולר (מעלית משופעת) אל המבצר הגדול והשמור באירופה, החולש על העיר מזה 900 שנה. נוף פנורמי מרהיב על העיר וההרים, מוזיאונים קטנים עם כלי נשק ושריון עתיקים, חדרי הנסיכים המוזהבים ומוזיאון המריונטות.</p>
@@ -1433,10 +285,10 @@
                     </a>
                     <a class="map-btn web-btn" href="https://www.salzburg-burgen.at" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><use href="#icon-globe"/></svg>אתר רשמי</a>
                 </article>
-                <article class="event">
+                <article class="event" data-activity-id="activity-03-05" data-legacy-key="ev-day-3-4">
                     <span class="time">16:00</span>
                     <h3>🔬 מוזיאון הטבע והמדע (Haus der Natur)</h3>
-                    <p>מוזיאון ענק ומרתק: אקווריומים עם כרישים ודגים טרופיים, תצוגות חלל עם חלליות אמיתיות, שלד דינוזאורים, עולם הזוחלים, ומרכז מדע אינטראקטיבי עצום שבו הילדים עושים ניסויים בפיזיקה, כוחות, מים וקול. פתוח עד 17:00 — ואפשר בקלות לבלות בו גם 3 שעות, אז אם הילדים מתלהבים אפשר להפוך את הסדר עם המבצר.</p>
+                    <p>מוזיאון ענק ומרתק: אקווריומים עם כרישים ודגים טרופיים, תצוגות חלל עם חלליות אמיתיות, שלד דינוזאורים, עולם הזוחלים, ומרכז מדע אינטראקטיבי עצום שבו הילדים עושים ניסויים בפיזיקה, כוחות, מים וקול. לפי שעות הפעילות שבתוכנית, המוזיאון נסגר ב-17:00: הגעה ב-16:00 משאירה שעה בלבד, ואף פחות לאחר המעבר מהמבצר. לביקור של 2–3 שעות צריך להקדים את המוזיאון ולקצר או לוותר על פעילות אחרת; החלפת הסדר לבדה אינה מוסיפה זמן ליום.</p>
                     <div class="tip">💡 מרכז המדע בקומות העליונות — אל תפספסו!</div>
                     <div class="book book-no">🟢 אין צורך להזמין מראש — נכנסים ישירות עם הכרטיס.</div>
                     <div class="slc slc-yes">🎫 חינם עם ה-Salzburg Card היומי (הטבת הג'וקר).</div>
@@ -1446,7 +298,7 @@
                     </a>
                     <a class="map-btn web-btn" href="https://www.hausdernatur.at" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><use href="#icon-globe"/></svg>אתר רשמי</a>
                 </article>
-                <article class="event">
+                <article class="event" data-activity-id="activity-03-06" data-legacy-key="ev-day-3-5">
                     <span class="time">18:30</span>
                     <h3>🌆 ערב בזלצבורג וחזרה</h3>
                     <p>טיול ערב קצר לאורך נהר הזלצאך וגשר המנעולים (Makartsteg), ארוחת ערב בעיר וחזרה למלון.</p>
@@ -1469,7 +321,7 @@
                 <a href="https://www.google.com/search?q=bergfex+Werfen+wetter" target="_blank" rel="noopener">🌤️ תחזית הרים (bergfex)</a>
             </div>
             <div class="timeline">
-                <article class="event">
+                <article class="event" data-activity-id="activity-04-01" data-legacy-key="ev-day-4-0">
                     <span class="time">09:00</span>
                     <h3>🧊 מערת הקרח בוורפן (Eisriesenwelt)</h3>
                     <p>מערת הקרח הגדולה בעולם — "עולם ענקי הקרח". כ-30 דק' נסיעה מהמלון. עולים ברכבל תלול, הולכים כ-20 דקות בשביל הרים עד לפתח המערה, מקבלים פנסי שמן אמיתיים ונכנסים לעולם של פסלי קרח טבעיים עצומים. הסיור במערה כ-75 דק', סה"כ החוויה כ-3 שעות.</p>
@@ -1483,7 +335,7 @@
                     </a>
                     <a class="map-btn web-btn" href="https://www.eisriesenwelt.at" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><use href="#icon-globe"/></svg>אתר רשמי</a>
                 </article>
-                <article class="event">
+                <article class="event" data-activity-id="activity-04-02" data-legacy-key="ev-day-4-1">
                     <span class="time">13:00</span>
                     <h3>🍽️ ארוחת צהריים בוורפן</h3>
                     <p>ירידה לעיירה וורפן וארוחה מחממת ב-Gasthof Werfenerhof — אוכל אוסטרי מסורתי, בדיוק מה שצריך אחרי המערה הקפואה.</p>
@@ -1492,7 +344,7 @@
                         פתח ב-Google Maps
                     </a>
                 </article>
-                <article class="event">
+                <article class="event" data-activity-id="activity-04-03" data-legacy-key="ev-day-4-2">
                     <span class="time">14:30</span>
                     <h3>🦅 טירת הוהנוורפן ומופע הבזיירות (Hohenwerfen)</h3>
                     <p>טירת אבירים אותנטית בת 900 שנה על צוק, ממש מול ההר של מערת הקרח. גולת הכותרת: מופע בזיירות מרהיב — נשרים, בזים וינשופים חולפים בצלילה ממש מעל ראשי הקהל, עם מדריכים בלבוש היסטורי. בטירה גם מוזיאון בזיירות, נשקייה וסיורים בחדרי הטירה.</p>
@@ -1505,7 +357,7 @@
                     </a>
                     <a class="map-btn web-btn" href="https://www.burg-hohenwerfen.at" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><use href="#icon-globe"/></svg>אתר רשמי</a>
                 </article>
-                <article class="event">
+                <article class="event" data-activity-id="activity-04-04" data-legacy-key="ev-day-4-3">
                     <span class="time">18:00</span>
                     <h3>😴 ערב חופשי במלון</h3>
                     <p>יום עמוס במדרגות — ערב מנוחה, בריכה וארוחת ערב במלון.</p>
@@ -1524,7 +376,7 @@
                 <a href="https://www.google.com/search?q=bergfex+Bad+Gastein+wetter" target="_blank" rel="noopener">🌤️ תחזית הרים (bergfex)</a>
             </div>
             <div class="timeline">
-                <article class="event">
+                <article class="event" data-activity-id="activity-05-01" data-legacy-key="ev-day-5-0">
                     <span class="time">09:00</span>
                     <h3>🏞️ נקיק ליכטנשטיין (Liechtensteinklamm)</h3>
                     <p>אחד הנקיקים העמוקים והיפים באלפים — מסלול הליכה על גשרי עץ תלויים ממש מעל נהר שוצף בתוך קניון בעומק 300 מטר. המסלול שופץ וכולל מדרגות לולייניות דרמטיות ("הליקס") ומסתיים במפל עצום. רק כ-15 דק' נסיעה מהמלון (סנט יוהאן אים פונגאו). משך: כ-1.5–2 שעות הלוך ושוב.</p>
@@ -1537,12 +389,12 @@
                     </a>
                     <a class="map-btn web-btn" href="https://www.liechtensteinklamm.at" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><use href="#icon-globe"/></svg>אתר רשמי</a>
                 </article>
-                <article class="event">
+                <article class="event" data-activity-id="activity-05-02" data-legacy-key="ev-day-5-1">
                     <span class="time">12:00</span>
                     <h3>🚗 נסיעה לבאד גאסטיין</h3>
                     <p>כ-40 דק' נסיעה דרומה לתוך עמק גאסטיין המפורסם.</p>
                 </article>
-                <article class="event">
+                <article class="event" data-activity-id="activity-05-03" data-legacy-key="ev-day-5-2">
                     <span class="time">12:45</span>
                     <h3>🌉 הגשר התלוי בשטובנרקוגל (Stubnerkogel)</h3>
                     <p>עלייה ברכבל מבאד גאסטיין לפסגת השטובנרקוגל (2,246 מ'). למעלה: גשר פלדה תלוי ומתנדנד באורך 140 מטר מעל תהום — בטוח לחלוטין, שקוף למחצה ומספק פיק ברכיים איכותי. בהמשך גם מרפסת התצפית Glocknerblick עם נוף לגרוסגלוקנר.</p>
@@ -1555,7 +407,7 @@
                     </a>
                     <a class="map-btn web-btn" href="https://www.gastein.com" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><use href="#icon-globe"/></svg>אתר רשמי</a>
                 </article>
-                <article class="event">
+                <article class="event" data-activity-id="activity-05-04" data-legacy-key="ev-day-5-3">
                     <span class="time">13:30</span>
                     <h3>🥞 ארוחת צהריים ב-Stubneralm</h3>
                     <p>מסעדת הרים עם נוף פנורמי מהמם על הפסגה. מרק גולאש חם, ולקינוח — "קייזרשמרן": פנקייק אוסטרי קרוע עם אבקת סוכר ורסק תפוחים. קינוח חובה בטיול!</p>
@@ -1564,7 +416,7 @@
                         פתח ב-Google Maps
                     </a>
                 </article>
-                <article class="event">
+                <article class="event" data-activity-id="activity-05-05" data-legacy-key="ev-day-5-4">
                     <span class="time">15:30</span>
                     <h3>💦 באד גאסטיין והמפל במרכז העיר</h3>
                     <p>ירידה ברכבל וסיור בעיירה הייחודית: באד גאסטיין נראית כמו עיר פאר פריזאית מהמאה ה-19 שנבנתה על צלע הר, עם מלונות "בל אפוק" מפוארים — ומפל מים אדיר (Gasteiner Wasserfall, 341 מ' של קסקדות) חוצה אותה ממש במרכז בין הבניינים. יש שביל תצפיות נוח לאורך המפל.</p>
@@ -1573,7 +425,7 @@
                         פתח ב-Google Maps
                     </a>
                 </article>
-                <article class="event">
+                <article class="event" data-activity-id="activity-05-06" data-legacy-key="ev-day-5-5">
                     <span class="time">18:00</span>
                     <h3>🍕 ארוחת ערב בבאד גאסטיין</h3>
                     <p>Silver Bullet — בר-מסעדה עם וייב בינלאומי תוסס, המבורגרים ופיצות (בת ה-16 תעריך), או Pizzeria Angelo לפיצה איטלקית קלאסית. חזרה למלון אחרי הארוחה.</p>
@@ -1596,7 +448,7 @@
                 <a href="https://www.google.com/search?q=bergfex+Grossglockner+wetter" target="_blank" rel="noopener">🌤️ תחזית הרים (bergfex)</a>
             </div>
             <div class="timeline">
-                <article class="event">
+                <article class="event" data-activity-id="activity-06-01" data-legacy-key="ev-day-6-0">
                     <span class="time">08:30</span>
                     <h3>🚗 יציאה לכביש גרוסגלוקנר (Grossglockner)</h3>
                     <p>כ-1:15 שעה נסיעה לשער הכניסה בפרש (Fusch) / ברוק. כביש האלפים הגבוה של גרוסגלוקנר הוא אחת הדרכים היפות באירופה — 48 ק"מ, 36 פיתולים, ומטפס עד 2,504 מטר.</p>
@@ -1610,7 +462,7 @@
                     </a>
                     <a class="map-btn web-btn" href="https://www.grossglockner.at" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><use href="#icon-globe"/></svg>אתר רשמי</a>
                 </article>
-                <article class="event">
+                <article class="event" data-activity-id="activity-06-02" data-legacy-key="ev-day-6-1">
                     <span class="time">10:30</span>
                     <h3>🌄 עצירות תצפית ואדלווייס-שפיצה (Edelweissspitze)</h3>
                     <p>עלייה בשלוחה הצדדית לנקודה הגבוהה ביותר לרכבים (2,571 מ') — תצפית 360° על יותר מ-30 פסגות של 3,000 מטר. בהמשך עצירה במרכז המבקרים פוששה (Fuscher Törl) ובאגם פוששה (Fuscher Lacke).</p>
@@ -1619,7 +471,7 @@
                         פתח ב-Google Maps
                     </a>
                 </article>
-                <article class="event">
+                <article class="event" data-activity-id="activity-06-03" data-legacy-key="ev-day-6-2">
                     <span class="time">12:30</span>
                     <h3>🐹 קייזר-פרנץ-יוזפס-הֶהֶה — הקרחון והמרמיטות</h3>
                     <p>התחנה הסופית: מרכז מבקרים גדול הצופה אל קרחון הפסטרצה ופסגת הגרוסגלוקנר (3,798 מ', הגבוה באוסטריה). כאן גרות המרמיטות השמנמנות — מסתובבות חופשי ליד השבילים ומצטלמות בכיף. במרכז המבקרים: תצוגות על הקרחון, מסעדה עם נוף, וחנות מזכרות.</p>
@@ -1629,7 +481,7 @@
                         פתח ב-Google Maps
                     </a>
                 </article>
-                <article class="event">
+                <article class="event" data-activity-id="activity-06-04" data-legacy-key="ev-day-6-3">
                     <span class="time">15:30</span>
                     <h3>🚗 ירידה נינוחה ועצירה בצל אם זה</h3>
                     <p>יורדים בנחת באותו כביש (עם הכרטיס היומי מותר לעצור ולהמשיך כמה פעמים), ובדרך חזרה עצירה קצרה בטיילת האגם של צל אם זה (Zell am See) — גלידה מול המים ורגליים באגם אחרי יום ארוך ברכב.</p>
@@ -1639,7 +491,7 @@
                         פתח ב-Google Maps
                     </a>
                 </article>
-                <article class="event">
+                <article class="event" data-activity-id="activity-06-05" data-legacy-key="ev-day-6-4">
                     <span class="time">18:30</span>
                     <h3>🏨 חזרה למלון</h3>
                     <p>ערב רגוע אחרי יום נסיעות ארוך — ארוחת ערב ושינה טובה.</p>
@@ -1658,12 +510,12 @@
                 <a href="https://www.google.com/search?q=bergfex+Kaprun+wetter" target="_blank" rel="noopener">🌤️ תחזית הרים (bergfex)</a>
             </div>
             <div class="timeline">
-                <article class="event">
+                <article class="event" data-activity-id="activity-07-01" data-legacy-key="ev-day-7-0">
                     <span class="time">08:15</span>
                     <h3>🚗 נסיעה לקפרון (Kaprun)</h3>
                     <p>כ-1 שעה נסיעה לעיירה קפרון שלרגלי הקיצשטיינהורן. יוצאים מוקדם — יום עמוס מאוד.</p>
                 </article>
-                <article class="event">
+                <article class="event" data-activity-id="activity-07-02" data-legacy-key="ev-day-7-1">
                     <span class="time">09:30</span>
                     <h3>🏗️ סכרי קפרון (Kaprun Hochgebirgsstauseen)</h3>
                     <p>מסע הנדסי מרשים: אוטובוס מיוחד ואז המעלית המשופעת הפתוחה הגדולה באירופה — Lärchwand — שמעלה אוטובוס שלם במעלה ההר! למעלה מחכים שני סכרי ענק (Mooserboden בגובה 2,036 מ') האוגרים מים בצבע טורקיז-חלבי עוצר נשימה. הולכים על הסכר עצמו, ויש סיור פנימי "Erlebniswelt Strom" על בניית המפעל ההידרואלקטרי.</p>
@@ -1676,7 +528,7 @@
                     </a>
                     <a class="map-btn web-btn" href="https://www.verbund.com" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><use href="#icon-globe"/></svg>אתר רשמי</a>
                 </article>
-                <article class="event">
+                <article class="event" data-activity-id="activity-07-03" data-legacy-key="ev-day-7-2">
                     <span class="time">14:00</span>
                     <h3>🍽️ ארוחת צהריים בקפרון</h3>
                     <p>יורדים מהסכרים ואוכלים בעיירה קפרון — קרוב למגלשה ולספא, בלי לבזבז נסיעות.</p>
@@ -1686,7 +538,7 @@
                         פתח ב-Google Maps
                     </a>
                 </article>
-                <article class="event">
+                <article class="event" data-activity-id="activity-07-04" data-legacy-key="ev-day-7-3">
                     <span class="time">15:15</span>
                     <h3>🛷 מגלשת הרים Maisiflitzer — לבן ה-9!</h3>
                     <p>ממש ליד הספא בקפרון: אלפיין-קוסטר על מסילה באורך 1.3 ק"מ במורד המאיסקוגל — עיקולים, גלים וקפיצות קטנות. כל אחד שולט במהירות בעצמו, והמסלול פועל גם בגשם (עגלות סגורות למחצה). התחליף המושלם למגלשת הקרקוגל באבטנאו שנסגרה לצמיתות.</p>
@@ -1699,7 +551,7 @@
                     </a>
                     <a class="map-btn web-btn" href="https://www.kitzsteinhorn.at/en/maiskogel/maisiflitzer" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><use href="#icon-globe"/></svg>אתר רשמי</a>
                 </article>
-                <article class="event">
+                <article class="event" data-activity-id="activity-07-05" data-legacy-key="ev-day-7-4">
                     <span class="time">16:30</span>
                     <h3>🧖 טאוארן ספא (Tauern Spa Kaprun)</h3>
                     <p>סיום יום מושלם: מרחצאות יוקרתיים עם 11 בריכות מחוממות (פנימיות וחיצוניות) מול ההרים, בריכת אינפיניטי על הגג עם נוף לקיצשטיינהורן, ומתחם ילדים ייעודי עם שלוש מגלשות מים מהנות. בן ה-9 במגלשות, בת ה-16 בבריכות או בסאונות, וההורים — בג'קוזי מול השקיעה.</p>
@@ -1712,7 +564,7 @@
                     </a>
                     <a class="map-btn web-btn" href="https://www.tauernspakaprun.com" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><use href="#icon-globe"/></svg>אתר רשמי</a>
                 </article>
-                <article class="event">
+                <article class="event" data-activity-id="activity-07-06" data-legacy-key="ev-day-7-5">
                     <span class="time">20:00</span>
                     <h3>🚗 חזרה למלון</h3>
                     <p>נסיעה חזרה רגועים ומבושמים (כ-1 שעה).</p>
@@ -1731,7 +583,7 @@
                 <a href="https://www.google.com/search?q=bergfex+Golling+wetter" target="_blank" rel="noopener">🌤️ תחזית הרים (bergfex)</a>
             </div>
             <div class="timeline">
-                <article class="event">
+                <article class="event" data-activity-id="activity-08-01" data-legacy-key="ev-day-8-0">
                     <span class="time">09:30</span>
                     <h3>⛏️ מכרות המלח בהליין (Salzwelten Salzburg)</h3>
                     <p>כ-45 דק' נסיעה. חוויה מעולה לכל המשפחה: לובשים סרבלי כורים לבנים, נוסעים ברכבת כורים קטנה אל בטן ההר, גולשים בשתי מגלשות עץ תלולות של הכורים (כיף אדיר — מודדים לכם מהירות! גם זו "מגלשה" לבן ה-9), שטים בסירה על אגם מלח תת-קרקעי מואר, וחוצים את הגבול לגרמניה... מתחת לאדמה! משך הסיור: כ-90 דק'.</p>
@@ -1744,7 +596,7 @@
                     </a>
                     <a class="map-btn web-btn" href="https://www.salzwelten.at" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><use href="#icon-globe"/></svg>אתר רשמי</a>
                 </article>
-                <article class="event">
+                <article class="event" data-activity-id="activity-08-02" data-legacy-key="ev-day-8-1">
                     <span class="time">12:30</span>
                     <h3>🌊 מפל גולינג (Gollinger Wasserfall)</h3>
                     <p>כ-15 דק' נסיעה ממכרות המלח. הליכה קצרה ומרעננת (כ-30 דק' הלוך ושוב) בתוך יער קסום ומכוסה טחב, שמובילה לאחד המפלים העוצמתיים והיפים באוסטריה — 75 מטר בשתי דרגות, הבוקע ישירות מתוך חור בסלע.</p>
@@ -1756,7 +608,7 @@
                         פתח ב-Google Maps
                     </a>
                 </article>
-                <article class="event">
+                <article class="event" data-activity-id="activity-08-03" data-legacy-key="ev-day-8-2">
                     <span class="time">15:00</span>
                     <h3>🏰 אופציה לסיום: מוזיאון הקלטים בהליין או בריכה במלון</h3>
                     <p>אם נשאר כוח — מוזיאון הקלטים בהליין משלים את סיפור המלח של האזור. אחרת — חוזרים למלון לבריכה ולספא אחרי שבוע אינטנסיבי.</p>
@@ -1781,7 +633,7 @@
                 <a href="https://www.google.com/search?q=bergfex+Salzburg+wetter" target="_blank" rel="noopener">🌤️ תחזית הרים (bergfex)</a>
             </div>
             <div class="timeline">
-                <article class="event">
+                <article class="event" data-activity-id="activity-09-01" data-legacy-key="ev-day-9-0">
                     <span class="time">10:00</span>
                     <h3>✈️ האנגר 7 (Hangar-7) — רד בול</h3>
                     <p>לקינוח הטיול: מבנה הזכוכית העתידני של רד בול ליד שדה התעופה של זלצבורג (כ-50 דק' נסיעה). בפנים: מטוסי פעלולים היסטוריים, מסוקים, מכוניות פורמולה 1 נוצצות, חליפת הצניחה מהסטרטוספירה של פליקס באומגרטנר — וכולו חינם! יש גם בית קפה מעוצב (Carpe Diem) לעצירת קפה ועוגה.</p>
@@ -1794,7 +646,7 @@
                     </a>
                     <a class="map-btn web-btn" href="https://www.hangar-7.com" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><use href="#icon-globe"/></svg>אתר רשמי</a>
                 </article>
-                <article class="event">
+                <article class="event" data-activity-id="activity-09-02" data-legacy-key="ev-day-9-1">
                     <span class="time">13:00</span>
                     <h3>🛍️ קניות באירופארק (Europark)</h3>
                     <p>5 דק' נסיעה מהאנגר 7! אחד הקניונים הגדולים והיפים באוסטריה — H&M, Zara, חנויות ספורט ענקיות (Intersport, Hervis) ועוד. ארוחת צהריים בקומת המסעדות, מזכרות וכדורי מוצרט בסופר.</p>
@@ -1805,7 +657,7 @@
                     </a>
                     <a class="map-btn web-btn" href="https://www.europark.at" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><use href="#icon-globe"/></svg>אתר רשמי</a>
                 </article>
-                <article class="event">
+                <article class="event" data-activity-id="activity-09-03" data-legacy-key="ev-day-9-2">
                     <span class="time">18:30</span>
                     <h3>🍽️ ארוחת ערב חגיגית אחרונה</h3>
                     <p>ארוחת סיום טיול ב-Gasthof Tirolerwirt בבישופסהופן (שניצלים ענקיים) או Beefman's להמבורגרים — ואריזה ראשונית של המזוודות בערב.</p>
@@ -1828,17 +680,17 @@
                 <a href="https://www.google.com/search?q=bergfex+Wien+wetter" target="_blank" rel="noopener">🌤️ תחזית (bergfex)</a>
             </div>
             <div class="timeline">
-                <article class="event">
+                <article class="event" data-activity-id="activity-10-01" data-legacy-key="ev-day-10-0">
                     <span class="time">08:00</span>
                     <h3>🧳 אריזות אחרונות וצ'ק-אאוט</h3>
                     <p>ארוחת בוקר אחרונה במלון, אריזות, סריקת חדרים אחרונה (מטענים! בגדי ים בספא!) וצ'ק-אאוט.</p>
                 </article>
-                <article class="event">
+                <article class="event" data-activity-id="activity-10-02" data-legacy-key="ev-day-10-1">
                     <span class="time">09:00</span>
                     <h3>🚗 נסיעה לכיוון וינה</h3>
                     <p>כ-3 שעות נסיעה. תדלקו טנק מלא לפני החזרת הרכב (תחנות ליד השדה יקרות פחות מקנס ההשכרה).</p>
                 </article>
-                <article class="event">
+                <article class="event" data-activity-id="activity-10-03" data-legacy-key="ev-day-10-2">
                     <span class="time">12:15</span>
                     <h3>🎡 עצירה בפראטר (Prater) — פתוח גם בראשון!</h3>
                     <p>במקום קניון סגור — פארק השעשועים ההיסטורי של וינה: הכניסה לפארק חינם ומשלמים רק על מתקנים. עלייה על הגלגל הענק המפורסם (Riesenrad, מ-1897) לנוף פרידה על וינה, מתקני אדרנלין לבת ה-16, רכבות ומתקנים לבן ה-9, ודוכני לאנגוס ונקניקיות לצהריים. כ-25 דק' מהפארק לשדה התעופה.</p>
@@ -1853,7 +705,7 @@
                     <a class="map-btn web-btn" href="https://www.praterwien.com/en/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><use href="#icon-globe"/></svg>אתר רשמי</a>
                     <a class="map-btn web-btn" href="https://www.westfield.com/austria/shopping-city-sued" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><use href="#icon-globe"/></svg>SCS — רשימת חנויות (ליום חול)</a>
                 </article>
-                <article class="event">
+                <article class="event" data-activity-id="activity-10-04" data-legacy-key="ev-day-10-3">
                     <span class="time">17:30</span>
                     <h3>🚗 המשך לשדה התעופה בווינה</h3>
                     <p>כ-25 דק' נסיעה מהפראטר. הטיסה ממריאה רק ב-21:35, כך שאחר הצהריים רגוע — אפשר להאריך בפראטר או להוסיף עצירה בגני שנברון. יעד: החזרת רכב עד 18:15 והגעה לצ'ק-אין עד 18:30 (3 שעות לפני ההמראה). זכרו: יום ראשון — תחנות הדלק פתוחות אבל החנויות סגורות, אז מזכרות של הרגע האחרון קונים בשדה התעופה (חנויות הטרמינל פתוחות כל יום).</p>
@@ -1863,7 +715,7 @@
                         פתח ב-Google Maps
                     </a>
                 </article>
-                <article class="event">
+                <article class="event" data-activity-id="activity-10-05" data-legacy-key="ev-day-10-4">
                     <span class="time">21:35</span>
                     <h3>🛫 טיסה LY364 אל על — וינה ✈ תל אביב</h3>
                     <p><strong>אל על LY364</strong> | המראה 21:35 מטרמינל 3 בווינה — נחיתה 02:00 לפנות בוקר (שעון ישראל, כבר יום שני 28.9) בטרמינל 3 בנתב"ג. משך הטיסה כ-3:25 שעות, מטוס בואינג 737-800 (בשיתוף קוד עם Air Baltic — BT6672).</p>
@@ -2206,7 +1058,7 @@
                     <label class="done-check"><input type="checkbox" data-key="tip-2" aria-label="סמן כבוצע"><span>✔</span></label>
                     <span class="time">לפני</span>
                     <h3>📅 הזמנות מראש — צ'קליסט</h3>
-                    <p>סימנו ליד כל אטרקציה בתוכנית אם צריך להזמין מראש. סיכום: 🔴 חובה — שעת סיור במכרות המלח בהליין. 🟡 מומלץ — רכבל הדאכשטיין (5 האצבעות) לשבת, סכרי קפרון, ומערת הקרח (הזמנה אונליין חוסכת תור וגם 4€ לכרטיס). 🟢 כל השאר — קונים בכניסה. וגם: רישיון נהיגה בינלאומי (IDP) — פרטים בטיפ הנהיגה למטה. אם מחליטים על Flying Fox XXL (בסעיף הגיבוי) — גם הוא 🔴 חובה מראש.</p>
+                    <p>סיכום לפי ההנחיות בפעילויות: חובה לשריין שעת סיור במכרות המלח בהליין; מומלץ להזמין את רכבל הדאכשטיין לשבת ואת סכרי קפרון. במערת הקרח התוכנית מניחה כניסה עם SalzburgerLand Card בקופה, ולכן אין כאן המלצה לרכוש כרטיס נוסף בתשלום; יש לאמת מראש עם המפעיל את ההכללה ואת נוהל הכניסה. גם Flying Fox XXL דורש הזמנה ואישור התאמה לילד לפני תשלום. רישיון נהיגה בינלאומי (IDP): פרטים בטיפ הנהיגה למטה.</p>
                 </article>
                 <article class="event">
                     <label class="done-check"><input type="checkbox" data-key="tip-9" aria-label="סמן כבוצע"><span>✔</span></label>
@@ -2263,309 +1115,33 @@
             </div>
         </section>
 
+        <section id="bookings" class="utility-section" aria-labelledby="bookingsHeading">
+            <h2 id="bookingsHeading">הזמנות וגיבוי</h2>
+            <div id="bookingContent"></div>
+            <div class="backup-controls">
+                <button id="exportBackup" type="button" title="הורדת גיבוי JSON">↓ גיבוי</button>
+                <label class="import-label" for="importBackup">↑ שחזור<input id="importBackup" type="file" accept="application/json,.json"></label>
+            </div>
+            <p class="content-note">הגיבוי מכיל פרטי הזמנות אישיים ואינו מוצפן. השמירה בדפדפן אינה מסונכרנת בין מכשירים.</p>
+        </section>
+        <section id="emergency" class="utility-section" aria-labelledby="emergencyHeading">
+            <h2 id="emergencyHeading">חירום</h2>
+            <div class="emergency-numbers">
+                <a href="tel:112">חירום <b>112</b></a><a href="tel:140">חילוץ הרים <b>140</b></a>
+                <a href="tel:144">אמבולנס <b>144</b></a><a href="tel:133">משטרה <b>133</b></a>
+            </div>
+            <div id="emergencyContent"></div>
+        </section>
         <footer>
             <p>נסיעה טובה ובטוחה! ✦ Austria Alps 2026 🏔️</p>
         </footer>
     </main>
+    <p id="dataStatus" class="data-status" role="status" hidden></p>
+    <nav class="quick-nav" aria-label="גישה מהירה" hidden>
+        <a href="#tripTools">היום</a><a href="#hotel">מלון</a><a href="#bookings">הזמנות</a><a href="#emergency">חירום</a><a href="#tripSearch">חיפוש</a>
+    </nav>
     <button id="backToTop" aria-label="חזרה לראש העמוד">↑</button>
-    <script>
-        // חזרה למעלה בלחיצה על מספר היום
-        document.querySelectorAll('.day-num').forEach(function (el) {
-            el.setAttribute('role', 'button');
-            el.setAttribute('aria-label', 'חזרה לראש העמוד');
-            el.addEventListener('click', function () {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            });
-        });
-
-        // הדגשת היום הנוכחי בטיול
-        (function () {
-            var days = {
-                'day-1': '2026-09-18', 'day-2': '2026-09-19', 'day-3': '2026-09-20',
-                'day-4': '2026-09-21', 'day-5': '2026-09-22', 'day-6': '2026-09-23',
-                'day-7': '2026-09-24', 'day-8': '2026-09-25', 'day-9': '2026-09-26',
-                'day-10': '2026-09-27'
-            };
-            var now = new Date();
-            var today = now.getFullYear() + '-' + String(now.getMonth() + 1).padStart(2, '0') + '-' + String(now.getDate()).padStart(2, '0');
-            Object.keys(days).forEach(function (id) {
-                if (days[id] !== today) return;
-                var section = document.getElementById(id);
-                if (!section) return;
-                section.classList.add('is-today');
-                var badge = document.createElement('span');
-                badge.className = 'today-badge';
-                badge.textContent = 'היום';
-                section.querySelector('.day-header h2').appendChild(badge);
-                var link = document.querySelector('.date-nav a[href="#' + id + '"]');
-                if (link) link.classList.add('is-today-link');
-            });
-        })();
-
-        // הוספת צ'קבוקס "בוצע" לכל אירוע שעדיין אין לו (חייב לרוץ לפני השמירה המקומית)
-        (function () {
-            document.querySelectorAll('section.day').forEach(function (section) {
-                section.querySelectorAll('.event').forEach(function (ev, i) {
-                    if (ev.querySelector('.done-check')) return;
-                    var label = document.createElement('label');
-                    label.className = 'done-check';
-                    label.innerHTML = '<input type="checkbox" data-key="ev-' + section.id + '-' + i + '" aria-label="סמן כבוצע"><span>✔</span>';
-                    ev.appendChild(label);
-                });
-            });
-        })();
-
-        // צ'קבוקסים עם שמירה מקומית
-        (function () {
-            var KEY = 'austria2026-checks';
-            var saved = {};
-            try { saved = JSON.parse(localStorage.getItem(KEY)) || {}; } catch (e) { }
-            document.querySelectorAll('input[type="checkbox"][data-key]').forEach(function (cb) {
-                cb.checked = !!saved[cb.dataset.key];
-                cb.addEventListener('change', function () {
-                    saved[cb.dataset.key] = cb.checked;
-                    try { localStorage.setItem(KEY, JSON.stringify(saved)); } catch (e) { }
-                });
-            });
-        })();
-
-        // אנימציית הופעה בגלילה
-        (function () {
-            if (!('IntersectionObserver' in window) || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-            var io = new IntersectionObserver(function (entries) {
-                entries.forEach(function (entry) {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                        io.unobserve(entry.target);
-                    }
-                });
-            }, { threshold: 0.12 });
-            document.querySelectorAll('.event, .shop-card').forEach(function (card) {
-                card.classList.add('reveal');
-                io.observe(card);
-            });
-        })();
-
-        // כפתור חזרה למעלה
-        (function () {
-            var btn = document.getElementById('backToTop');
-            window.addEventListener('scroll', function () {
-                btn.classList.toggle('show', window.scrollY > 400);
-            }, { passive: true });
-            btn.addEventListener('click', function () {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            });
-        })();
-
-        // פרטי הזמנות — שמירה מקומית
-        (function () {
-            var KEY = 'austria2026-booking';
-            var saved = {};
-            try { saved = JSON.parse(localStorage.getItem(KEY)) || {}; } catch (e) { }
-            document.querySelectorAll('.b-value').forEach(function (el) {
-                if (saved[el.dataset.field]) el.textContent = saved[el.dataset.field];
-                el.addEventListener('input', function () {
-                    saved[el.dataset.field] = el.textContent.trim();
-                    try { localStorage.setItem(KEY, JSON.stringify(saved)); } catch (e) { }
-                });
-            });
-        })();
-
-        // הוספת טיסות ליומן (ICS) — השעות שמורות ב-UTC
-        (function () {
-            var flights = {
-                LY361: { title: 'טיסה LY361 אל על — תל אביב - וינה', start: '20260918T044000Z', end: '20260918T082000Z', loc: 'נתב"ג טרמינל 3', desc: 'המראה 07:40 שעון ישראל. נחיתה כ-10:20 שעון מקומי. הגעה לשדה עד 04:40.' },
-                LY364: { title: 'טיסה LY364 אל על — וינה - תל אביב', start: '20260927T193500Z', end: '20260927T230000Z', loc: 'Vienna International Airport Terminal 3', desc: 'המראה 21:35 שעון מקומי. נחיתה 02:00 שעון ישראל (28.9). החזרת רכב עד 18:15.' }
-            };
-            document.querySelectorAll('.add-cal').forEach(function (btn) {
-                btn.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    var f = flights[btn.dataset.cal];
-                    if (!f) return;
-                    var ics = ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//AustriaTrip2026//HE', 'BEGIN:VEVENT',
-                        'UID:' + btn.dataset.cal + '-2026@austria-trip',
-                        'DTSTAMP:' + f.start, 'DTSTART:' + f.start, 'DTEND:' + f.end,
-                        'SUMMARY:' + f.title, 'LOCATION:' + f.loc, 'DESCRIPTION:' + f.desc,
-                        'BEGIN:VALARM', 'TRIGGER:-PT12H', 'ACTION:DISPLAY', 'DESCRIPTION:תזכורת טיסה', 'END:VALARM',
-                        'END:VEVENT', 'END:VCALENDAR'].join('\r\n');
-                    var blob = new Blob([ics], { type: 'text/calendar;charset=utf-8' });
-                    var a = document.createElement('a');
-                    a.href = URL.createObjectURL(blob);
-                    a.download = btn.dataset.cal + '.ics';
-                    document.body.appendChild(a);
-                    a.click();
-                    setTimeout(function () { URL.revokeObjectURL(a.href); a.remove(); }, 500);
-                });
-            });
-        })();
-
-        // סרגל ניווט דביק + scrollspy
-        (function () {
-            var srcNav = document.querySelector('header .date-nav');
-            var headerEl = document.querySelector('header');
-            if (!srcNav || !headerEl) return;
-            var bar = document.createElement('div');
-            bar.id = 'stickyNav';
-            var clone = srcNav.cloneNode(true);
-            bar.appendChild(clone);
-            document.body.appendChild(bar);
-            var headerH = headerEl.offsetHeight;
-            window.addEventListener('resize', function () { headerH = headerEl.offsetHeight; });
-            window.addEventListener('scroll', function () {
-                bar.classList.toggle('show', window.scrollY > headerH - 60);
-            }, { passive: true });
-
-            var links = document.querySelectorAll('.date-nav a');
-            function setActive(id) {
-                links.forEach(function (a) { a.classList.toggle('active', a.getAttribute('href') === '#' + id); });
-                var act = clone.querySelector('a.active');
-                if (act && bar.classList.contains('show')) act.scrollIntoView({ block: 'nearest', inline: 'center', behavior: 'smooth' });
-            }
-            if ('IntersectionObserver' in window) {
-                var spy = new IntersectionObserver(function (entries) {
-                    entries.forEach(function (en) { if (en.isIntersecting) setActive(en.target.id); });
-                }, { rootMargin: '-20% 0px -70% 0px' });
-                document.querySelectorAll('section.day').forEach(function (s) { spy.observe(s); });
-            }
-        })();
-
-        // פס התקדמות — מוצג רק בימי הטיול עצמם
-        (function () {
-            var start = new Date(2026, 8, 18), end = new Date(2026, 8, 27);
-            var now = new Date();
-            var today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
-            if (today < start || today > end) return;
-            var dayNum = Math.round((today - start) / 86400000) + 1;
-            var wrap = document.createElement('div');
-            wrap.className = 'trip-progress';
-            wrap.innerHTML = '<div class="tp-label">יום ' + dayNum + ' מתוך 10 בטיול 🏔️</div><div class="tp-bar"><div class="tp-fill"></div></div>';
-            var nav = document.querySelector('header .date-nav');
-            nav.parentNode.insertBefore(wrap, nav);
-            requestAnimationFrame(function () { wrap.querySelector('.tp-fill').style.width = (dayNum * 10) + '%'; });
-        })();
-
-        // מצב לילה — הערכה הארחונה נשמרת מקומית
-        (function () {
-            var btn = document.getElementById('themeToggle');
-            var meta = document.querySelector('meta[name="theme-color"]');
-            function paint() {
-                var dark = document.documentElement.getAttribute('data-theme') === 'dark';
-                btn.textContent = dark ? '☀️' : '🌙';
-                if (meta) meta.setAttribute('content', dark ? '#101c17' : '#14342b');
-            }
-            paint();
-            btn.addEventListener('click', function () {
-                var next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-                document.documentElement.setAttribute('data-theme', next);
-                try { localStorage.setItem('austria2026-theme', next); } catch (e) { }
-                paint();
-            });
-        })();
-
-        // כפתור Waze ליד כל כפתור Google Maps — נבנה אוטומטית מהיעד שבקישור
-        (function () {
-            document.querySelectorAll('a.map-btn:not(.web-btn)').forEach(function (a) {
-                var m = /[?&]q=([^&]+)/.exec(a.getAttribute('href') || '');
-                if (!m) return;
-                var waze = document.createElement('a');
-                waze.className = 'map-btn';
-                waze.target = '_blank';
-                waze.rel = 'noopener';
-                waze.href = 'https://www.waze.com/ul?q=' + m[1] + '&navigate=yes';
-                waze.textContent = '🚗 Waze';
-                a.insertAdjacentElement('afterend', waze);
-            });
-        })();
-
-        // חיפוש חוצה התיק
-        (function () {
-            var input = document.getElementById('tripSearch');
-            var counter = document.getElementById('searchCount');
-            if (!input) return;
-            var cards = Array.prototype.slice.call(document.querySelectorAll('.event, .shop-card, .phrase-row, .pack-item'));
-            var sections = Array.prototype.slice.call(document.querySelectorAll('section.day'));
-            var timer;
-            function run() {
-                var q = input.value.trim().toLowerCase();
-                if (!q) {
-                    cards.forEach(function (c) { c.classList.remove('hidden-by-search'); });
-                    sections.forEach(function (s) { s.classList.remove('hidden-by-search'); });
-                    counter.textContent = '';
-                    return;
-                }
-                var hits = 0;
-                cards.forEach(function (c) {
-                    var match = (c.textContent || '').toLowerCase().indexOf(q) > -1;
-                    c.classList.toggle('hidden-by-search', !match);
-                    if (match) hits++;
-                });
-                sections.forEach(function (s) {
-                    var visible = s.querySelector('.event:not(.hidden-by-search), .shop-card:not(.hidden-by-search), .phrase-row:not(.hidden-by-search), .pack-item:not(.hidden-by-search)');
-                    s.classList.toggle('hidden-by-search', !visible);
-                });
-                counter.textContent = hits ? hits + ' תוצאות' : 'לא נמצאו תוצאות';
-            }
-            input.addEventListener('input', function () {
-                clearTimeout(timer);
-                timer = setTimeout(run, 150);
-            });
-        })();
-
-        // גלילה אוטומטית ליום הנוכחי בפתיחה (רק אם לא הגענו לעוגן ספציפי)
-        (function () {
-            if (location.hash) return;
-            var todaySection = document.querySelector('section.day.is-today');
-            if (!todaySection) return;
-            requestAnimationFrame(function () {
-                todaySection.scrollIntoView({ block: 'start', behavior: 'smooth' });
-            });
-        })();
-
-        // מצב אופליין (PWA) — נרשם רק כשמוגש משרת http/https
-        if ('serviceWorker' in navigator && location.protocol.indexOf('http') === 0) {
-            navigator.serviceWorker.register('sw.js').catch(function () { });
-        }
-
-        // כפתור התקנת האפליקציה — אנדרואיד (Chrome) מקבל חלון התקנה אמיתי, והשאר הנחיות לפי הדפדפן
-        (function () {
-            var btn = document.getElementById('installBtn');
-            var hint = document.getElementById('installHint');
-            if (!btn) return;
-            var standalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
-            if (standalone) return; // כבר רץ כאפליקציה מותקנת
-            var deferred = null;
-            window.addEventListener('beforeinstallprompt', function (e) {
-                e.preventDefault();
-                deferred = e;
-                hint.classList.remove('show');
-            });
-            btn.hidden = false;
-            btn.addEventListener('click', function () {
-                if (deferred) {
-                    deferred.prompt();
-                    deferred.userChoice.then(function (choice) {
-                        if (choice && choice.outcome === 'accepted') btn.hidden = true;
-                        deferred = null;
-                    });
-                    return;
-                }
-                var ua = navigator.userAgent;
-                var msg;
-                if (/iPhone|iPad|iPod/.test(ua)) {
-                    msg = 'באייפון: פתחו את האתר ב-Safari, לחצו על כפתור השיתוף (ריבוע עם חץ למעלה) ובחרו "הוסף למסך הבית".';
-                } else if (/Android/i.test(ua)) {
-                    msg = 'באנדרואיד: פתחו את האתר ב-Chrome, ואז בתפריט ⋮ (למעלה מימין) בחרו "הוספה למסך הבית" או "התקנת אפליקציה".';
-                } else {
-                    msg = 'בדפדפן: חפשו בתפריט את האפשרות "התקנת אפליקציה" / "הוספה למסך הבית".';
-                }
-                hint.textContent = msg;
-                hint.classList.add('show');
-            });
-            window.addEventListener('appinstalled', function () {
-                btn.hidden = true;
-                hint.classList.remove('show');
-            });
-        })();
-    </script>
+    <script src="trip-data.js" defer></script>
+    <script src="app.js" defer></script>
 </body>
 </html>
