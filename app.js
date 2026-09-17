@@ -325,6 +325,41 @@
         }
         const links = section.querySelector('.day-links');
         byId('selectedDayLinks').replaceChildren(...(links ? Array.from(links.children).map(link => link.cloneNode(true)) : []));
+        paintWeather(day);
+    }
+    const weatherCache = new Map();
+    let weatherRequest = 0;
+    function showWeather(summary) {
+        const element = byId('dayWeather');
+        const numbers = text('span', summary.temperatures);
+        numbers.dir = 'ltr';
+        const parts = [summary.label, numbers];
+        if (summary.cloud !== null) parts.push('עננות ' + summary.cloud + '%');
+        if (summary.rain !== null) parts.push('סיכוי משקעים ' + summary.rain + '%');
+        element.replaceChildren(text('span', summary.icon + ' ' + summary.name + ' (' + summary.elevation.toLocaleString('en-US') + ' מ׳)', 'weather-spot'));
+        parts.forEach((part, index) => element.append(index ? ' · ' : ' ', part));
+        element.hidden = false;
+    }
+    async function paintWeather(day) {
+        const token = ++weatherRequest;
+        const cached = weatherCache.get(day.id);
+        if (cached && Date.now() - cached.at < 30 * 60000) { showWeather(cached.summary); return; }
+        byId('dayWeather').hidden = true;
+        if (!day.weather || navigator.onLine === false) return;
+        const controller = new AbortController();
+        const timeout = setTimeout(() => controller.abort(), 6000);
+        try {
+            const response = await fetch(data.forecastUrl(day), { signal: controller.signal });
+            if (!response.ok) return;
+            const summary = data.summarizeForecast(await response.json(), day);
+            if (!summary) return;
+            weatherCache.set(day.id, { summary, at: Date.now() });
+            if (token === weatherRequest) showWeather(summary);
+        } catch (error) {
+            // Offline, blocked or slow: the panel simply stays without a forecast line
+        } finally {
+            clearTimeout(timeout);
+        }
     }
     function updateDate() {
         const today = data.viennaDate();
@@ -472,7 +507,7 @@
     } else {
         byId('offlineStatus').textContent = 'אופליין מנוהל אינו זמין בפתיחה הזו. נדרשת פתיחה ב־HTTPS או בשרת מקומי.';
     }
-    window.addEventListener('online', () => { paintOffline(); requestOfflineStatus(); });
+    window.addEventListener('online', () => { paintOffline(); requestOfflineStatus(); renderDay(); });
     window.addEventListener('offline', paintOffline);
     const installButton = byId('installBtn');
     const installHint = byId('installHint');

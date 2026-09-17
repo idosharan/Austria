@@ -1230,6 +1230,8 @@ select { width: 100%; max-width: 100%; min-height: 44px; border: 1px solid #98aa
 #dayBrief { display: grid; grid-template-columns: 1fr 1fr; gap: 12px 24px; }
 #dayBrief dt { font-size: .8rem; color: var(--text-soft); }
 #dayBrief dd { font-size: .95rem; }
+.weather-line { margin: 16px 0 0; font-size: .9rem; color: var(--text); overflow-wrap: anywhere; }
+.weather-line .weather-spot { font-weight: 700; color: var(--navy); }
 #selectedDayLinks { padding: 0; margin: 18px 0 0; }
 .status-line { font-size: .85rem; color: var(--text-soft); border-right: 3px solid #b68021; padding-right: 10px; }
 .status-line[data-ready="true"] { border-color: var(--navy-light); }
@@ -1261,7 +1263,7 @@ select { width: 100%; max-width: 100%; min-height: 44px; border: 1px solid #98aa
 .shop-card, .pack-item, .phrase-row { border-radius: 8px; }
 .shop-card .shop-icon { height: 64px; font-size: 2rem; }
 :focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
-[data-theme="dark"] .trip-tools h2, [data-theme="dark"] .utility-section > h2, [data-theme="dark"] #nextActivity, [data-theme="dark"] .icon-button { color: #e8c96a; }
+[data-theme="dark"] .trip-tools h2, [data-theme="dark"] .utility-section > h2, [data-theme="dark"] #nextActivity, [data-theme="dark"] .icon-button, [data-theme="dark"] .weather-line .weather-spot { color: #e8c96a; }
 [data-theme="dark"] .event-details summary, [data-theme="dark"] .secondary-button { color: #b5dfc5; }
 [data-theme="dark"] select { background: #1d2b24; color: #e8e6df; }
 [data-theme="dark"] .booking-row .b-value { color: #e8e6df; }

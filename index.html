@@ -93,10 +93,11 @@
                 <h3>התחנה הבאה <span id="nextTime" dir="auto"></span></h3>
                 <a id="nextActivity" href="#day-1"></a>
                 <dl id="dayBrief"></dl>
+                <p id="dayWeather" class="weather-line" role="status" hidden></p>
                 <div id="selectedDayLinks" class="day-links"></div>
             </div>
             <p id="offlineStatus" class="status-line" role="status">בודק זמינות ללא רשת…</p>
-            <p class="content-note">זמני נסיעה, מחירים ושעות פעילות הם לפי התוכנית; יש לאמת סמוך לביקור.</p>
+            <p class="content-note">זמני נסיעה, מחירים ושעות פעילות הם לפי התוכנית; יש לאמת סמוך לביקור. תחזית היום מ־Open-Meteo לנקודה שקובעת את היום (פסגה או עמק), נטענת רק כשיש רשת.</p>
         </section>
 
         <!-- ===== יום 1 | שישי 18.9 ===== -->
@@ -107,7 +108,7 @@
             </div>
             <div class="day-links">
                 <a href="https://www.google.com/maps/dir/Vienna+International+Airport/BILLA+PLUS+Bischofshofen/Hofgut+Wagrain" target="_blank" rel="noopener">🗺️ מסלול היום המלא</a>
-                <a href="https://www.google.com/search?q=bergfex+Wagrain+wetter" target="_blank" rel="noopener">🌤️ תחזית הרים (bergfex)</a>
+                <a href="https://www.bergfex.at/sommer/salzburg/wetter/" target="_blank" rel="noopener">🌤️ תחזית זלצבורגרלנד (bergfex)</a>
             </div>
             <div class="timeline">
                 <article class="event" data-activity-id="activity-01-01" data-legacy-key="ev-day-1-0">
@@ -168,7 +169,8 @@
             </div>
             <div class="day-links">
                 <a href="https://www.google.com/maps/dir/Hofgut+Wagrain/Hallstatt+Parkplatz+P1/Dachstein+Krippenstein+Seilbahn+Obertraun/Hofgut+Wagrain" target="_blank" rel="noopener">🗺️ מסלול היום המלא</a>
-                <a href="https://www.google.com/search?q=bergfex+Hallstatt+wetter" target="_blank" rel="noopener">🌤️ תחזית הרים (bergfex)</a>
+                <a href="https://www.bergfex.at/dachstein-krippenstein/wetter/" target="_blank" rel="noopener">🌤️ תחזית קריפנשטיין 2,100 מ' (bergfex)</a>
+                <a href="https://www.bergfex.at/dachstein-krippenstein/webcams/c3543/" target="_blank" rel="noopener">📷 מצלמה חיה: תחנת הרכבל העליונה</a>
             </div>
             <div class="timeline">
                 <article class="event" data-activity-id="activity-02-01" data-legacy-key="ev-day-2-0">
@@ -240,7 +242,7 @@
             </div>
             <div class="day-links">
                 <a href="https://www.google.com/maps/dir/Hofgut+Wagrain/Schloss+Hellbrunn+Salzburg/Haus+der+Natur+Salzburg/Hofgut+Wagrain" target="_blank" rel="noopener">🗺️ מסלול היום המלא</a>
-                <a href="https://www.google.com/search?q=bergfex+Salzburg+wetter" target="_blank" rel="noopener">🌤️ תחזית הרים (bergfex)</a>
+                <a href="https://www.bergfex.at/sommer/salzburg/wetter/" target="_blank" rel="noopener">🌤️ תחזית זלצבורג (bergfex)</a>
             </div>
             <div class="timeline">
                 <article class="event" data-activity-id="activity-03-01" data-legacy-key="ev-day-3-0">
@@ -290,6 +292,7 @@
                     <h3>🔬 מוזיאון הטבע והמדע (Haus der Natur)</h3>
                     <p>מוזיאון ענק ומרתק: אקווריומים עם כרישים ודגים טרופיים, תצוגות חלל עם חלליות אמיתיות, שלד דינוזאורים, עולם הזוחלים, ומרכז מדע אינטראקטיבי עצום שבו הילדים עושים ניסויים בפיזיקה, כוחות, מים וקול. לפי שעות הפעילות שבתוכנית, המוזיאון נסגר ב-17:00: הגעה ב-16:00 משאירה שעה בלבד, ואף פחות לאחר המעבר מהמבצר. לביקור של 2–3 שעות צריך להקדים את המוזיאון ולקצר או לוותר על פעילות אחרת; החלפת הסדר לבדה אינה מוסיפה זמן ליום.</p>
                     <div class="tip">💡 מרכז המדע בקומות העליונות — אל תפספסו!</div>
+                    <div class="tip">🚟 אופציה במקום המוזיאון (רק ביום בהיר): רכבל האונטרסברג (Untersberg, 1,776 מ') בגרודיג — 10 דק' מהלברון, נוף על זלצבורג והאלפים הבוואריים. 🎫 כלול ב-Salzburg Card וב-SalzburgerLand Card. היום גדוש ממילא — לא לדחוס כתוספת, רק כהחלפה אם הילדים מעדיפים הר על מוזיאון.</div>
                     <div class="book book-no">🟢 אין צורך להזמין מראש — נכנסים ישירות עם הכרטיס.</div>
                     <div class="slc slc-yes">🎫 חינם עם ה-Salzburg Card היומי (הטבת הג'וקר).</div>
                     <a class="map-btn" href="https://maps.google.com/?q=Haus+der+Natur,+Salzburg" target="_blank" rel="noopener">
@@ -297,6 +300,7 @@
                         פתח ב-Google Maps
                     </a>
                     <a class="map-btn web-btn" href="https://www.hausdernatur.at" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><use href="#icon-globe"/></svg>אתר רשמי</a>
+                    <a class="map-btn web-btn" href="https://www.untersbergbahn.at" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><use href="#icon-globe"/></svg>Untersberg — אופציה</a>
                 </article>
                 <article class="event" data-activity-id="activity-03-06" data-legacy-key="ev-day-3-5">
                     <span class="time">18:30</span>
@@ -318,7 +322,7 @@
             </div>
             <div class="day-links">
                 <a href="https://www.google.com/maps/dir/Hofgut+Wagrain/Eisriesenwelt+Werfen/Burg+Hohenwerfen/Hofgut+Wagrain" target="_blank" rel="noopener">🗺️ מסלול היום המלא</a>
-                <a href="https://www.google.com/search?q=bergfex+Werfen+wetter" target="_blank" rel="noopener">🌤️ תחזית הרים (bergfex)</a>
+                <a href="https://www.bergfex.at/sommer/salzburg/wetter/" target="_blank" rel="noopener">🌤️ תחזית זלצבורגרלנד (bergfex)</a>
             </div>
             <div class="timeline">
                 <article class="event" data-activity-id="activity-04-01" data-legacy-key="ev-day-4-0">
@@ -373,7 +377,8 @@
             </div>
             <div class="day-links">
                 <a href="https://www.google.com/maps/dir/Hofgut+Wagrain/Liechtensteinklamm/Stubnerkogelbahn+Bad+Gastein/Hofgut+Wagrain" target="_blank" rel="noopener">🗺️ מסלול היום המלא</a>
-                <a href="https://www.google.com/search?q=bergfex+Bad+Gastein+wetter" target="_blank" rel="noopener">🌤️ תחזית הרים (bergfex)</a>
+                <a href="https://www.bergfex.at/gastein/wetter/" target="_blank" rel="noopener">🌤️ תחזית גאסטיין (bergfex)</a>
+                <a href="https://www.gastein.com/en/webcams/" target="_blank" rel="noopener">📷 מצלמות חיות: שטובנרקוגל ובאד גאסטיין</a>
             </div>
             <div class="timeline">
                 <article class="event" data-activity-id="activity-05-01" data-legacy-key="ev-day-5-0">
@@ -445,7 +450,8 @@
             </div>
             <div class="day-links">
                 <a href="https://www.google.com/maps/dir/Hofgut+Wagrain/Grossglockner+Hochalpenstrasse+Fusch/Kaiser-Franz-Josefs-H%C3%B6he/Hofgut+Wagrain" target="_blank" rel="noopener">🗺️ מסלול היום המלא</a>
-                <a href="https://www.google.com/search?q=bergfex+Grossglockner+wetter" target="_blank" rel="noopener">🌤️ תחזית הרים (bergfex)</a>
+                <a href="https://www.grossglockner.at/en/for-your-visit/webcam-weather" target="_blank" rel="noopener">🌤️ תחזית ומצב הכביש (רשמי)</a>
+                <a href="https://grossglockner.panomax.com/" target="_blank" rel="noopener">📷 מצלמת 360°: קייזר-פרנץ-יוזפס</a>
             </div>
             <div class="timeline">
                 <article class="event" data-activity-id="activity-06-01" data-legacy-key="ev-day-6-0">
@@ -486,10 +492,12 @@
                     <h3>🚗 ירידה נינוחה ועצירה בצל אם זה</h3>
                     <p>יורדים בנחת באותו כביש (עם הכרטיס היומי מותר לעצור ולהמשיך כמה פעמים), ובדרך חזרה עצירה קצרה בטיילת האגם של צל אם זה (Zell am See) — גלידה מול המים ורגליים באגם אחרי יום ארוך ברכב.</p>
                     <div class="tip">🪂 האומגה Flying Fox XXL בלאוגנג לא משובצת היום — היא כ-1:15 שעה מקייזר-פרנץ-יוזפס והיום הזה ארוך ממילא. העברנו אותה לסעיף "תוכנית גיבוי" — היא רק 30–35 דק' מקפרון ומשתלבת יפה עם יום 7.</div>
+                    <div class="tip">💦 אופציה במקום צל אם זה (רק אם ירדתם מהכביש עד 14:00): מפלי קרימל (Krimml) — הגבוהים באוסטריה, 380 מ' בשלוש דרגות, שביל תצפיות נוח לאורכם. כשעה מצל אם זה מערבה, ומשם כ-2 שעות חזרה לוואגריין — יום של 12 שעות. 🎫 המפלים כלולים בכרטיס. הערכה כנה: בגל הקור של השבוע השני עדיף לוותר — אם ממש רוצים, לשלב ביום 7 במקום הספא (קרימל היא שעה מקפרון).</div>
                     <a class="map-btn" href="https://maps.google.com/?q=Zell+am+See+promenade" target="_blank" rel="noopener">
                         <svg viewBox="0 0 24 24"><use href="#icon-pin"/></svg>
                         פתח ב-Google Maps
                     </a>
+                    <a class="map-btn web-btn" href="https://www.krimmler-wasserwelten.at" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><use href="#icon-globe"/></svg>מפלי קרימל — אופציה</a>
                 </article>
                 <article class="event" data-activity-id="activity-06-05" data-legacy-key="ev-day-6-4">
                     <span class="time">18:30</span>
@@ -507,7 +515,8 @@
             </div>
             <div class="day-links">
                 <a href="https://www.google.com/maps/dir/Hofgut+Wagrain/Kesselfallhaus+Kaprun/Tauern+Spa+Kaprun/Hofgut+Wagrain" target="_blank" rel="noopener">🗺️ מסלול היום המלא</a>
-                <a href="https://www.google.com/search?q=bergfex+Kaprun+wetter" target="_blank" rel="noopener">🌤️ תחזית הרים (bergfex)</a>
+                <a href="https://www.zellamsee-kaprun.com/en/service/live/weather" target="_blank" rel="noopener">🌤️ תחזית צל אם זה–קפרון (רשמי)</a>
+                <a href="https://www.foto-webcam.eu/webcam/mooserboden/" target="_blank" rel="noopener">📷 מצלמה חיה: סכר מוסרבודן</a>
             </div>
             <div class="timeline">
                 <article class="event" data-activity-id="activity-07-01" data-legacy-key="ev-day-7-0">
@@ -556,6 +565,7 @@
                     <h3>🧖 טאוארן ספא (Tauern Spa Kaprun)</h3>
                     <p>סיום יום מושלם: מרחצאות יוקרתיים עם 11 בריכות מחוממות (פנימיות וחיצוניות) מול ההרים, בריכת אינפיניטי על הגג עם נוף לקיצשטיינהורן, ומתחם ילדים ייעודי עם שלוש מגלשות מים מהנות. בן ה-9 במגלשות, בת ה-16 בבריכות או בסאונות, וההורים — בג'קוזי מול השקיעה.</p>
                     <div class="tip">💡 קנו כרטיס ערב (מוזל אחרי 16:00–17:00). קחו בגדי ים, מגבות אפשר לשכור. מתחם הסאונות ללא בגדים (נהוג באוסטריה) — יש אזורים משפחתיים נפרדים.</div>
+                    <div class="tip">🏔️ אופציה במקום הספא (רק ביום בהיר): קיצשטיינהורן Gipfelwelt 3000 — רכבלים מקפרון עד 3,029 מ', שלג מובטח בגל הקור של השבוע, מרפסת תצפית "Top of Salzburg" ומנהרת פנורמה מול הגרוסגלוקנר. 🎫 לא בכרטיס ויקר (מחיר עונתי באתר), והיום מלא ממילא — רק אם המשפחה מעדיפה שלג על בריכות. מעילי חורף ומשקפי שמש חובה.</div>
                     <div class="book book-no">🟢 אין צורך להזמין מראש — קונים כרטיס בכניסה (אפשר גם אונליין אם רוצים לחסוך תור).</div>
                     <div class="slc slc-no">🎫 לא כלול בכרטיס — משלמים בנפרד (יש כרטיס ערב מוזל).</div>
                     <a class="map-btn" href="https://maps.google.com/?q=Tauern+Spa+Kaprun" target="_blank" rel="noopener">
@@ -563,6 +573,7 @@
                         פתח ב-Google Maps
                     </a>
                     <a class="map-btn web-btn" href="https://www.tauernspakaprun.com" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><use href="#icon-globe"/></svg>אתר רשמי</a>
+                    <a class="map-btn web-btn" href="https://www.kitzsteinhorn.at" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><use href="#icon-globe"/></svg>Kitzsteinhorn — אופציה</a>
                 </article>
                 <article class="event" data-activity-id="activity-07-06" data-legacy-key="ev-day-7-5">
                     <span class="time">20:00</span>
@@ -580,7 +591,7 @@
             </div>
             <div class="day-links">
                 <a href="https://www.google.com/maps/dir/Hofgut+Wagrain/Salzwelten+Salzburg+Hallein/Gollinger+Wasserfall/Hofgut+Wagrain" target="_blank" rel="noopener">🗺️ מסלול היום המלא</a>
-                <a href="https://www.google.com/search?q=bergfex+Golling+wetter" target="_blank" rel="noopener">🌤️ תחזית הרים (bergfex)</a>
+                <a href="https://www.bergfex.at/sommer/salzburg/wetter/" target="_blank" rel="noopener">🌤️ תחזית זלצבורגרלנד (bergfex)</a>
             </div>
             <div class="timeline">
                 <article class="event" data-activity-id="activity-08-01" data-legacy-key="ev-day-8-0">
@@ -630,7 +641,7 @@
             </div>
             <div class="day-links">
                 <a href="https://www.google.com/maps/dir/Hofgut+Wagrain/Hangar-7+Salzburg/Europark+Salzburg/Hofgut+Wagrain" target="_blank" rel="noopener">🗺️ מסלול היום המלא</a>
-                <a href="https://www.google.com/search?q=bergfex+Salzburg+wetter" target="_blank" rel="noopener">🌤️ תחזית הרים (bergfex)</a>
+                <a href="https://www.bergfex.at/sommer/salzburg/wetter/" target="_blank" rel="noopener">🌤️ תחזית זלצבורג (bergfex)</a>
             </div>
             <div class="timeline">
                 <article class="event" data-activity-id="activity-09-01" data-legacy-key="ev-day-9-0">
@@ -677,7 +688,7 @@
             </div>
             <div class="day-links">
                 <a href="https://www.google.com/maps/dir/Hofgut+Wagrain/Prater+Riesenrad+Wien/Vienna+International+Airport" target="_blank" rel="noopener">🗺️ מסלול היום המלא</a>
-                <a href="https://www.google.com/search?q=bergfex+Wien+wetter" target="_blank" rel="noopener">🌤️ תחזית (bergfex)</a>
+                <a href="https://www.bergfex.at/sommer/wien/wetter/" target="_blank" rel="noopener">🌤️ תחזית וינה (bergfex)</a>
             </div>
             <div class="timeline">
                 <article class="event" data-activity-id="activity-10-01" data-legacy-key="ev-day-10-0">
@@ -742,6 +753,7 @@
                     <p>ימי הרכבלים והנוף (5 האצבעות, שטובנרקוגל, גרוסגלוקנר, סכרי קפרון) חסרי ערך בערפל ובגשם. כל הימים 20–25.9 נמצאים בתוך חלון ה-SalzburgerLand Card, ולכן אפשר להחליף ביניהם חופשי — בלי לפגוע בתקציב.</p>
                     <div class="tip">💡 החוק הפשוט: בערב בודקים תחזית לפסגות. תחזית טובה = יום רכבל. תחזית גרועה = מושכים קדימה יום "עמיד לגשם": מכרות המלח (יום 8), זלצבורג (יום 3), האנגר 7 (יום 9), או ספא (יום 7).</div>
                     <div class="tip">⚠️ שני ימים שאסור להזיז: 20.9 (סריקה ראשונה של הכרטיס — פותחת את חלון 6 הימים) ו-25.9 (היום האחרון בתוקף). וגם 26.9, שהוא ההזדמנות האחרונה לקניות לפני שביום ראשון הכול סגור.</div>
+                    <div class="tip">📡 תחזית שבוע הטיול (נכון ל-17.9): השבוע יבש כמעט לגמרי — הבעיה תהיה <strong>ערפל וקור</strong>, לא גשם. הממטרים היחידים צפויים ב-21.9 (יום המערה — בפנים ממילא), ומ-22.9 הפסגות יורדות למינוס (24–26.9: עד ‎-4°C בגובה 2,400 מ', 2–4°C בבוקר גם בואגריין). ההחלטה "לעלות או לא" נעשית בבוקר לפי המצלמה החיה של הפסגה (קישור בראש כל יום רכבל), לא לפי התחזית. מעילי החורף של מערת הקרח עולים גם לשטובנרקוגל, לגרוסגלוקנר ולסכרים.</div>
                 </article>
                 <article class="event">
                     <span class="time">ליד המלון</span>
@@ -753,6 +765,51 @@
                         פתח ב-Google Maps
                     </a>
                     <a class="map-btn web-btn" href="https://www.wagrain-kleinarl.at" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><use href="#icon-globe"/></svg>אתר האזור</a>
+                </article>
+                <article class="event">
+                    <span class="time">ליד המלון</span>
+                    <h3>👻 גייסטרברג (Geisterberg), אלפנדורף — 10 דקות</h3>
+                    <p>"הר הרוחות": פארק נושא לילדים על הגרנקוגל, בגונדולה מאלפנדורף (סנט יוהאן) — רוחות עץ ענקיות, מגלשות, פעילויות מים ושביל הרפתקאות מעגלי. חצי יום קל בלי נסיעה ארוכה, מושלם לבן ה-9.</p>
+                    <div class="tip">⚠️ לבדוק שעדיין פועל — רבים מרכבלי הפונגאו עוברים לסופ"ש בלבד או נסגרים בסוף ספטמבר.</div>
+                    <div class="slc slc-yes">🎫 רכבל אלפנדורף מופיע ברשימת הכרטיס — לאמת ברשימת האטרקציות לפני העלייה.</div>
+                    <a class="map-btn" href="https://maps.google.com/?q=Geisterberg+Alpendorf+St.+Johann+im+Pongau" target="_blank" rel="noopener">
+                        <svg viewBox="0 0 24 24"><use href="#icon-pin"/></svg>
+                        פתח ב-Google Maps
+                    </a>
+                    <a class="map-btn web-btn" href="https://www.geisterberg.at" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><use href="#icon-globe"/></svg>אתר רשמי</a>
+                </article>
+                <article class="event">
+                    <span class="time">ליד המלון</span>
+                    <h3>🌊 תרמה אמאדה (Erlebnis-Therme Amadé), אלטנמרקט — 15 דקות</h3>
+                    <p>מרחצות עם מגלשות מים של ממש — כולל מגלשת לופינג — בריכות פנים וחוץ ואזור סאונות. הגיבוי הקרוב ביותר לגשם או לערב פנוי — הרבה יותר קרוב מטאוארן ספא בקפרון (שעה).</p>
+                    <div class="book book-no">🟢 אין צורך להזמין מראש — קונים כרטיס בכניסה; יש כרטיס ערב מוזל.</div>
+                    <div class="slc slc-yes">🎫 הטבה חלקית בכרטיס (כניסה מוגבלת בשעות) — לבדוק את התנאים ברשימת האטרקציות.</div>
+                    <a class="map-btn" href="https://maps.google.com/?q=Erlebnis-Therme+Amad%C3%A9+Altenmarkt" target="_blank" rel="noopener">
+                        <svg viewBox="0 0 24 24"><use href="#icon-pin"/></svg>
+                        פתח ב-Google Maps
+                    </a>
+                    <a class="map-btn web-btn" href="https://www.thermeamade.at" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><use href="#icon-globe"/></svg>אתר רשמי</a>
+                </article>
+                <article class="event">
+                    <span class="time">ליד המלון</span>
+                    <h3>🛷 Lucky Flitzer, פלאכאו — 15 דקות</h3>
+                    <p>אלפיין-קוסטר על מסילה בעמק הסמוך, פועל גם בגשם. חלופה קרובה ל-Maisiflitzer שבקפרון אם יום 7 מתקצר, או סיבוב נוסף לבן ה-9 בערב פנוי.</p>
+                    <div class="slc slc-no">🎫 לא כלול בכרטיס — תשלום במקום.</div>
+                    <a class="map-btn" href="https://maps.google.com/?q=Lucky+Flitzer+Flachau" target="_blank" rel="noopener">
+                        <svg viewBox="0 0 24 24"><use href="#icon-pin"/></svg>
+                        פתח ב-Google Maps
+                    </a>
+                </article>
+                <article class="event">
+                    <span class="time">ליד המלון</span>
+                    <h3>🌅 רוסברנד (Rossbrand), רדשטאט — 30 דקות</h3>
+                    <p>כביש אגרה עד לתצפית 360° (1,770 מ') על כ-150 פסגות — מהדאכשטיין עד הטאוארן. מושלם לשקיעה ביום בהיר (23–25.9 צפויים בהירים) בלי לוותר על כלום בתוכנית היום.</p>
+                    <div class="tip">🧥 בשקיעה קר למעלה — מעילים. לוודא שהכביש פתוח (נסגר בשלג ולעת ערב).</div>
+                    <div class="slc slc-no">🎫 לא כלול בכרטיס — אגרת כביש לרכב.</div>
+                    <a class="map-btn" href="https://maps.google.com/?q=Rossbrand+Radstadt" target="_blank" rel="noopener">
+                        <svg viewBox="0 0 24 24"><use href="#icon-pin"/></svg>
+                        פתח ב-Google Maps
+                    </a>
                 </article>
                 <article class="event">
                     <span class="time">ליד המלון</span>

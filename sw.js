@@ -1,4 +1,4 @@
-var CACHE = 'austria2026-v5';
+var CACHE = 'austria2026-v6';
 var CORE = ['./', './index.html', './styles.css', './trip-data.js', './app.js', './manifest.webmanifest', './icon.svg', './icon-192.png', './icon-512.png', './icon-192-maskable.png', './icon-512-maskable.png'];
 var META = './offline-meta';
 
@@ -40,6 +40,7 @@ self.addEventListener('activate', function (e) {
 self.addEventListener('fetch', function (e) {
     if (e.request.method !== 'GET') return;
     var url = new URL(e.request.url);
+    // Forecast API responses must stay live; only same-origin assets and fonts are cached
     if (url.origin !== self.location.origin && url.hostname !== 'fonts.googleapis.com' && url.hostname !== 'fonts.gstatic.com') return;
     if (e.request.mode === 'navigate') {
         if (url.pathname !== new URL(self.registration.scope).pathname && url.pathname !== new URL('index.html', self.registration.scope).pathname) return;
